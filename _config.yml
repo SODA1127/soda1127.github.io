@@ -1,7 +1,9 @@
 # Site Settings
-title: 이기정의 프로그래밍 블로그
-email: kjlee@babitalk.com
-description: 자바기반의 언어와 안드로이드와 네트워크에 대해 기술하는 블로그입니다.
+title: 소다의 프로그래밍 블로그
+email: dlrlwjd1127@naver.com
+description: 자바 기반의 언어와 안드로이드와 네트워크에 대해 기술하는 블로그입니다.
+
+remote_theme : thiagorossener/jekflix-template
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 google_analytics: "UA-XXXXXXXX-X"
@@ -13,7 +15,7 @@ disqus_username: disqus_username
 
 # Social Media
 # Remove the item if you don't need it
-github_username: dlrlwjd1127
+github_username: SODA1127
 facebook_username: soda1127
 
 # Build settings
