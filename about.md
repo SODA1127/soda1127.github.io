@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-description: Some description.
+title: 소다는 이런 사람이에요
+description: 소다를 소개합니다
 permalink: /about/
 ---
 
