@@ -5,7 +5,7 @@ description: 자바 기반의 언어와 안드로이드와 네트워크에 대�
 
 remote_theme : thiagorossener/jekflix-template
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+url: "https://soda1127.github.io" # the base hostname & protocol for your site
 google_analytics: "UA-XXXXXXXX-X"
 
 # User Settings
