@@ -50,7 +50,7 @@ twitter_text: 프로그래밍 업계를 떠들썩하게 하고 있는 코틀린�
   Java에서는 String i와 String j가 같은 문자열을 담고 있어도 가리키는 객체의 메모리 주소는 다를 수 있으므로 i == j는 false가 될 수 있다. 이 경우 쓰는 함수가 equals()인데, Kotlin에서 ==는 equals()와 똑같이, 즉 content equality로 작동한다. 따라서 i == j는 true다. Java처럼 identity equality를 비교하려면 ===를 쓰면 된다. !=를 쓰려면 !==를 쓰자.
 - static 메서드가 없다. companion object를 사용해 감싸야 한다. Java 코드에서 접근하려면 '클래스명.Companion.메서드_혹은_get변수명()' 또는 @JvmStatic annotation을 쓰면 된다.
 - Java 6에 호환된다.
-- **Java와의 상호 운용이 100% 지원된다.
+- **Java와의 상호 운용이 100% 지원된다.**
 
 ## 그래서 이 책으로 뭘 얻고 싶은데?
 
