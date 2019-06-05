@@ -8,8 +8,8 @@ date: 2019-06-03 16:42:00
 tags:
 - start
 - blog
-twitter_text: 첫번째 글에 대한 설명
 introduction: 첫번째 글에대한 소개
+twitter_text: 첫번째 글에 대한 설명
 ---
 
 > ![2019-06-02-profile.JPG](https://i.imgur.com/oGENDcZ.jpg "프로필 이미지")
