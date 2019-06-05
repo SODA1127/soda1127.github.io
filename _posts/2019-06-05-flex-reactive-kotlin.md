@@ -2,7 +2,7 @@
 layout: post
 title: "00.코틀린을 리액티브하게 Flex하다"
 description: REACTIVE PROGRAMMING IN KOTLIN
-image: 'https://imgur.com/3b7995f8-55c7-41f5-a061-0be997de1011'
+image: 'https://i.imgur.com/wyo3PBm.jpg'
 category: 'programming'
 date: 2019-06-05 14:04:00
 tags:
