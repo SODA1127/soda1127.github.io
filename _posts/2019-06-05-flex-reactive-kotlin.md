@@ -3,7 +3,7 @@ layout: post
 title: "00.코틀린을 리액티브하게 Flex하다"
 description: REACTIVE PROGRAMMING IN KOTLIN
 image: 'http://acornpub.co.kr/tb/detail/book/of/xg/15558620950oWiu2jx.jpg'
-category: 'blog'
+category: 'programming'
 date: 2019-06-05 14:04:00
 tags:
 - kotlin
@@ -11,6 +11,7 @@ tags:
 - Reactive Programming
 introduction: 프로그래밍 업계를 떠들썩하게 하고 있는 코틀린과 리액티브 프로그래밍을 책으로써 풀어나가는 시작점입니다.
 twitter_text: 프로그래밍 업계를 떠들썩하게 하고 있는 코틀린과 리액티브 프로그래밍을 책으로써 풀어나가는 시작점입니다.
+
 ---
 
 ## REACTIVE PROGRAMMING IN KOTLIN
