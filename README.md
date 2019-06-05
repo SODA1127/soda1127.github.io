@@ -1,5 +1,5 @@
 # Jekflix Template
-![Cover Image](http://res.cloudinary.com/dm7h7e8xj/image/upload/v1505354182/jekflix-logo_mfngps.png)
+![Cover Image](https://soda1127.github.io/assets/img/blog-image.png)
 
 See the [demo here](https://www.rossener.com/jekflix-template).
 
