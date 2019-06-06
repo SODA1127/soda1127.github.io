@@ -76,4 +76,4 @@ twitter_text: 프로그래밍 업계를 떠들썩하게 하고 있는 코틀린�
 - TestSubscriber를 사용해 RxKotlin 애플리케이션 테스트
 - 플로어블(Flowable)과 백프레셔 관리
 
-#### [>> 다음 포스트 01.리액티브 프로그래밍의 소개](https://soda1127.github.io/introduce-reactive-programming/)
+#### [>> 다음 포스트 1-01.리액티브 프로그래밍의 소개](https://soda1127.github.io/introduce-reactive-programming/)
