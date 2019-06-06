@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "00.코틀린을 리액티브하게 Flex하다"
+title: "1-00.코틀린을 리액티브하게 Flex하다"
 description: REACTIVE PROGRAMMING IN KOTLIN
 image: 'https://i.imgur.com/I8IKewN.png'
 category: 'programming'
@@ -14,7 +14,7 @@ twitter_text: 프로그래밍 업계를 떠들썩하게 하고 있는 코틀린�
 
 ---
 
-## REACTIVE PROGRAMMING IN KOTLIN
+## 1-00.REACTIVE PROGRAMMING IN KOTLIN
 
 저 소다는 블로그의 첫 시작점을 최근에 많은 사람들이 관심을 두고 있고, 저 또한 큰 관심을 두고 있는 `Kotlin`과, `Reactive Programming`이라는 주제로 얘기를 하는 것이 좋겠다 생각했습니다.
 

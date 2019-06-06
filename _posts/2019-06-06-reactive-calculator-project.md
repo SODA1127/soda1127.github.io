@@ -229,10 +229,10 @@ fun main(args: Array<String>) {
 
 다음 2장에서는 `ReactiveCaclurator` 계산기 예제를 활용하여 프로그램을 최적화 하고 향상할 수 있는 방법에 대해서 알아보도록 하겠습니다.
 
-
+[>> 포스트 1-00.REACTIVE PROGRAMMING IN KOTLIN](https://soda1127.github.io/flex-reactive-kotlin/)
 
 [>> 포스트 1-01.리액티브 프로그래밍의 소개](https://soda1127.github.io/introduce-reactive-programming/)
 
 [>> 포스트 1-02.RxKotlin 시작하기](https://soda1127.github.io/start-rx-kotlin/)
 
-[>> 포스트 1-03.RxKotlin 시작하기](https://soda1127.github.io/reactive-calculator-project/)
+[>> 포스트 1-03.RxKotlin을 활용하여 계산기 프로그램 만들기](https://soda1127.github.io/reactive-calculator-project/)

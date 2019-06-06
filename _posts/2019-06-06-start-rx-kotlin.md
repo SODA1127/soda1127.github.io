@@ -152,4 +152,4 @@ fun isEven(n: Int): Boolean = (n % 2 == 0)
 
 `subject.onNext(@NonNull T)` 메서드는 새로운 값을 받아 `subject`로 전달해 처리할 수 있습니다.
 
-[>> 다음 포스트 1-03.RxKotlin 시작하기](https://soda1127.github.io/reactive-calculator-project/)
+[>> 다음 포스트 1-03.RxKotlin을 활용하여 계산기 프로그램 만들기](https://soda1127.github.io/reactive-calculator-project/)
