@@ -2,7 +2,7 @@
 layout: post
 title: "01.리액티브 프로그래밍의 소개"
 description: 리액티브 프로그래밍이란 무엇일까요?
-image: 'https://i.imgur.com/I8IKewN.png'
+image: 'https://i.imgur.com/klrxZcG.png'
 category: 'programming'
 date: 2019-06-05 14:54:00
 tags:
@@ -14,8 +14,6 @@ twitter_text: 리액티브 프로그래밍을 소개합니다.
 ---
 
 # 리액티브 프로그래밍이란?
-
-![rx logo](https://i.imgur.com/klrxZcG.png)
 
 `Reactive` 반응형이라는 용어는 최근에 많은 사람들 입에서 오르고 내리고 있습니다.
 
