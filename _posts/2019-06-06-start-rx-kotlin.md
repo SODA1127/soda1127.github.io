@@ -145,6 +145,7 @@ fun isEven(n: Int): Boolean = (n % 2 == 0)
 결과는 다음과 같습니다.
 
 > The number is Even
+>
 > The number is Odd
 
 변환한 코드를 보면 `Observable<R> map(Function<? super T, ? extends R>)` 함수를 사용하였는데, 후에 설명하겠지만 해당 함수를 통해 `isEven(Int)`에 인자로 푸시된 값을 차례로 받아 가공하는 과정을 거칩니다.
