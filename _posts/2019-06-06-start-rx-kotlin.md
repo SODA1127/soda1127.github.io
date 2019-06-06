@@ -2,9 +2,9 @@
 layout: post
 title: "02.RxKotlin 시작하기"
 description: RxKotlin을 이용하여 리액티브 프로그래밍을 해봅시다.
-image: 'https://i.imgur.com/I8IKewN.png'
+image: 'https://i.imgur.com/pr6E1OC.jpg'
 category: 'programming'
-date: 2019-06-05 14:54:00
+date: 2019-06-06 17:54:00
 tags:
 - kotlin
 - ReactiveX
@@ -14,8 +14,6 @@ twitter_text: RxKotlin이 무엇인지, RxKotlin은 어떤 기능을 제공하�
 ---
 
 # RxKotlin 시작하기
-
-![rx kotlin logo](https://i.imgur.com/pr6E1OC.jpg)
 
 `RxKotlin`은 **ReactiveX**의 `RxJava` 라이브러리를 기반으로 포팅하여 코틀린을 위한 리액티브 프로그래밍의 특정 부분을 함수형 프로그래밍으로써 구현한 라이브러리입니다. 기본적인 Rx와 코틀린을 결합한 내용에 대해서는 렘 아카데미에서 제공하는 포스트인 [Rx와 Kotlin으로 간결하고 명료하게 모든 것을 조립해보세요!](https://academy.realm.io/kr/posts/compose-everything-rx-kotlin/)를 참고하시기 바랍니다.
 
