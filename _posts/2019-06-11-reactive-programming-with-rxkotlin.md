@@ -176,3 +176,6 @@ fun main(args: Array<String>) {
 
 
 다음 포스트는 지난번에 만든 계산기 프로그램을 좀 더 함수형 프로그래밍 방식에 가깝게 적용해보도록 하겠습니다.
+
+[>> 다음 포스트 2-01.발전된 방식으로 리액티브하게 계산기 프로그램 만들기](https://soda1127.github.io/reactive-calculator-project-2/)
+
