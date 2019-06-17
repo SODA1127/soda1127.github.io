@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "2-02.발전된 방식으로 리액티브하게 계산기 프로그램 만들기2"
-description: 더 발전된 방식으로 RxKotlin과 코루틴을 이용하여 리액티브 프로그래밍을 해봅시다.
+description: 코루틴을 이용하여 계산기 프로그램을 만들어 봅시다.
 image: 'https://i.imgur.com/QfID9Fe.png'
 category: 'programming'
-date: 2019-06-15 15:00:00
+date: 2019-06-18 00:30:00
 tags:
 - kotlin
 - ReactiveX
@@ -237,7 +237,7 @@ fun main(args: Array<String>) {
 
 
 
-다음 포스트는 함수형 프로그래밍의 꽃 `monad`를 알아보고, 어떤 식으로 활용하는지 알아도록 하겠습니다.
+다음 포스트는 함수형 프로그래밍의 꽃 `monad`를 알아보고, 어떤 식으로 활용하는지 알아보도록 하겠습니다.
 
 
 
