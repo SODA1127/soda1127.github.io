@@ -151,4 +151,3 @@ dependencies {
 다음 글에선 코루틴을 활용하여 계산기를 개선하기 앞서 간단한 예제를 살펴보고 넘어가도록 하겠습니다.
 
 [>> 다음 포스트 2-02.발전된 방식으로 리액티브하게 계산기 프로그램 만들기-2](https://soda1127.github.io/reactive-calculator-project-2-2/)
-
