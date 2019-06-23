@@ -4,7 +4,7 @@ title: "2-03.함수형 프로그래밍 - 모나드"
 description: 함수형 프로그래밍을 완벽하게 만드는 모나드의 개념을 알아봅시다.
 image: 'https://i.imgur.com/D4HzDvF.png'
 category: 'programming'
-date: 2019-06-18 00:30:00
+date: 2019-06-24 00:05:00
 tags:
 - kotlin
 - ReactiveX
