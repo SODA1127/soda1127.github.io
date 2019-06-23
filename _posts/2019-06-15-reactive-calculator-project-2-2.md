@@ -11,7 +11,6 @@ tags:
 - Reactive Programming
 introduction: Reactive Caclator 클래스에 개선된 함수형 프로그래밍을 적용 해봅시다.
 twitter_text: Reactive Caclator 클래스에 개선된 함수형 프로그래밍을 적용 해봅시다.
-
 ---
 
 # 2-02.발전된 방식으로 리액티브하게 계산기 프로그램 만들기2
@@ -239,7 +238,5 @@ fun main(args: Array<String>) {
 
 다음 포스트는 함수형 프로그래밍의 꽃 `monad`를 알아보고, 어떤 식으로 활용하는지 알아보도록 하겠습니다.
 
-
-
-
+[>>다음 포스트 2-03.함수형 프로그래밍 - 모나드](https://soda1127.github.io/functional-programing-monad/)
 
