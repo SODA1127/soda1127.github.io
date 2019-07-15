@@ -21,7 +21,7 @@ twitter_text: 리액티브 프로그래밍의 기반을 이루는 옵저버블, 
 
 
 
-이번 챕터에서는 리액티브 프로그래밍의 핵심요소인 `observables` ,  ` observers` ,  ` subjects`에 대해 알아보는 시간을 가져보겠습니다.
+이번 챕터에서는 리액티브 프로그래밍의 핵심요소인 `observables` ,  ` observers`  ,  ` subjects`에 대해 알아보는 시간을 가져보겠습니다.
 
 
 
