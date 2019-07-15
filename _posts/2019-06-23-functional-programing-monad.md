@@ -92,5 +92,5 @@ maybeEmpty.subscribeBy(//(4)
 
 [>> 포스트 2-02.발전된 방식으로 리액티브하게 계산기 프로그램 만들기2](https://soda1127.github.io/reactive-calculator-project-2-2/)
 
-[>> 포스트 3-00.옵저버블과 옵저버와 구독자](https://soda1127.github.io/observables-observes-subjects/)
+[>> 포스트 3-00.옵저버블과 옵저버와 구독자](https://soda1127.github.io/observables-observers-subjects/)
 
