@@ -13,7 +13,7 @@ introduction: 함수형 프로그래밍을 완벽하게 만드는 모나드의 �
 twitter_text: 함수형 프로그래밍을 완벽하게 만드는 모나드의 개념을 알아봅시다.
 ---
 
-# 2-03.함수형 프로그래밍의 꽃 - `monad`모나드
+# 2-03.  함수형 프로그래밍의 꽃 - `monad`모나드
 
 우선 함수형 프로그래밍은 들어본 사람이 많겠지만, 공부하면서 대부분의 개발자들은 `monad`모나드라는 용어를 들어보기가 흔치 않았을 것입니다. 
 
@@ -82,15 +82,5 @@ maybeEmpty.subscribeBy(//(4)
 
 ## 단일 모나드
 
-모다드인  `Maybe`는 단순히 모나드의 한 유형인데, 이외에도 다수의 모나드가 존재합니다. 이후에 리액티브 프로그래밍을 다양하게 적용해보면서 여러 모나드를 결합해 보도록 하겠습니다
-
-
-
-[>> 포스트 2-00.RxKotlin을 사용한 함수형 프로그래밍](https://soda1127.github.io/reactive-programming-with-rxkotlin)
-
-[>> 포스트 2-01.발전된 방식으로 리액티브하게 계산기 프로그램 만들기1](https://soda1127.github.io/reactive-calculator-project-2-1/)
-
-[>> 포스트 2-02.발전된 방식으로 리액티브하게 계산기 프로그램 만들기2](https://soda1127.github.io/reactive-calculator-project-2-2/)
-
-[>> 포스트 3-00.옵저버블과 옵저버와 구독자](https://soda1127.github.io/observables-observers-subjects/)
+모다드인  `Maybe`는 단순히 모나드의 한 유형인데, 이외에도 다수의 모나드가 존재합니다. 이후에 리액티브 프로그래밍을 다양하게 적용해보면서 여러 모나드를 결합해 보도록 하겠습니다.
 
