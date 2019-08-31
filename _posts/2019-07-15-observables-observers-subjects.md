@@ -254,5 +254,5 @@ fun main(args: Array<String>) {
 
 다음장에선 더 다양한 방법으로 옵저버블을 생성하여 데이터의 흐름을 생성하는 방법을 알아보도록 하겠습니다.
 
-
+[>> 포스트 3-01.옵저버블을 구독했을 때 해제하는 방법](https://soda1127.github.io/observables-dispose/)
 
