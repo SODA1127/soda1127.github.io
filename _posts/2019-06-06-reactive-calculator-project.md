@@ -236,3 +236,6 @@ fun main(args: Array<String>) {
 [>> 포스트 1-02.RxKotlin 시작하기](https://soda1127.github.io/start-rx-kotlin/)
 
 [>> 포스트 1-03.RxKotlin을 활용하여 계산기 프로그램 만들기](https://soda1127.github.io/reactive-calculator-project/)
+
+[>>포스트 2-00.RxKotlin을 사용한 함수형 프로그래밍](https://soda1127.github.io/reactive-programming-with-rxkotlin)
+
