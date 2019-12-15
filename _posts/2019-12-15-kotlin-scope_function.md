@@ -1,3 +1,5 @@
+---
+
 layout: post
 title: "Kotlin Basic EX01. Kotlin Scoping Function 1"
 description: 코틀린에서 제공하는 강력한 기능인 범위 지정 함수(Scoping Function)에 대해 알아봅시다.
@@ -5,15 +7,13 @@ image: 'https://imgur.com/GmkGaOn.jpg'
 category: 'programming'
 date: 2019-12-15 11:24:30
 tags:
-
 - kotlin
 - kotlin-basic
-  introduction: 범위 지정 함수(Scope Function)에 대해 알아봅시다.
-  twitter_text: 범위 지정 함수(Scope Function)에 대해 알아봅시다.
+introduction: 범위 지정 함수(Scope Function)에 대해 알아봅시다.
+twitter_text: 범위 지정 함수(Scope Function)에 대해 알아봅시다.
+---
 
-
-
-# 범위 지정 함수
+# EX01) 범위 지정 함수
 
 오늘은 잠깐 쉬어가는 타이밍으로 코틀린의 기본으로 제공하는 기능 중 강력하다고 생각하는 `Scope Function`에 대해 소개하도록 하겠습니다.
 
