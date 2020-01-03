@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RxJava로 LiveData 따라해보기1"
+title: "RxJava로 LiveData 따라해보기 1"
 description: Android Jetpack에서 제공하는 LiveData처럼 리액티브한 데이터 홀더 클래스를 만들어 봅시다.
 image: 'https://imgur.com/2gM2T8c.jpg'
 category: 'programming'
