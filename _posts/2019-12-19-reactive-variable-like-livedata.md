@@ -21,7 +21,7 @@ twitter_text: Reactive한 방법으로 LiveData와 같은 기능을 하는 데�
 
 # Android Jetpack - LiveData
 
-최근에 많은 안드로이드 어플리케이션이 `Android Jetpack` 라이브러리를 기반으로 좀 더 쉽고 빠르게, 보일러 플레이트 등의 코드를 줄이는 목적으로 제작이 되고 있습니다.  [Android Developers 공식 문서](https://developer.android.com/jetpack?hl=ko)에서는 `Android Jetpack` 라이브러리르 이렇게 소개하고 있습니다.
+최근에 많은 안드로이드 어플리케이션이 `Android Jetpack` 라이브러리를 기반으로 좀 더 쉽고 빠르게, 보일러 플레이트 등의 코드를 줄이는 목적으로 제작이 되고 있습니다.  [Android Developers 공식 문서](https://developer.android.com/jetpack?hl=ko)에서는 `Android Jetpack` 라이브러리를 이렇게 소개하고 있습니다.
 
 
 
@@ -82,8 +82,6 @@ Flow에 대해 아주 잘 정리해 놓은 블로그 포스트가 있습니다. 
 [[Kotlin] 코틀린 - 코루틴 Asynchronous Flow(1/2)](https://tourspace.tistory.com/258)
 
 [[Kotlin] 코틀린 - 코루틴 Asynchronous Flow(2/2)](https://tourspace.tistory.com/260?category=797357)
-
-[](https://tourspace.tistory.com/260?category=797357)
 
 
 
