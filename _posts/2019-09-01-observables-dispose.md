@@ -140,7 +140,7 @@ public interface Disposable {
 
 
 
-
+[>> 포스트 3-02. 핫 옵저버블 & 콜드 옵저버블](https://soda1127.github.io/2019-11-17-hot-observables-cold-observables/)
 
 
 

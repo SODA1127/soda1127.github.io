@@ -229,3 +229,7 @@ compositeSubscription.add(subscription);
 
 
 이렇게 VC의 Lifecycle의 주기 시점을 알아채 자동으로 해제가 가능한 로직을 구성해보는 시간을 가져봤습니다. 다음시간에는 **생명주기에 따른 활성화 여부 로직**, LiveData의 핵심인 **항상 최신 데이터 유지**, **옵저버 패턴을 통한 값 갱신 로직**을 구성해보도록 하겠습니다.
+
+
+
+[>> 포스트 RxJava로 LiveData 따라해보기 2](https://soda1127.github.io/2020-01-05-reactive-variable-like-livedata-2/)
