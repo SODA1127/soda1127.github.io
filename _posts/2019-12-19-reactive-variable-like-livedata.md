@@ -232,4 +232,4 @@ compositeSubscription.add(subscription);
 
 
 
-[>> 포스트 RxJava로 LiveData 따라해보기 2](https://soda1127.github.io/2020-01-05-reactive-variable-like-livedata-2/)
+[>> 포스트 RxJava로 LiveData 따라해보기 2](https://soda1127.github.io/reactive-variable-like-livedata-2/)
