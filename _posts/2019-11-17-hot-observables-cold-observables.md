@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "3-02. 핫 옵저버블 & 콜드 옵저버블"
+title: "3-02.핫 옵저버블 & 콜드 옵저버블"
 description: 행동방식에 따라 나뉘는 옵저버블의 종류에 대해 알아봅시다.
 image: 'https://imgur.com/pRSbwbs.jpg'
 category: 'programming'
