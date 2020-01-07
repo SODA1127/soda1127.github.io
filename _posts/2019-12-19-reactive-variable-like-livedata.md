@@ -8,7 +8,7 @@ date: 2020-01-02 11:36:24
 tags:
 - kotlin
 - idea
-- android-zetpack
+- android-jetpack
 - android-architecture-component
 - android-lifecycle
 - rxjava
