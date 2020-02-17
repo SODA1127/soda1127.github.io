@@ -54,7 +54,7 @@ fun main(args: Array<String>) {
 
 주석4에서 `runBlocking` 메서드로 200ms를 준 것을 볼 수 있는데, 의도적으로 구독내에서 시간이 오래걸리는 것을 표현하였습니다.
 
-여기서 처음 보게되는 코드인 `subject.observeOn(Scheduler)` 가 보이는데, 지금은 자세하게는 몰라도 되지만, 구독중에 실행할 스레드를 명시를 한다고 보시면 됩니다. 그중, `Schedulers.computation()`으로 계산을 수행할 스레드로 구성한다고 보면 되겠습니다.
+여기서 처음 보게되는 코드인 `subject.observeOn(Scheduler)`가 보이는데, 지금은 자세하게는 몰라도 되지만, 구독중에 실행할 스레드를 명시를 한다고 보시면 됩니다. 그중, `Schedulers.computation()`으로 계산을 수행할 스레드로 구성한다고 보면 되겠습니다.
 
 결과는 다음과 같습니다.
 
