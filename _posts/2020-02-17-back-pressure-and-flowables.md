@@ -2,7 +2,7 @@
 layout: post
 title: "4-00.백프레셔와 플로어블"
 description: 백프레셔가 언제, 어떤 이유로 발생하는지, 어떻게 해결할지 알아봅시다.
-image: 'https://imgur.com/0fRT8te.jpg'
+image: 'https://imgur.com/zLjovxI.jpg'
 category: 'programming'
 date: 2020-02-17 15:30:30
 tags:

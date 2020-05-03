@@ -2,7 +2,7 @@
 layout: post
 title: "4-01.플로어블과 구독자"
 description: 플로어블의 특징과, 왜 구독자를 사용하는지 알아봅시다.
-image: 'https://imgur.com/zLjovxI.jpg'
+image: 'https://imgur.com/0fRT8te.jpg'
 category: 'programming'
 date: 2020-05-03 23:47:32
 tags:
