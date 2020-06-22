@@ -11,8 +11,6 @@ tags:
 - Reactive Programming
 introduction: 백프레셔가 언제, 어떤 이유로 발생하는지, 어떻게 해결할지 알아봅시다.
 twitter_text: 백프레셔가 언제, 어떤 이유로 발생하는지, 어떻게 해결할지 알아봅시다.
-
-
 ---
 
 # `BackPressure`배압
@@ -30,7 +28,7 @@ twitter_text: 백프레셔가 언제, 어떤 이유로 발생하는지, 어떻�
 잘 이해가 되지 않을 수 있으니 예제를 함께 보도록 하겠습니다.
 
 ```kotlin
-fun main(args: Array<String>) {
+fun main(args: Array<String>) {  
   val observable = Observable.just(1,2,3,4,5,6,7,8,9)//(1)
   val subject = BehaviorSubject.create<Int>()
   subject.observeOn(Schedulers.computation())//(2)
@@ -271,3 +269,4 @@ Flowable이 상황과 상관없이 모든 옵저버블을 대체하는데 더 �
 
 
 
+[>>포스트 4-01.플로어블과 구독자](https://soda1127.github.io/flowable-and-subscriber/)
