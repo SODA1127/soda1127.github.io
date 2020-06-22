@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "이미지 업로드 최적화 해보기 - CameraX"
-description: 사진청구라는 기능을 위해 업로드 UX 및 속도 개선을 해결해보았습니다.
+description: 사진 촬영, 프로세싱, 업로드 속도 개선을 해결해보았습니다.
 image: 'https://imgur.com/wM9KtYK.jpg'
 category: 'programming'
 date: 2020-06-21 18:30:00
