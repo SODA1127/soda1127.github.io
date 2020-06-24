@@ -71,10 +71,6 @@ twitter_text: 사진 촬영 및 업로드 최적화를 위한 해결과정을 �
 
 먼저 화면의 틀 부터 잡아줄 필요가 있다고 판단을 하여 구현을 하기 시작했습니다.
 
-![카메라 화면 구현하기](https://imgur.com/IkG3znx.jpg)
-
-보는 것과 같이 Preview 화면 안에 사진 촬영 후 크롭을 위한 작업이 필요하게 되었습니다.
-
 (기본적으로 최적화를 위해 잘리는 공간이 있을 수 있으나 4:3의 비율로 Preview를 구현하였습니다.)
 
 촬영을 하게 되면, 기본적으로 4:3 비율의 사진이 캡쳐 후 저장되며, 이후 해당 바운더리의 비율에 맞게 크롭핑되어 첨부될 사진이 준비되게 됩니다.
@@ -95,7 +91,7 @@ twitter_text: 사진 촬영 및 업로드 최적화를 위한 해결과정을 �
 
 #### `CameraXConfig.Provider` 구성하기
 
-메디패스의 경우 Camera2 하드웨어 서포트를 위해 CameraXConfig를 래핑한 `Camera2Config.Provider`를 구현하였습니다.
+Camera2 하드웨어 서포트를 위해 CameraXConfig를 래핑한 `Camera2Config.Provider`를 구현하였습니다.
 
 ```kotlin
 class App : Application(), ... CameraXConfig.Provider, ... {
@@ -107,7 +103,7 @@ class App : Application(), ... CameraXConfig.Provider, ... {
 
 #### `androidx.camera.view.PreviewView` 추가
 
-메디패스의 경우 모든 대부분 뷰와 뷰모델에 대한 처리의 위임을 Activity가 아닌 Fragment에 넘겨 처리하고 있습니다.
+모든 대부분 뷰와 뷰모델에 대한 처리의 위임을 Activity가 아닌 Fragment에 넘겨 처리하고 있습니다.
 
 따라서, Fragment layout에 4:3 비율에 맞는 `PreviewView`를 구성하게 되었습니다.
 
