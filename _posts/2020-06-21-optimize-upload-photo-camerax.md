@@ -16,7 +16,7 @@ introduction: 메디패스의 사진청구 기능을 개발하면서 최적화�
 twitter_text: 메디패스의 사진청구 기능을 개발하면서 최적화를 위해 해결과정을 소개합니다.
 ---
 
-# 사진 업로드를 위한 최적화 삽질기(Optimization process for uploading photos) - 카메라편
+# 사진 업로드를 위한 최적화 삽질기(Optimization process for uploading photos) - 카메라편 
 
 오랜만에 인사드립니다. 최근에 바쁜일이 있어 블로그 글을 자주 못쓰게 되었는데요,
 
