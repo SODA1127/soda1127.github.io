@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "이미지 업로드 최적화 해보기 - CameraX"
-description: 사진청구라는 기능을 위해 업로드 UX 및 속도 개선을 해결해보았습니다.
-image: 'https://imgur.com/DQEJV65.jpg'
+description: 사진 촬영, 프로세싱, 업로드 속도 개선을 해결해보았습니다.
+image: 'https://imgur.com/wM9KtYK.jpg'
 category: 'programming'
 date: 2020-06-21 18:30:00
 tags:
@@ -12,32 +12,19 @@ tags:
 - android-jetpack
 - rxjava
 - android-lifecycle
-introduction: 메디패스의 사진청구 기능을 개발하면서 최적화를 위해 해결과정을 소개합니다.
-twitter_text: 메디패스의 사진청구 기능을 개발하면서 최적화를 위해 해결과정을 소개합니다.
+introduction: 사진 촬영 및 업로드 최적화를 위한 해결과정을 소개합니다.
+twitter_text: 사진 촬영 및 업로드 최적화를 위한 해결과정을 소개합니다.
 ---
 
 # 사진 업로드를 위한 최적화 삽질기(Optimization process for uploading photos) - 카메라편 
 
 오랜만에 인사드립니다. 최근에 바쁜일이 있어 블로그 글을 자주 못쓰게 되었는데요,
 
-새롭게 메디블록이라는 회사에서 메디패스라는 의료 보험청구 서비스를 개발하고 있습니다. 메디블록에서 처음 들어와서 개발을 맡게 된 기능은 바로 메디패스의 사진청구 기능이었습니다.
+현재 런칭한 서비스에 사진촬영, 이후 여러 가공처리를 하여 업로드를 할 필요가 있었습니다.
 
 이전에도 사진을 직접 촬영하여 여러장을 업로드하는 서비스를 개발해본 적이 있었으나, 그때 당시에는 디바이스 별 최적화를 크게 고려하지 않고 개발하다보니 업로드 속도가 꽤 오래걸리고, 몇몇 힙 메모리가 적은 저사양의 디바이스에서는 `OOM(OutOfMemory)`이 발생하거나, 처리과정에서 과부하가 발행해 배터리 소모가 빨랐던 기억이 납니다.
 
 이번에는 해당 문제를 해결하기 위해 배포 이전에 여러 방면에서 고민을 하게 되었는데, 이에 대한 삽질기를 이야기로 풀어볼까 합니다.
-
-
-
-## 사진청구를 위해 해결해야 할 사항들
-
-사진청구는 현재 제공하는 로켓청구 서비스와는 다르게 병원진료를 받은 후 영수증이나 진료내역서를 촬영하여 본인/타인에 대한 정보를 입력하고 갤러리에서 사진을 선택하거나, 촬영하여 사진을 최대 12장까지 첨부하고, 청구자/피보험자의 서명을 받고 청구를하는 기능을 제공합니다. 사진청구를 원할하게 하기 위해, 해결해야 할 사항은 다음과 같았습니다.
-
-- 사진은 촬영이후 A4용지 비율에 맞게 크롭핑하여 저장
-- 첨부된 사진은 팩스화 되어 전달이 되어야 하기 때문에, 노이즈가 적어야 함(여기서 노이즈라 말함은, 특정부분의 번짐, 왜곡 현상) 따라서, 디노이즈 작업 후 업로드 필요
-- 사진은 모두 가로 기준 같은 픽셀밀도를 가질 필요가 있고, 같은 포맷에 같은 사진 퀄리티로 변형 이후, 흑백화가 필요
-- 최대 12장의 jpeg포맷 사진, 1~2장의 서명 png포맷 이미지 업로드 시 가공과 업로드 시간은 5 ~ 10초 내외로 업로드할 수 있도록 구현 필요(일반적인 와이파이 환경, 5년전 노트5 디바이스로도 충분히 업로드 될만한 수준)
-- 현재 기획상 포그라운드 UI에서 로딩을 돌리고 있으나, 추후 변경 될 사항을 대비하여 백그라운드 프로세스에서도 돌아갈 수 있도록 구현
-- 비동기 방식 업로드 프로세싱 구현
 
 
 
@@ -84,10 +71,6 @@ twitter_text: 메디패스의 사진청구 기능을 개발하면서 최적화�
 
 먼저 화면의 틀 부터 잡아줄 필요가 있다고 판단을 하여 구현을 하기 시작했습니다.
 
-![카메라 화면 구현하기](https://imgur.com/IkG3znx.jpg)
-
-보는 것과 같이 Preview 화면 안에 사진 촬영 후 크롭을 위한 작업이 필요하게 되었습니다.
-
 (기본적으로 최적화를 위해 잘리는 공간이 있을 수 있으나 4:3의 비율로 Preview를 구현하였습니다.)
 
 촬영을 하게 되면, 기본적으로 4:3 비율의 사진이 캡쳐 후 저장되며, 이후 해당 바운더리의 비율에 맞게 크롭핑되어 첨부될 사진이 준비되게 됩니다.
@@ -108,10 +91,10 @@ twitter_text: 메디패스의 사진청구 기능을 개발하면서 최적화�
 
 #### `CameraXConfig.Provider` 구성하기
 
-메디패스의 경우 Camera2 하드웨어 서포트를 위해 CameraXConfig를 래핑한 `Camera2Config.Provider`를 구현하였습니다.
+Camera2 하드웨어 서포트를 위해 CameraXConfig를 래핑한 `Camera2Config.Provider`를 구현하였습니다.
 
 ```kotlin
-class MedipassApplication : Application(), ... CameraXConfig.Provider, ... {
+class App : Application(), ... CameraXConfig.Provider, ... {
   ...
   override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()
   ...
@@ -120,7 +103,7 @@ class MedipassApplication : Application(), ... CameraXConfig.Provider, ... {
 
 #### `androidx.camera.view.PreviewView` 추가
 
-메디패스의 경우 모든 대부분 뷰와 뷰모델에 대한 처리의 위임을 Activity가 아닌 Fragment에 넘겨 처리하고 있습니다.
+모든 대부분 뷰와 뷰모델에 대한 처리의 위임을 Activity가 아닌 Fragment에 넘겨 처리하고 있습니다.
 
 따라서, Fragment layout에 4:3 비율에 맞는 `PreviewView`를 구성하게 되었습니다.
 
@@ -195,12 +178,12 @@ private fun updateCaptureButton(...) {
   with(binding) {
     captureButton.onClickDebounced {
       ... // 여러 로직처리
-      startFocus(isCapture=true) //captureCamera()
+      focus(isCapture=true) //captureCamera()
     }
   }
 }
 ...
-private fun startFocus(isCapture: Boolean = false) {
+private fun focus(isCapture: Boolean = false) {
   with(binding) {
     ... // focus를 주기위한 meteringPoing 얻어오기
     
@@ -210,7 +193,7 @@ private fun startFocus(isCapture: Boolean = false) {
         focusMeetingFuture?.addListener(Runnable {
           val focusMeetingResult = focusMeetingFuture.get()
           if (focusMeetingResult.isFocusSuccessful) {
-            captureCamera()
+            capture()
           }
         }, ContextCompat.getMainExecutor(requireContext()))
       }
@@ -224,7 +207,7 @@ private fun startFocus(isCapture: Boolean = false) {
 이후 캡쳐를 하고 저장합니다.
 
 ```kotlin
-private fun captureCamera() {
+private fun capture() {
   ... // 캡쳐음, 메타 정보들..
   val outputOptions = OutputFileOptions.Builder(photoFile)
 		  .setMetadata(metadata)
