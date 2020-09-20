@@ -49,9 +49,9 @@ MvRxState는 강제로 불변적이고, 디버그 모드에서는 아예 체크�
 
 ```kotlin
 setState {
-    copy(
-				a = aValue
-    )
+  copy(
+    a = aValue
+  )
 }
 ```
 
@@ -59,14 +59,14 @@ setState {
 
 ```kotlin
 internal class AViewModel(
-    state: AState,
+  state: AState,
 ) : MvRxViewModel<AState>(state) {
-	...
-	companion object : MvRxViewModelFactory<AViewModel, AState> {
-        override fun create(viewModelContext: ViewModelContext, state: SignUpState): AViewModel {
-            return AViewModel(state) // 필요시 DI가 필요한 객체를 viewModelContext를 통해 주입 가능
-        }
+  ...
+  companion object : MvRxViewModelFactory<AViewModel, AState> {
+    override fun create(viewModelContext: ViewModelContext, state: SignUpState): AViewModel {
+      return AViewModel(state) // 필요시 DI가 필요한 객체를 viewModelContext를 통해 주입 가능
     }
+  }
 }
 ```
 
@@ -86,20 +86,20 @@ MvRxViewModels(ViewModel 집합)은 생성 시 `initalState()`  메서드를 호
 
 ```kotlin
 class MyViewModel(initialState: MyState, dataStore: DataStore) : BaseMvRxViewModel(initialState, debugMode = true) {
-		...
-    companion object : MvRxViewModelFactory<MyViewModel, MyState> {
+  ...
+  companion object : MvRxViewModelFactory<MyViewModel, MyState> {
 
-				override fun create(viewModelContext: ViewModelContext, state: MyState): MyViewModel {
-            val dataStore = if (viewModelContext is FragmentViewModelContext) {
-              // If the ViewModel has a fragment scope it will be a FragmentViewModelContext, and you can access the fragment.
-              viewModelContext.fragment.inject()
-            } else {
-              // The activity owner will be available for both fragment and activity view models.
-              viewModelContext.activity.inject()
-            }
-            return MyViewModel(state, dataStore)
-        }
-    } 
+    override fun create(viewModelContext: ViewModelContext, state: MyState): MyViewModel {
+      val dataStore = if (viewModelContext is FragmentViewModelContext) {
+        // If the ViewModel has a fragment scope it will be a FragmentViewModelContext, and you can access the fragment.
+        viewModelContext.fragment.inject()
+      } else {
+        // The activity owner will be available for both fragment and activity view models.
+        viewModelContext.activity.inject()
+      }
+      return MyViewModel(state, dataStore)
+    }
+  } 
 }
 ```
 
@@ -109,18 +109,18 @@ class MyViewModel(initialState: MyState, dataStore: DataStore) : BaseMvRxViewMod
 
 ```kotlin
 class MyViewModel(initialState: MyState, dataStore: DataStore) : BaseMvRxViewModel(initialState, debugMode = true) {
-    companion object : MvRxViewModelFactory<MyViewModel, MyState> {
+  companion object : MvRxViewModelFactory<MyViewModel, MyState> {
 
-        override fun initialState(viewModelContext: ViewModelContext): MyState? {
-            // Args are accessible from the context.
-            // val foo = vieWModelContext.args<MyArgs>.foo
+    override fun initialState(viewModelContext: ViewModelContext): MyState? {
+      // Args are accessible from the context.
+      // val foo = vieWModelContext.args<MyArgs>.foo
 
-            // The owner is available too, if your state needs a value stored in a DI component, for example.
-            val foo = viewModelContext.activity.inject()
-            return MyState(foo)
-        }
+      // The owner is available too, if your state needs a value stored in a DI component, for example.
+      val foo = viewModelContext.activity.inject()
+      return MyState(foo)
+    }
 
-    } 
+  } 
 }
 ```
 
@@ -152,18 +152,20 @@ ex) access & mutate state
 
 ```kotlin
 data class AState(
-		val aList: Async<List<A>> = Uninitialized,
-		...
+  val aList: Async<List<A>> = Uninitialized,
+  ...
 ): MvRxState
 
 // withState 블록에서 새로운 쓰레드를 생성함
-fun onResponseWith(...) = withState { state -> // AState애 있는 불변의 프로퍼티를 꺼내 사용
+fun onResponseWith(...) {
+  withState { state -> // AState애 있는 불변의 프로퍼티를 꺼내 사용
 		setState { //this@AState
-				... //어떠한 로직을 처리한 이후 (S.() -> S)로 reduce한다.
-				copy( // return 생략
-						aList = Success(list)
-				)
+			... //어떠한 로직을 처리한 이후 (S.() -> S)로 reduce한다.
+      copy( // return 생략
+        aList = Success(list)
+      )
 		}		
+	}
 }
 ```
 
@@ -199,12 +201,12 @@ MvRxView는 유저가 바라보고, 상응하는 것이고, 비즈니스 로직,
 ```kotlin
 // ViewModel이 하나인경우
 withState(viewModel) { state ->
-	  ...
+	...
 }
 
 // ViewModel이 여러개인경우
 withState(viewModel1, viewModel2...) { state1, state2... ->
-		...
+	...
 }
 ```
 
@@ -212,42 +214,42 @@ withState(viewModel1, viewModel2...) { state1, state2... ->
 
 ```kotlin
 open fun isListEmpty() = withState(listViewModel) { // it: listState
-      if (it.list is Success) {
-          val list = it.list.invoke()
-          return@withState list.isEmpty()
-      }
-      return@withState true
+  if (it.list is Success) {
+    val list = it.list.invoke()
+    return@withState list.isEmpty()
   }
+  return@withState true
+}
 ```
 
 - **Observe State Mutating**
 
 ```kotlin
 fun observeViews() = with(listViewModel) {
-		...
-		selectSubscribe(
-        prop1 = ListState::list,
-        deliveryMode = RedeliverOnStart
-    ) {
-        when (it) {
-            is Uninitialized -> {
-                recyclerAdapter?.submitList(listOf())
-            }
-            is Loading -> {
-                val list = it.invoke()
-                recyclerAdapter?.submitList(dataList ?: listOf())
-								// loading 중인 시점의 로직, 이 때 데이터가 있을 수도, 없을수도 있음
-            }
-            is Success -> {
-                val list = it.invoke()
-                checkListEmpty(list)
-                recyclerAdapter?.submitList(list)
-            }
-            is Fail -> { // 필요시 value도 꺼낼 수 있음.
-                it.error.printStackTrace()
-            }
-        }
-    }.addTo(compositeDisposable)
+  ...
+  selectSubscribe(
+    prop1 = ListState::list,
+    deliveryMode = RedeliverOnStart
+  ) {
+    when (it) {
+      is Uninitialized -> {
+        recyclerAdapter?.submitList(listOf())
+      }
+      is Loading -> {
+        val list = it.invoke()
+        recyclerAdapter?.submitList(dataList ?: listOf())
+        // loading 중인 시점의 로직, 이 때 데이터가 있을 수도, 없을수도 있음
+      }
+      is Success -> {
+        val list = it.invoke()
+        checkListEmpty(list)
+        recyclerAdapter?.submitList(list)
+      }
+      is Fail -> { // 필요시 value도 꺼낼 수 있음.
+        it.error.printStackTrace()
+      }
+    }
+  }.addTo(compositeDisposable)
 }
 ```
 
@@ -280,22 +282,22 @@ asyncSubscribe(YourState::asyncProp) { successValue -> ... }
 data class MyState(val listing: Async<Listing> = Uninitialized) : MvRxState
 
 class MyViewModel(override val initialState: MyState) : MvRxViewModel<MyState>() {
-    init {
-        fetchListing()
-    }
+  init {
+    fetchListing()
+  }
 
-    private fun fetchListing() {
-        ListingRequest.forId(1234).execute { copy(listing = it) }
-    }
+  private fun fetchListing() {
+    ListingRequest.forId(1234).execute { copy(listing = it) }
+  }
 }
 
 class MyFragment : MvRxFragment() {
-    private val viewModel: MyViewModel by fragmentViewModel()
+  private val viewModel: MyViewModel by fragmentViewModel()
 
-    override fun invalidate() = withState(viewModel) { state ->
-        loadingView.isVisible = state.listing is Loading
-        titleView.text = listing()?.title
-    }
+  override fun invalidate() = withState(viewModel) { state ->
+                                                    loadingView.isVisible = state.listing is Loading
+                                                    titleView.text = listing()?.title
+                                                   }
 }
 ```
 
