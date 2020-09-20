@@ -2,7 +2,7 @@
 layout: post
 title: "Airbnb - MvRx 아키텍쳐 소개"
 description: 이전에 사용해보았던 MvRx아키텍쳐 소개 및 리뷰
-image: 'https://imgur.com/wM9KtYK.jpg'
+image: 'https://imgur.com/1Z21UTK.jpg'
 category: 'programming'
 date: 2020-09-21 00:45:00
 tags:
