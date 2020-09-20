@@ -167,13 +167,14 @@ fun onResponseWith(...) = withState { state -> // AState애 있는 불변의 프
 }
 ```
 
-- **Async<T>**
-  - sealed class로 구성된 하위 4개의 subClass가 존재
-    - Uninitialized - 말 그대로 초기화가 되지 않은 상태 - 이때는 data hold하지 않음.
-    - Loading - 이때부터 value를 부여할 수 있음. 아직 completed된 값은 아님.
-    - Success - 성공적으로 값을 부여받음.
-    - Fail - 값과 함께 error(Exception)을 넘겨받을 수 있음.
-  - **Complete / ShouldLoad** 두가지의 상태를 가지며, 값이 오기까지 비동기적으로 대기해야할 프로퍼티인 경우 해당 객체를 사용
+**Async<T>**
+
+- sealed class로 구성된 하위 4개의 subClass가 존재
+  - Uninitialized - 말 그대로 초기화가 되지 않은 상태 - 이때는 data hold하지 않음.
+  - Loading - 이때부터 value를 부여할 수 있음. 아직 completed된 값은 아님.
+  - Success - 성공적으로 값을 부여받음.
+  - Fail - 값과 함께 error(Exception)을 넘겨받을 수 있음.
+- **Complete / ShouldLoad** 두가지의 상태를 가지며, 값이 오기까지 비동기적으로 대기해야할 프로퍼티인 경우 해당 객체를 사용
 
 자세한 사용방법은 아래 링크를 참조.
 
