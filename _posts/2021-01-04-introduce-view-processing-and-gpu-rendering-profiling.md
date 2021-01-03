@@ -10,7 +10,7 @@ tags:
 - vsync
 - android-view
 - android-hwui
-- android=graphics
+- android-graphics
 introduction: 안드로이드 뷰 렌더링 과정을 이해하고, 이 과정에서 성능 프로파일링을 어떻게 할 수 있는지 알아보겠습니다.
 twitter_text: 안드로이드 뷰 렌더링 과정을 이해하고, 이 과정에서 성능 프로파일링을 어떻게 할 수 있는지 알아보겠습니다.
 
