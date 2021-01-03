@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android View Processing & GPU Rendering Profiling 🔍"
+title: "Introduce Android View Processing & GPU Rendering Profiling 🔍"
 description: 안드로이드 뷰 렌더링 과정을 이해하고, 이 과정에서 성능 프로파일링을 어떻게 할 수 있는지 알아보겠습니다.
 image: 'https://imgur.com/Sr0lsYt.jpg'
 category: 'programming'
@@ -342,4 +342,4 @@ Android 3.0(Honeycomb) 버전 이상은 HWUI 프로파일링 옵션을 켜서 �
 
 지금까지 안드로이드 뷰 렌더링 과정을 이해하고, 이 과정에서 성능 프로파일링을 어떻게 할 수 있는지 알아보았습니다.
 
-뷰 렌더링 과정은 일반적인 앱 개발과정에서 딥하게 연구할필요는 없지만, 알아두면 더 성능좋은 앱을 만들 수 있도록 돕는 매우 중요한 지식이기도합니다. 여러분들에게 조금이나마 도움이 되길 바라면 글 마치도록 하겠습니다. 감사합니다.
+뷰 렌더링 과정은 일반적인 앱 개발과정에서 딥하게 연구할필요는 없지만, 알아두면 더 성능좋은 앱을 만들 수 있도록 돕는 매우 중요한 지식이기도합니다. 여러분들에게 조금이나마 도움이 되길 바라면서 글 마치도록 하겠습니다. 감사합니다.
