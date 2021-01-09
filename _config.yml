@@ -22,7 +22,7 @@ facebook_username: soda1127
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
-paginate: 10
+paginate: 12
 paginate_path: "/page/:num/"
 svg_color: "#ff0a16"
 
@@ -38,8 +38,6 @@ links:
     url: /
   - title: About
     url: /about/
-  - title: Contact
-    url: /contact/
 
 # Exclude my node related stuff
 exclude: ['package.json', 'src', 'node_modules']
