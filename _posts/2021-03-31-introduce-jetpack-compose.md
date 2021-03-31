@@ -204,87 +204,87 @@ setContent {
 
 - **XXXTheme** : Theme정보를 의미한다. 해당 프로젝트에서는 Theme.kt에 여러 테마에 필요한 정보를 정리하고, 컴포즈 UI 구현을 위한 코드를 작성해두었다.
 
-  ```kotlin
-  private val DarkColorPalette = darkColors(
-      primary = purple200,
-      primaryVariant = purple700,
-      secondary = teal200
-  )
-  
-  private val LightColorPalette = lightColors(
-      primary = purple500,
-      primaryVariant = purple700,
-      secondary = teal200
-  
-      /* Other default colors to override
-      background = Color.White,
-      surface = Color.White,
-      onPrimary = Color.White,
-      onSecondary = Color.Black,
-      onBackground = Color.Black,
-      onSurface = Color.Black,
-      */
-  )
-  
-  @Composable
-  fun BasicsCodelabTheme(
-      darkTheme: Boolean = isSystemInDarkTheme(),
-      content: @Composable () -> Unit
-  ) {
-      val colors = if (darkTheme) {
-          DarkColorPalette
-      } else {
-          LightColorPalette
-      }
-  
-      MaterialTheme(
-          colors = colors,
-          typography = typography,
-          shapes = shapes,
-          content = content
-      )
-  }
-  ```
+```kotlin
+private val DarkColorPalette = darkColors(
+    primary = purple200,
+    primaryVariant = purple700,
+    secondary = teal200
+)
+
+private val LightColorPalette = lightColors(
+    primary = purple500,
+    primaryVariant = purple700,
+    secondary = teal200
+
+    /* Other default colors to override
+    background = Color.White,
+    surface = Color.White,
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
+    */
+)
+
+@Composable
+fun BasicsCodelabTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colors = if (darkTheme) {
+        DarkColorPalette
+    } else {
+        LightColorPalette
+    }
+
+    MaterialTheme(
+        colors = colors,
+        typography = typography,
+        shapes = shapes,
+        content = content
+    )
+}
+```
 
 - **Surface** : Greeting을 감싸는 뷰에 해당한다. 여기서는 크기를 정하지 않고, background 색상을 정의하고 있다. 역시 람다 표현식이다. 색상에 대한 Paramter로 `color` 라는 값을 사용하여 부여가 가능하다. 내부코드를 보면
 
 ```kotlin
-  @Composable
-  fun Surface(
-      modifier: Modifier = Modifier,
-      shape: Shape = RectangleShape,
-      color: Color = MaterialTheme.colors.surface,
-      contentColor: Color = contentColorFor(color),
-      border: BorderStroke? = null,
-      elevation: Dp = 0.dp,
-      content: @Composable () -> Unit
-  ) {
-      val elevationPx = with(LocalDensity.current) { elevation.toPx() }
-      val elevationOverlay = LocalElevationOverlay.current
-      val absoluteElevation = LocalAbsoluteElevation.current + elevation
-      val backgroundColor = if (color == MaterialTheme.colors.surface && elevationOverlay != null) {
-          elevationOverlay.apply(color, absoluteElevation)
-      } else {
-          color
-      }
-      CompositionLocalProvider(
-          LocalContentColor provides contentColor,
-          LocalAbsoluteElevation provides absoluteElevation
-      ) {
-          Box(
-              modifier.graphicsLayer(shadowElevation = elevationPx, shape = shape)
-                  .then(if (border != null) Modifier.border(border, shape) else Modifier)
-                  .background(
-                      color = backgroundColor,
-                      shape = shape
-                  )
-                  .clip(shape),
-              propagateMinConstraints = true
-          ) {
-              content()
-          }
-      }
-  }
+@Composable
+fun Surface(
+    modifier: Modifier = Modifier,
+    shape: Shape = RectangleShape,
+    color: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(color),
+    border: BorderStroke? = null,
+    elevation: Dp = 0.dp,
+    content: @Composable () -> Unit
+) {
+    val elevationPx = with(LocalDensity.current) { elevation.toPx() }
+    val elevationOverlay = LocalElevationOverlay.current
+    val absoluteElevation = LocalAbsoluteElevation.current + elevation
+    val backgroundColor = if (color == MaterialTheme.colors.surface && elevationOverlay != null) {
+        elevationOverlay.apply(color, absoluteElevation)
+    } else {
+        color
+    }
+    CompositionLocalProvider(
+        LocalContentColor provides contentColor,
+        LocalAbsoluteElevation provides absoluteElevation
+    ) {
+        Box(
+            modifier.graphicsLayer(shadowElevation = elevationPx, shape = shape)
+                .then(if (border != null) Modifier.border(border, shape) else Modifier)
+                .background(
+                    color = backgroundColor,
+                    shape = shape
+                )
+                .clip(shape),
+            propagateMinConstraints = true
+        ) {
+            content()
+        }
+    }
+}
 ```
 
 ## 선언형 UI
