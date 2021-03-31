@@ -248,7 +248,7 @@ setContent {
 
 - **Surface** : Greeting을 감싸는 뷰에 해당한다. 여기서는 크기를 정하지 않고, background 색상을 정의하고 있다. 역시 람다 표현식이다. 색상에 대한 Paramter로 `color` 라는 값을 사용하여 부여가 가능하다. 내부코드를 보면
 
-  ```kotlin
+```kotlin
   @Composable
   fun Surface(
       modifier: Modifier = Modifier,
@@ -285,7 +285,7 @@ setContent {
           }
       }
   }
-  ```
+```
 
 ## 선언형 UI
 
