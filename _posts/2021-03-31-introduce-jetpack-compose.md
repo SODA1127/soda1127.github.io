@@ -568,7 +568,7 @@ internal fun ViewGroup.setContent(
 다시 돌아와서, ComposeView의 `setContent()` 이라는 녀석을 보자.
 
 ```kotlin
-**
+/**
  * A [android.view.View] that can host Jetpack Compose UI content.
  * Use [setContent] to supply the content composable function for the view.
  *
