@@ -85,9 +85,9 @@ KSP에서는 추가적으로 IDE에 기능적으로 통합에 대해서도 고�
 
 ### KSP Feature
 
-KSP API는 코틀린 프로그램을 관용적으로 처리한다. KSP는 코틀린의 특징적인 요소에 대해 인지할 수 있는데, **Extension Functions(확장 함수), ** **Declaration-Site Variance(제네릭이 정의 된 지점)**, **Local Functions(지역함수)**에 대해 인지할 수 있다.
+KSP API는 코틀린 프로그램을 관용적으로 처리한다. KSP는 코틀린의 특징적인 요소에 대해 인지할 수 있는데, **Extension Functions(확장 함수), Declaration-Site Variance(제네릭이 정의 된 지점), Local Functions(지역함수)**에 대해 인지할 수 있다.
 
-또한, 타입에 대해 명시적 모델링과 **Equivalence(동등성)**, **Assign-Compatibility(할당 호환성)**과 같은 기본 타입 검사에 대한 기능을 제공한다.
+또한, 타입에 대해 명시적 모델링과 **Equivalence(동등성), Assign-Compatibility(할당 호환성)**과 같은 기본 타입 검사에 대한 기능을 제공한다.
 
 개념적으로는 Kotlin 리플렉션의 KType과 유사한 방법이다. KSP API를 사용하는 경우 프로세서가 클래스 선언 시 특정 타입의 인자가 있는 것에, 또는 그 반대의 경우에 타입을 탐색할 수 있다.
 
