@@ -241,7 +241,7 @@ Room Annotation Processing에 대한 의존성을 KAPT에서 KSP로 교체 후 �
 
 > That said, using KAPT and KSP in the same module will likely slow down your build initially, so during this alpha period, it is best to use KSP and KAPT in separate modules.
 
-하지만, 같은 모듈에서 KAPT와 KSP를 같이 사용하면 처음에는 빌드 속도가 ㄴ려질 수 있다라고 명시되어있다.
+하지만, 같은 모듈에서 KAPT와 KSP를 같이 사용하면 처음에는 빌드 속도가 느려질 수 있다라고 명시되어있다.
 
 Alpha에서는 별개의 모듈에서 사용하는 것이 좋다고 나와있다.
 
@@ -264,7 +264,6 @@ KSP에 대한 결과는 다음과 같다. App 모듈에서 결과는 KSP플러�
 ### 참고자료
 
 - https://android-developers.googleblog.com/2021/02/announcing-kotlin-symbol-processing-ksp.html
-
 - https://github.com/google/ksp
 - https://jsuch2362.medium.com/my-first-kotlin-symbol-processing-tool-for-android-4eb3a2cfd600
 
