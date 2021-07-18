@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduce Kotlin Symbol Processing"
-description: Kotoun Symbol Processing에 대해 소개합니다.
+description: Kotlin Symbol Processing에 대해 소개합니다.
 image: 'https://imgur.com/wbnNw2z.jpg'
 category: 'programming'
 date: 2021-07-06 00:18:00
@@ -10,8 +10,8 @@ tags:
 - kotlin
 - annotation processor
 - compiler plugin
-introduction: Kotoun Symbol Processing에 대해 소개합니다.
-twitter_text: Kotoun Symbol Processing에 대해 소개합니다.
+introduction: Kotlin Symbol Processing에 대해 소개합니다.
+twitter_text: Kotlin Symbol Processing에 대해 소개합니다.
 ---
 
 ## Introduce Kotlin Symbol Processing
