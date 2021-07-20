@@ -4,7 +4,7 @@ title: "Implement Kotlin Symbol Processing"
 description: Kotlin Symbol Processing 구조를 이해하고, 예제를 구현해봅니다.
 image: 'https://imgur.com/wbnNw2z.jpg'
 category: 'programming'
-date: 2021-07-18 23:28:00
+date: 2021-07-21 01:17:00
 tags:
 - android
 - kotlin
@@ -301,7 +301,7 @@ fun interface SymbolProcessorProvider {
 
 인자로 넣어주는 `SymbolProcessorEnvironment` 인스턴스에는 다음과 같은 프로퍼티를 제공한다.
 
-```kotlin 
+```kotlin
 class SymbolProcessorEnvironment(
     /**
      * Gradle등의 명령어를 통과한다.
@@ -326,7 +326,7 @@ class SymbolProcessorEnvironment(
 
 나는 `InterfaceImplementationProcessor` 를 생성하기 위해 `InterfaceImplementationProvider` 를 만들어 주었다.
 
-```kotlin 
+```kotlin
 class InterfaceImplementationProvider : SymbolProcessorProvider {
 
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
@@ -441,7 +441,7 @@ class InterfaceImplementationVisitor(
 
 해당 클래스가 `data class` 인지는 접근제어자로 data가 포함되어있는지 체크하면 알 수 있다.
 
-```kotlin 
+```kotlin
 ...
 
 override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: Unit) {
@@ -542,7 +542,7 @@ override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: U
 
 
 
-```kotlin 
+```kotlin
 ...
 
 override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: Unit) {
