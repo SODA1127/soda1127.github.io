@@ -569,3 +569,8 @@ KSPLogger를 통한 결과는 다음과 같다.
 
 
 이상으로 [KSP에 대한 개념, KAPT와 비교하여 좋은 점](https://soda1127.github.io/introduce-kotlin-symbol-processing/)과, KSP를 구현한 예제에 대해 분석하고 정리해보았다.
+
+### 참고자료
+
+- https://github.com/google/ksp
+- https://proandroiddev.com/ksp-fact-or-kapt-7c7e9218c575
