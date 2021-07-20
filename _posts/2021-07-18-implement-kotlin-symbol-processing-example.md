@@ -415,7 +415,7 @@ interface KSVisitor<D, R> {
 
 우리가 구현한 Visitor의 경우 다른 Visitor에 Input과 Output을 연결할 이유가 없으므로, `KSVisitor<Unit, Unit>`를 사용할 것이다. KSP는 이에 대해 `KSVisitorVoid`라는 클래스를 제공한다. 이를 상속받아 구현 할 것이다.
 
-```kotlin 
+```kotlin
 /**
  * @author SODA1127
  * [InterfaceImplementationProcessor]에서 사용되는 KSVisitor 클래스.
