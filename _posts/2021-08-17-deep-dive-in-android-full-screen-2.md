@@ -33,7 +33,7 @@ WindowInsetController에서 제공하는 다양한 함수를 통해 System UI, I
 
 그중에 우리가 집중적으로 관심을 가져야 하는 것은 `InsetsType`이라는 것이다.
 
-```java 
+```java
 /**
   * @return An insets type representing any system bars for displaying status.
   */
@@ -130,7 +130,7 @@ ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
 
 WindowInsetsController를 사용하여면 다음과 같이 `Window#getInsetsController ` 함수를 호출하면 된다.
 
-```kotlin 
+```kotlin
 val controller = window.insetsController
 ```
 
