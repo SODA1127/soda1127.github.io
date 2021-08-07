@@ -132,7 +132,7 @@ public void setSystemUiVisibility(int visibility) {
 
 ### Let's apply full screen mode
 
-⚠️ 아래에서 설명하는 API는 16 ~ 29까지 사용되었던 API입니다. 30에서는 Deprecated되었습니다.
+> ⚠️ 아래에서 설명하는 API는 16 ~ 29까지 사용되었던 API입니다. 30에서는 Deprecated되었습니다.
 
 사용하려는 전체 화면 모드 종류에 상관없이 `setSystemUiVisibility()`를 호출하고 이를 `SYSTEM_UI_FLAG_HIDE_NAVIGATION` 또는 `SYSTEM_UI_FLAG_FULLSCREEN` 중 하나에 또는 두 개 모두에 전달해야 한다.
 
