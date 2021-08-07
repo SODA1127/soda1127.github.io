@@ -84,7 +84,7 @@ private fun setImmersiveMode() {
 
 코드로는 다음과 같은 예제로 볼 수 있다.
 
-```kotlin
+```koltin
 private fun setStickyImmersiveMode() {
   window.decorView.systemUiVisibility =
   (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY // 가장 자리 스와이프 시 발동, 앱에서 제스처 인지
@@ -153,7 +153,7 @@ Android 11(SDK Version 30)의 경우에는 기존에 제공하던 `View#systemUi
 
 Deprecate된 `setSystemUiVisibility` 함수를 참고하면, `WindowInsetsController`라는 인터페이스를 참고하라는 것을 볼 수 있다. `WindowInsetsController` 는 어떻게 구성이 되어있는지 확인하자.
 
-```java 
+```java
 /**
  * Inset 생성 시 Window를 제어하기 위한 인터페이스
  */
@@ -216,7 +216,7 @@ Android SDK 버전 30 이상인 경우 Impl30의 함수를 이용하도록 분�
 
 **API 16 ~ 29 대응**
 
-```java 
+```java
 @RequiresApi(16)
 private static class Impl16 {
   static void setDecorFitsSystemWindows(@NonNull Window window,
