@@ -90,7 +90,7 @@ private fun setImmersiveMode() {
 
 코드로는 다음과 같은 예제로 볼 수 있다.
 
-```koltin
+```kotlin
 private fun setStickyImmersiveMode() {
   window.decorView.systemUiVisibility =
   (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY // 가장 자리 스와이프 시 발동, 앱에서 제스처 인지
