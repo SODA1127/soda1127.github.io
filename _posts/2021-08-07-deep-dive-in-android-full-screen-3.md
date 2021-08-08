@@ -15,12 +15,6 @@ introduction: 안드로이드에서 Full Screen을 어떻게 다루어야 하는
 twitter_text: 안드로이드에서 Full Screen을 어떻게 다루어야 하는지 소개합니다.
 ---
 
-**챕터 글 리스트**
-
-- [Deep Dive in Android Full Screen - 1](https://soda1127.github.io/deep-dive-in-android-full-screen-1/)
-- [Deep Dive in Android Full Screen - 2](https://soda1127.github.io/deep-dive-in-android-full-screen-2/)
-- [Deep Dive in Android Full Screen - 3](https://soda1127.github.io/deep-dive-in-android-full-screen-3/)
-
 이번시간에는 우리가 흔히 말하는 노치 영역이란 무엇인지, 이것을 안드로이드 디바이스에서는 어떻게 대응을 해줘야 하는지 소개한다.
 
 ## Instroduce Display Cutout
@@ -289,3 +283,11 @@ public int getSafeInsetRight() {
 만약 여러분들이 포스트에 보여진 예제에 대해 궁금하다면 깃허브에 [FullScreenExample](https://github.com/SODA1127/FullScreenExample) 예제를 참고하면 되곘다.
 
 조금이라도 여러분들께 도움이 되는 지식이었길 바란다.
+
+---
+
+**챕터 글 리스트**
+
+- [Deep Dive in Android Full Screen - 1](https://soda1127.github.io/deep-dive-in-android-full-screen-1/)
+- [Deep Dive in Android Full Screen - 2](https://soda1127.github.io/deep-dive-in-android-full-screen-2/)
+- [Deep Dive in Android Full Screen - 3](https://soda1127.github.io/deep-dive-in-android-full-screen-3/)
