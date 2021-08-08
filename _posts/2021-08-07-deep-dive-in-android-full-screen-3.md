@@ -188,8 +188,8 @@ override fun onAttachedToWindow() {
     if (cutout != null && cutout.boundingRects.isNotEmpty()) {
       binding.fullScreenSwitch.isVisible = true
       binding.fullScreenSwitch.setOnCheckedChangeListener { _, isChecked ->
-                                                           window.handleCutoutInsetInSafeArea(isChecked)
-                                                          }
+        window.handleCutoutInsetInSafeArea(isChecked)
+      }
     } else {
       binding.fullScreenSwitch.isVisible = false
       binding.fullScreenSwitch.setOnCheckedChangeListener(null)
