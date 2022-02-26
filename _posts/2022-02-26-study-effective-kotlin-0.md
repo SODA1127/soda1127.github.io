@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Study Effective Kotlin"
+title: "Study Effective Kotlin - 0"
 description: 이펙티브 코틀린 책 스터디를 시작해 봅시다.
 image: 'https://imgur.com/2m1H60j.jpg'
 category: 'programming'
-date: 2022-02-26 17:02:00
+date: 2021-02-26 17:02:00
 tags:
 - android
 - kotlin
