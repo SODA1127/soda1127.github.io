@@ -1,26 +1,24 @@
 ---
 layout: post
-title: "Study Effective Kotlin - 0"
-description: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
+title: "Study Effective Kotlin"
+description: 이펙티브 코틀린 책 스터디를 시작해 봅시다.
 image: 'https://imgur.com/2m1H60j.jpg'
 category: 'programming'
-date: 2022-02-26 17:00:00
+date: 2022-02-26 17:02:00
 tags:
 - android
 - kotlin
-- java
 - best practice
-introduction: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
-twitter_text: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
+introduction: 이펙티브 코틀린 책 스터디를 시작해 봅시다.
+twitter_text: 이펙티브 코틀린 책 스터디를 시작해 봅시다.
+
 ---
+
+## Hustle real hard => Burnt out
 
 오랜만에 작성해봅니다.
 
 소다의 개발블로그 운영자 소다입니다. 굉장히 오랜만에 찾아오게 되었습니다. 그 사이에 회사 업무가 바빠 정신없이 진행했던 것, 그리고 제 개인적으로 슬럼프가 찾아와 개발과 관련된 모든 일에 대해 흥미를 느끼지 못했던 것이 존재해 블로그에서 손을 놓게 되었습니다.
-
-
-
-## Hustle real hard => Burnt out
 
 ![Burnt out](https://imgur.com/XhljFGR.jpg)
 
