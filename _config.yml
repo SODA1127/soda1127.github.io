@@ -26,6 +26,9 @@ paginate: 12
 paginate_path: "/page/:num/"
 svg_color: "#ff0a16"
 
+# Time Zone
+timezone: Asia/Seoul
+
 # Plugins
 plugins:
   - jemoji
