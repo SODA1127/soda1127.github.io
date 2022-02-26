@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deep Dive in Android Full Screen - 3"
+title: "Deep Dive in Android Full Screen - 3 d"
 description: 안드로이드에서 Full Screen을 어떻게 다루어야 하는지 소개합니다.
 image: 'https://imgur.com/78odNwH.jpg'
 category: 'programming'
