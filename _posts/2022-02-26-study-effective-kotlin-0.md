@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Study Effective Kotlin 00"
+title: "Study Effective Kotlin - 0"
 description: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
-image: 'https://imgur.com/WmgOVNe.jpg'
+image: 'https://imgur.com/2m1H60j.jpg'
 category: 'programming'
 date: 2022-02-26 17:00:00
 tags:
