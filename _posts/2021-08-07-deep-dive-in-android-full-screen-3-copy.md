@@ -1,18 +1,17 @@
 ---
 layout: post
-title: "Deep Dive in Android Full Screen - 3 copy"
-description: 안드로이드에서 Full Screen을 어떻게 다루어야 하는지 소개합니다.
-image: 'https://imgur.com/78odNwH.jpg'
+title: "Study Effective Kotlin - 0"
+description: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
+image: 'https://imgur.com/WmgOVNe.jpg'
 category: 'programming'
-date: 2021-08-07 19:50:00
+date: 2022-02-26 17:00:00
 tags:
 - android
 - kotlin
 - java
-- full screen
-- system ui
-introduction: 안드로이드에서 Full Screen을 어떻게 다루어야 하는지 소개합니다.
-twitter_text: 안드로이드에서 Full Screen을 어떻게 다루어야 하는지 소개합니다.
+- best practice
+introduction: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
+twitter_text: 이펙티브 코틀린책에 대한 공부하면서 정리한 내용을 공유합니다.
 ---
 
 이번시간에는 우리가 흔히 말하는 노치 영역이란 무엇인지, 이것을 안드로이드 디바이스에서는 어떻게 대응을 해줘야 하는지 소개한다.
