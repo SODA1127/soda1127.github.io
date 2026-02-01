@@ -2,7 +2,7 @@
 layout: post
 title: "Jetpack Compose Internals - 1장. Composable 함수"
 description: Jetpack Compose의 핵심인 Composable 함수의 내부 동작 원리를 깊이 있게 살펴봅니다.
-image: 'https://i.imgur.com/klrxZcG.png'
+image: 'https://imgur.com/o8Jk4Is.png'
 category: 'programming'
 date: 2026-02-02 09:00:00
 tags:
