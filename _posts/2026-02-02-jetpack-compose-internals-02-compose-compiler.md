@@ -2,7 +2,7 @@
 layout: post
 title: "Jetpack Compose Internals - 2장. Compose 컴파일러"
 description: Jetpack Compose 컴파일러가 어떻게 동작하는지 깊이 있게 살펴봅니다.
-image: 'https://miro.medium.com/v2/resize:fit:1400/1*Oc77n_vAqs30sL8tqkLe-w.png'
+image: 'https://imgur.com/o8Jk4Is.png'
 category: 'programming'
 date: 2026-02-02 10:00:00
 tags:
