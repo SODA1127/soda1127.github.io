@@ -19,7 +19,10 @@ twitter_text: Jetpack Compose 컴파일러가 어떻게 동작하는지 깊이 �
 
 Jetpack Compose는 여러 라이브러리로 구성되어 있지만, 이 책에서는 세 가지에 집중합니다: **Compose 컴파일러**, **Compose 런타임**, 그리고 **Compose UI**.
 
-Compose 컴파일러와 런타임은 Jetpack Compose의 기둥입니다. Compose UI는 기술적으로 Compose 아키텍처의 일부가 아닙니다. 런타임과 컴파일러는 범용적으로 설계되어 요구사항을 충족하는 모든 클라이언트 라이브러리에서 사용할 수 있기 때문입니다.
+Compose 컴파일러와 런타임은 Jetpack Compose의 기둥입니다.
+
+![Compose 아키텍처](/assets/img/compose-internals/compose-architecture.png)
+*Compose 아키텍처: 컴파일러, 런타임, UI* Compose UI는 기술적으로 Compose 아키텍처의 일부가 아닙니다. 런타임과 컴파일러는 범용적으로 설계되어 요구사항을 충족하는 모든 클라이언트 라이브러리에서 사용할 수 있기 때문입니다.
 
 ---
 
@@ -325,6 +328,9 @@ composableLambda($composer, $key, $shouldBeTracked, $arity, expression)
 ## Composer 주입
 
 Compose 컴파일러가 모든 Composable 함수를 **Composer 합성 파라미터가 추가된 새 버전**으로 대체하는 단계입니다. 이 파라미터는 트리의 모든 지점에서 항상 사용할 수 있도록 모든 Composable 호출에 전달됩니다.
+
+![Composer 주입](/assets/img/compose-internals/composer-injection.png)
+*Composer가 모든 Composable 함수에 주입됩니다*
 
 ```kotlin
 fun NamePlate(name: String, lastname: String, $composer: Composer) {
