@@ -228,7 +228,13 @@ Composer는 Composition 중에 수집된 `CompositionData` 형태의 소스 정�
 
 단일 Composition이 아니라 **Composition과 Subcomposition의 트리**가 존재합니다. Subcomposition은 별도의 무효화를 지원하기 위해 현재 Composition의 컨텍스트에서 별도의 Composition을 구성할 목적으로 인라인으로 생성된 Composition입니다.
 
+![Composition과 Subcomposition 구조](/assets/img/compose-internals/chapter3/composition-subcomposition.png)
+*Composition과 Subcomposition의 트리 구조. LayoutNode와 VNode가 각각의 Composition에서 관리됩니다.*
+
 Subcomposition은 부모 `CompositionContext` 참조를 통해 부모 Composition에 연결됩니다. 이 컨텍스트는 Composition과 Subcomposition을 트리로 함께 연결하기 위해 존재합니다. 이를 통해 `CompositionLocal`과 무효화가 단일 Composition에 속한 것처럼 트리 아래로 투명하게 해결/전파됩니다.
+
+![Fragment와 Composition의 관계](/assets/img/compose-internals/chapter3/fragment-composition.png)
+*여러 Fragment에서 각각 독립적인 Composition을 가질 수 있습니다.*
 
 Subcomposition 생성은 보통 `rememberCompositionContext`를 통해 수행됩니다:
 
@@ -247,6 +253,9 @@ Subcomposition 생성은 보통 `rememberCompositionContext`를 통해 수행됩
 이 챕터에서 여러 번 언급했듯이, **Applier**가 이를 담당합니다. 현재 Composer는 Composition 후 기록된 모든 변경 사항을 적용하기 위해 이 추상화에 위임합니다. 이것이 우리가 "구체화(materializing)"라고 알고 있는 프로세스입니다. 이 프로세스는 `Change` 리스트를 실행하고 그 결과로 슬롯 테이블을 업데이트하며, 테이블에 저장된 Composition 데이터를 해석하여 효과적으로 결과를 산출합니다.
 
 **런타임은 Applier가 어떻게 구현되는지에 대해 불가지론적**입니다. 클라이언트 라이브러리가 구현해야 하는 공개 계약에 의존합니다. Applier는 플랫폼과의 통합 지점이므로 사용 사례에 따라 달라지기 때문입니다.
+
+![Applier 계층 구조](/assets/img/compose-internals/chapter3/applier-hierarchy.png)
+*Applier 인터페이스와 구현체들. UiApplier는 LayoutNode를, VectorApplier는 VNode를 처리합니다.*
 
 ```kotlin
 interface Applier<N> {

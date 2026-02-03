@@ -2,7 +2,7 @@
 layout: post
 title: "Jetpack Compose Internals - 3장. Compose 런타임 (1)"
 description: Compose 런타임의 핵심 데이터 구조인 슬롯 테이블과 변경 리스트를 파헤쳐 봅니다.
-image: 'https://imgur.com/your-image-id.png'
+image: 'https://imgur.com/o8Jk4Is.png'
 category: 'programming'
 date: 2026-02-02 11:00:00
 tags:
@@ -31,6 +31,9 @@ twitter_text: Compose 런타임의 핵심 데이터 구조인 슬롯 테이블�
 - **변경 리스트 (Change List)**: 실제 노드 트리(UI 트리 등)에 적용할 변경 사항들을 모아둔 "패치 파일" 같은 것입니다. 슬롯 테이블의 현재 상태를 바탕으로 생성됩니다.
 
 **리콤포저(Recomposer)**는 이 과정을 조율하며, 언제 어떤 스레드에서 리컴포지션을 수행하고 변경 사항을 적용할지 결정합니다.
+
+![트리 구조](/assets/img/compose-internals/chapter3/tree-structure.png)
+*노드 트리의 기본 구조 - 루트(R)에서 자식 노드(A, B, C)로 연결됩니다.*
 
 ---
 
