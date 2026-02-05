@@ -152,10 +152,15 @@ Effect handler는 부수 효과가 Composable 라이프사이클을 인식하도
 
 Composable 함수는 **recompose**할 수 있으므로, 호출 스택의 일부로 한 번만 호출되는 일반 함수와 다릅니다.
 
-일반 호출 스택에서 각 함수는 한 번 호출되고, 하나 이상의 다른 함수를 호출할 수 있습니다. 반면 Composable 함수는 여러 번 재시작(재실행, recompose)될 수 있으므로, 런타임이 이를 수행하기 위해 참조를 유지합니다.
+일반 호출 스택에서 각 함수는 한 번 호출되고, 하나 이상의 다른 함수를 호출할 수 있습니다. 
+
+![일반 호출 스택](/assets/img/compose-internals/chapter1/diag-normal-stack.png)
+*표준 함수의 호출 스택 구조*
+
+반면 Composable 함수는 여러 번 재시작(재실행, recompose)될 수 있으므로, 런타임이 이를 수행하기 위해 참조를 유지합니다.
 
 ![Recomposition](/assets/img/compose-internals/chapter1/diag-02.png)
-*입력 상태가 변경되면 해당 Composable이 다시 실행됩니다*
+*입력 상태가 변경되면 해당 Composable이 다시 실행(Restart)됩니다*
 
 Compose는 메모리 내 표현을 항상 최신 상태로 유지하기 위해 트리의 어떤 노드를 재시작할지 선택적으로 결정합니다. Compose 컴파일러는 상태를 읽는 모든 Composable 함수를 찾아 런타임이 그것들을 재시작하는 방법을 알려주는 코드를 생성합니다.
 
@@ -186,8 +191,8 @@ fun MyComposable() {
 }
 ```
 
-![Positional Memoization](/assets/img/compose-internals/positional-memoization.png)
-*같은 Text("Hello")가 3번 호출되지만 각각 다른 identity를 가집니다*
+![Positional Memoization](/assets/img/compose-internals/chapter1/positional-memoization.png)
+*같은 Text("Hello")가 3번 호출되지만 소스 내 위치가 다르므로 각각 다른 identity를 가집니다*
 
 메모리 내 트리는 각각 다른 identity를 가진 세 개의 다른 인스턴스를 저장합니다.
 
