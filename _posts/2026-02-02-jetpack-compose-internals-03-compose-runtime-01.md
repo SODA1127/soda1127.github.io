@@ -32,7 +32,7 @@ twitter_text: Compose 런타임의 핵심 데이터 구조인 슬롯 테이블�
 
 **리콤포저(Recomposer)**는 이 과정을 조율하며, 언제 어떤 스레드에서 리컴포지션을 수행하고 변경 사항을 적용할지 결정합니다.
 
-![트리 구조](/assets/img/compose-internals/chapter3/tree-structure.png)
+![트리 구조](/assets/img/compose-internals/chapter3/part1/diag-01.png)
 *노드 트리의 기본 구조 - 루트(R)에서 자식 노드(A, B, C)로 연결됩니다.*
 
 ---
