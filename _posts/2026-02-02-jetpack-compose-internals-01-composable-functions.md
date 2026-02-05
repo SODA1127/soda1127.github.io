@@ -64,7 +64,7 @@ Composable 함수의 대부분의 속성은 Compose 컴파일러에 의해 활�
 
 각 Composable 함수에 추가되는 것 중 하나는 파라미터 목록 끝에 새 파라미터인 **Composer**입니다. 이 파라미터는 암시적이며, 개발자는 이를 알 필요가 없습니다. 런타임에 인스턴스가 주입되고, 모든 자식 Composable 호출에 전달되어 트리의 모든 레벨에서 접근할 수 있습니다.
 
-![Composer 전파](/assets/img/compose-internals/composer-propagation.png)
+![Composer 전파](/assets/img/compose-internals/chapter1/diag-01.png)
 *Composer가 트리 아래로 전파되는 모습*
 
 ```kotlin
@@ -154,7 +154,7 @@ Composable 함수는 **recompose**할 수 있으므로, 호출 스택의 일부�
 
 일반 호출 스택에서 각 함수는 한 번 호출되고, 하나 이상의 다른 함수를 호출할 수 있습니다. 반면 Composable 함수는 여러 번 재시작(재실행, recompose)될 수 있으므로, 런타임이 이를 수행하기 위해 참조를 유지합니다.
 
-![Recomposition](/assets/img/compose-internals/recomposition.png)
+![Recomposition](/assets/img/compose-internals/chapter1/diag-02.png)
 *입력 상태가 변경되면 해당 Composable이 다시 실행됩니다*
 
 Compose는 메모리 내 표현을 항상 최신 상태로 유지하기 위해 트리의 어떤 노드를 재시작할지 선택적으로 결정합니다. Compose 컴파일러는 상태를 읽는 모든 Composable 함수를 찾아 런타임이 그것들을 재시작하는 방법을 알려주는 코드를 생성합니다.
