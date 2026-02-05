@@ -27,6 +27,8 @@ twitter_text: Compose UI가 어떻게 런타임과 통합되어 화면의 UI 트
 
 Jetpack Compose라고 말할 때 보통 **컴파일러 + 런타임 + Compose UI**를 모두 포함합니다. 하지만 Compose UI는 선택사항이 아닙니다. 런타임만으로는 UI를 렌더링할 수 없기 때문입니다.
 
+![Compose Architecture](/assets/img/compose-internals/chapter4/img-001.png)
+
 ### Compose UI는 멀티플랫폼 라이브러리
 
 Compose UI는 Kotlin 멀티플랫폼 프로젝트로 구성되어 있습니다:
@@ -77,6 +79,8 @@ class MainActivity : ComponentActivity() {
 
 또한 Dialog, PopupWindow, 또는 다른 UI 계층이 필요할 때도 새로운 Composition을 생성할 수 있습니다. 이를 **Subcomposition**이라고 부릅니다.
 
+![Composition Process](/assets/img/compose-internals/chapter4/img-003.png)
+
 ---
 
 ## 변경 사항을 UI 트리에 반영하기 (Applier)
@@ -91,6 +95,8 @@ Applier는 런타임에게 **다음 작업들을 수행**합니다:
 2. **노드 제거 (Remove)**: 더 이상 필요 없는 UI 컴포넌트 제거
 3. **노드 이동 (Move)**: UI 컴포넌트의 위치 변경
 4. **노드 교체 (Replace)**: 기존 노드를 새로운 노드로 교체
+
+![Applier Operations](/assets/img/compose-internals/chapter4/img-005.png)
 
 ### Compose UI의 Applier: UiApplier
 
@@ -159,6 +165,8 @@ Applier가 변경 사항 순회
 레이아웃 계산 및 그리기
 ```
 
+![LayoutNode Tree](/assets/img/compose-internals/chapter4/img-007.png)
+
 예를 들어, `Layout` Composable은 다음과 같이 동작합니다:
 
 ```kotlin
@@ -186,6 +194,8 @@ Applier가 변경 사항 순회
 ## 레이아웃 측정 (Measuring)
 
 UI 요소를 화면에 표시하려면 먼저 **크기를 결정**해야 합니다. Compose UI는 매우 효율적인 측정 시스템을 제공합니다.
+
+![Measurement Flow](/assets/img/compose-internals/chapter4/img-010.png)
 
 ### Measuring Policy
 
@@ -215,6 +225,8 @@ minHeight, maxHeight
 
 자식 요소들은 이 제약 조건 내에서 크기를 결정해야 합니다. 예를 들어, Column이 화면 너비 전체를 차지하도록 요청하면, 자식들은 그 너비를 존중해야 합니다.
 
+![Layout Constraints](/assets/img/compose-internals/chapter4/img-012.png)
+
 ---
 
 ## Recomposition과 UI 업데이트
@@ -228,6 +240,8 @@ State가 변경되어 recomposition이 발생하면, 다음과 같이 진행됩�
 5. **그리기 (Redraw)**: 화면에 새로운 UI 반영
 
 이 과정은 **스마트 리컴포지션**으로 인해 최적화됩니다. 변경되지 않은 부분은 다시 계산되지 않습니다.
+
+![Recomposition Flow](/assets/img/compose-internals/chapter4/img-014.png)
 
 ---
 
