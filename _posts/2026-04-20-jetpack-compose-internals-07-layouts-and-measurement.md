@@ -2,7 +2,7 @@
 layout: post
 title: "Jetpack Compose Internals - 7장. Layouts and Measurement"
 description: "Jetpack Compose의 단일 패스 측정(Single Pass Measurement) 원칙과 커스텀 레이아웃 구현 메커니즘을 정리합니다."
-image: 'https://imgur.com/o8Jk4Is.png'
+image: '/assets/img/compose-internals/chapter07/page-141.png'
 category: 'programming'
 date: 2026-04-20 12:00:00
 tags:
@@ -26,7 +26,7 @@ Jetpack Compose는 기존 안드로이드 뷰 시스템의 성능 병목 중 하
 
 Compose의 모든 노드는 **단 한 번만 측정**됩니다. 이는 성능 최적화를 위한 핵심 설계로, 자식 노드가 자신의 크기를 결정하기 위해 부모를 다시 호출하거나 부모가 여러 번 자식을 측정하는 '지수적 비용'을 방지합니다.
 
-![Layout Principles](/assets/img/compose-internals/chapter07/img-001.png)
+![Layout Principles](/assets/img/compose-internals/chapter07/page-141.png)
 
 만약 자식을 여러 번 측정해야 하는 특수한 상황(예: 자식 간 크기 맞춤)이 필요하다면 **Intrinsic Measurement**라는 별도의 메커니즘을 활용합니다.
 
@@ -40,7 +40,7 @@ Compose 노드가 배치되는 과정은 다음 세 단계를 순차적으로 �
 2. **Deciding Own Size (자신의 크기 결정):** 자식들이 보고한 크기를 바탕으로 부모 자신의 너비와 높이를 결정합니다.
 3. **Placing Children (자식 배치):** 부모의 좌표계 안에서 각 자식이 위치할 (x, y) 좌표를 지정합니다.
 
-![Layout Process](/assets/img/compose-internals/chapter07/img-002.png)
+![Layout Process](/assets/img/compose-internals/chapter07/page-142.png)
 
 ---
 
@@ -75,7 +75,7 @@ Layout(
 }
 ```
 
-![Custom Layout Example](/assets/img/compose-internals/chapter07/img-005.png)
+![Custom Layout Example](/assets/img/compose-internals/chapter07/page-145.png)
 
 ---
 
