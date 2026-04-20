@@ -2,7 +2,7 @@
 layout: post
 title: "Jetpack Compose Internals - 7장. Layouts and Measurement"
 description: "Jetpack Compose의 단일 패스 측정(Single Pass Measurement) 원칙과 커스텀 레이아웃 구현 메커니즘을 정리합니다."
-image: '/assets/img/compose-internals/chapter07/jetpack-compose-internals-07-thumb.png'
+image: 'https://imgur.com/o8Jk4Is.png'
 category: 'programming'
 date: 2026-04-20 12:00:00
 tags:
