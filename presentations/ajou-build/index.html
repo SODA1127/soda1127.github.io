@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이기정 | AJOU BUILD 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VIEWPORT BASE — mandatory fixed-stage CSS
+   ============================================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#000; }
+
+.deck-viewport { position:fixed; inset:0; overflow:hidden; background:#000; }
+
+.deck-stage {
+  position:absolute; left:0; top:0;
+  width:1920px; height:1080px;
+  overflow:hidden; transform-origin:0 0;
+}
+
+.slide {
+  position:absolute; inset:0;
+  width:1920px; height:1080px;
+  overflow:hidden;
+  visibility:hidden; opacity:0; pointer-events:none;
+  transition: opacity 0.38s cubic-bezier(.4,0,.2,1);
+}
+.slide.active { visibility:visible; opacity:1; pointer-events:auto; z-index:1; }
+.slide.leaving { opacity:0; visibility:visible; pointer-events:none; z-index:0; }
+
+img, video, canvas, svg { max-width:100%; max-height:100%; }
+
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.2s!important; }
+}
+
+/* ============================================================
+   BLUE SCRIPT — After Hours (pink → blue remix)
+   ============================================================ */
+:root {
+  --ink:      #060810;
+  --paper:    #EDF1F5;
+  --accent:   #3B82F6;
+  --ac-glow:  rgba(59,130,246,.20);
+  --line-ac:  rgba(59,130,246,.28);
+  --muted:    rgba(237,241,245,.55);
+  --hair:     rgba(237,241,245,.13);
+  --serif:    'DM Serif Display', serif;
+  --kr:       'Noto Sans KR', sans-serif;
+  --sans:     'Inter', sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+/* Slide surface — deep blue-tinted nocturnal dark */
+.slide {
+  background: radial-gradient(ellipse 90% 70% at 28% 28%,
+    #0C1828 0%, #060C18 52%, #030811 100%);
+}
+
+/* Film grain */
+.slide::before {
+  content:''; position:absolute; inset:0; z-index:50; pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.08; mix-blend-mode:screen;
+}
+
+/* Interior hairline frame */
+.slide::after {
+  content:''; position:absolute; inset:36px; z-index:50; pointer-events:none;
+  border:1px solid var(--hair);
+}
+
+/* ── Chrome ── */
+.runner {
+  position:absolute; top:58px; left:60px; right:60px; z-index:10;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:18px; letter-spacing:.14em; text-transform:uppercase;
+}
+.runner-brand { color:var(--accent); }
+.runner-tag   { color:var(--muted); }
+
+.footer {
+  position:absolute; bottom:54px; left:60px; right:60px; z-index:10;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:18px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted);
+}
+.footer em { color:var(--accent); font-style:normal; }
+
+/* ── Animations ── */
+.reveal {
+  opacity:0; transform:translateY(22px);
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+}
+.slide.active .reveal { opacity:1; transform:translateY(0); }
+.r1{transition-delay:.08s} .r2{transition-delay:.18s} .r3{transition-delay:.28s}
+.r4{transition-delay:.38s} .r5{transition-delay:.48s} .r6{transition-delay:.58s}
+.r7{transition-delay:.68s} .r8{transition-delay:.78s}
+
+/* Section-intro number glow pulse */
+@keyframes glow-pulse {
+  0%,100% { text-shadow: 0 0 160px rgba(59,130,246,.25); opacity:.7; }
+  50%      { text-shadow: 0 0 260px rgba(59,130,246,.45); opacity:.85; }
+}
+@keyframes glow-pulse-g {
+  0%,100% { text-shadow: 0 0 160px rgba(52,211,153,.22); opacity:.7; }
+  50%      { text-shadow: 0 0 260px rgba(52,211,153,.42); opacity:.85; }
+}
+.slide.active .sec-intro-right { animation: glow-pulse 3.5s ease-in-out infinite; }
+.slide.active .sec-intro-right.green-pulse { animation: glow-pulse-g 3.5s ease-in-out infinite; }
+
+/* Count-up targets */
+.count-up { font-variant-numeric: tabular-nums; }
+
+/* ── Common tokens ── */
+.kicker {
+  font-family:var(--mono); font-size:18px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:18px;
+}
+.rule-ac   { height:1px; background:var(--accent); opacity:.4; }
+.rule-hair { height:1px; background:var(--paper);  opacity:.18; }
+
+.pill {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid var(--accent); color:var(--accent);
+  padding:7px 18px; font-family:var(--mono); font-size:15px; letter-spacing:.07em; text-transform:uppercase;
+}
+.pill-solid { background:var(--accent); color:var(--ink); }
+.pill-dim   { border-color:var(--hair); color:var(--muted); }
+.pill-green { border-color:rgba(52,211,153,.5); color:#34D399; }
+
+/* ============================================================
+   SLIDE-SPECIFIC STYLES
+   ============================================================ */
+
+/* ── S01 COVER ── */
+#s01 .cover-wrap { position:absolute; left:80px; top:148px; right:80px; }
+#s01 .name-line  { display:flex; align-items:baseline; gap:24px; }
+#s01 .name-kr    { font-family:var(--kr); font-weight:900; font-size:188px; color:var(--paper); line-height:1; letter-spacing:-.02em; }
+#s01 .name-en    { font-family:var(--serif); font-style:italic; font-size:108px; color:var(--accent); text-shadow:0 0 110px var(--ac-glow); line-height:1; }
+#s01 .tagline    { font-family:var(--kr); font-weight:300; font-size:40px; color:var(--paper); line-height:1.55; margin-top:32px; }
+#s01 .tagline em { color:var(--accent); font-style:normal; font-weight:700; }
+#s01 .meta       { font-family:var(--kr); font-weight:300; font-size:27px; color:var(--muted); margin-top:8px; }
+#s01 .chip-row   { display:flex; gap:12px; flex-wrap:wrap; margin-top:36px; }
+
+/* ── S02 WHO AM I ── */
+.who-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:36px; }
+.who-card { padding:0 0 28px; border-bottom:1px solid var(--hair); }
+.who-big  { font-family:var(--serif); font-weight:400; font-size:88px; color:var(--accent); text-shadow:0 0 60px var(--ac-glow); line-height:.9; margin-bottom:14px; }
+.who-big sup { font-size:42px; color:var(--paper); vertical-align:super; }
+.who-title{ font-family:var(--kr); font-weight:700; font-size:26px; color:var(--paper); margin-bottom:6px; }
+.who-desc { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.55; }
+
+/* ── S03 TIMELINE ── */
+.tl-wrap  { position:absolute; left:80px; top:148px; right:80px; }
+.tl-track { position:relative; padding-left:48px; margin-top:32px; }
+.tl-track::before {
+  content:''; position:absolute; left:8px; top:10px; bottom:8px; width:1px;
+  background:linear-gradient(to bottom, var(--accent), rgba(59,130,246,.08));
+}
+.tl-item  { margin-bottom:30px; position:relative; }
+.tl-dot   {
+  position:absolute; left:-44px; top:8px;
+  width:12px; height:12px; border-radius:50%;
+  border:2px solid var(--ink); background:var(--accent);
+  box-shadow:0 0 12px var(--ac-glow);
+}
+.tl-period  { font-family:var(--mono); font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:3px; }
+.tl-company { font-family:var(--kr); font-weight:700; font-size:28px; color:var(--paper); margin-bottom:4px; }
+.tl-desc    { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.5; }
+
+/* ── S04 IMPACT ── */
+.impact-grid { display:flex; gap:0; margin-top:40px; }
+.impact-item { flex:1; padding-right:40px; border-right:1px solid var(--hair); margin-right:40px; }
+.impact-item:last-child { border-right:none; margin-right:0; padding-right:0; }
+.impact-big  { font-family:var(--serif); font-weight:400; font-size:132px; line-height:.85; color:var(--accent); text-shadow:0 0 80px var(--ac-glow); margin-bottom:14px; }
+.impact-name { font-family:var(--kr); font-weight:700; font-size:30px; color:var(--paper); margin-bottom:6px; }
+.impact-desc { font-family:var(--kr); font-weight:300; font-size:22px; color:var(--muted); line-height:1.5; }
+
+/* ── SECTION INTRO (S05, S09) ── */
+.sec-intro-wrap { position:absolute; inset:0; display:flex; align-items:center; }
+.sec-intro-left { padding:0 0 0 80px; flex:1; }
+.sec-intro-right{
+  font-family:var(--serif); font-weight:400; font-size:420px; line-height:.82;
+  color:var(--accent); text-shadow:0 0 160px rgba(59,130,246,.25);
+  letter-spacing:-.04em; padding-right:60px; flex-shrink:0; opacity:.7;
+}
+.sec-service { font-family:var(--mono); font-size:28px; letter-spacing:.06em; color:var(--accent); margin-bottom:16px; }
+.sec-headline{ font-family:var(--kr); font-weight:700; font-size:68px; color:var(--paper); line-height:1.15; margin-bottom:20px; }
+.sec-desc    { font-family:var(--kr); font-weight:300; font-size:26px; color:var(--muted); line-height:1.6; max-width:680px; }
+.sec-quote   { font-family:var(--kr); font-weight:300; font-size:26px; color:var(--accent); font-style:italic; margin-top:24px; padding-left:20px; border-left:1px solid var(--accent); }
+
+/* ── PROBLEM GRID ── */
+.prob-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; }
+.prob-card { padding:28px 24px; border:1px solid var(--hair); background:rgba(237,241,245,.02); }
+.prob-emoji{ font-size:32px; margin-bottom:10px; display:block; }
+.prob-title{ font-family:var(--kr); font-weight:700; font-size:26px; color:var(--paper); margin-bottom:6px; }
+.prob-body { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.55; }
+
+/* ── FEATURE GRID ── */
+.feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:32px; }
+.feat-card { padding:24px 22px; border:1px solid var(--line-ac); background:rgba(59,130,246,.04); }
+.feat-card-g{ border-color:rgba(52,211,153,.28); background:rgba(52,211,153,.04); }
+.feat-icon { font-size:28px; margin-bottom:10px; display:block; }
+.feat-title{ font-family:var(--kr); font-weight:700; font-size:24px; color:var(--paper); margin-bottom:4px; }
+.feat-desc { font-family:var(--kr); font-weight:300; font-size:20px; color:var(--muted); line-height:1.5; }
+
+/* ── STATUS COLS (S08) ── */
+.status-cols { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:32px; }
+.status-col-label { font-family:var(--mono); font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+.status-item {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:16px 0; border-bottom:1px solid var(--hair);
+  font-family:var(--kr); font-weight:400; font-size:24px; color:var(--paper); line-height:1.4;
+}
+.status-item:last-child { border-bottom:none; }
+.status-icon { flex-shrink:0; font-size:20px; margin-top:2px; }
+
+/* ── FLOW (S11) ── */
+.flow { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:28px; }
+.flow-node { padding:14px 22px; border:1px solid var(--line-ac); font-family:var(--kr); font-weight:500; font-size:22px; color:var(--paper); background:rgba(59,130,246,.05); }
+.flow-arr  { color:var(--accent); font-size:22px; }
+
+/* Competition map */
+.comp-map { position:relative; width:100%; height:260px; margin-top:24px; border:1px solid var(--hair); background:rgba(237,241,245,.01); }
+.comp-axis-h { position:absolute; left:0; right:0; top:50%; height:1px; background:var(--hair); }
+.comp-axis-v { position:absolute; top:0; bottom:0; left:50%; width:1px; background:var(--hair); }
+.comp-label  { position:absolute; font-family:var(--mono); font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+.comp-dot    { position:absolute; border-radius:50%; transform:translate(-50%,-50%); }
+.comp-name   { position:absolute; font-family:var(--kr); font-size:17px; font-weight:600; transform:translateX(-50%); white-space:nowrap; }
+
+/* ── ROADMAP (S14) ── */
+.roadmap { display:flex; gap:20px; margin-top:32px; }
+.road-phase { flex:1; padding:26px 22px; border:1px solid var(--line-ac); background:rgba(59,130,246,.04); }
+.road-badge { font-family:var(--mono); font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.road-title { font-family:var(--kr); font-weight:700; font-size:26px; color:var(--accent); margin-bottom:14px; }
+.road-items { list-style:none; }
+.road-items li { display:flex; gap:10px; font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); padding:5px 0; border-bottom:1px solid var(--hair); line-height:1.4; }
+.road-items li:last-child { border-bottom:none; }
+.road-items li::before { content:'›'; color:var(--accent); font-weight:700; flex-shrink:0; }
+.road-goal { margin-top:12px; font-family:var(--mono); font-size:15px; letter-spacing:.06em; color:var(--accent); }
+
+/* ── REVENUE (S15) ── */
+.rev-list { display:flex; gap:0; margin-top:36px; }
+.rev-item { flex:1; padding-right:40px; border-right:1px solid var(--hair); margin-right:40px; }
+.rev-item:last-child { border-right:none; margin-right:0; padding-right:0; }
+.rev-emoji { font-size:36px; margin-bottom:12px; display:block; }
+.rev-timing{ font-family:var(--mono); font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+.rev-title { font-family:var(--kr); font-weight:700; font-size:28px; color:var(--paper); margin-bottom:8px; }
+.rev-desc  { font-family:var(--kr); font-weight:300; font-size:22px; color:var(--muted); line-height:1.55; }
+.rev-price { font-family:var(--mono); font-size:22px; color:var(--accent); margin-top:10px; }
+
+/* ── COMPARE (S16) ── */
+.compare-cols { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:32px; }
+.compare-col  { padding:28px 26px; border:1px solid; }
+.compare-col-1{ border-color:rgba(59,130,246,.35); background:rgba(59,130,246,.04); }
+.compare-col-2{ border-color:rgba(52,211,153,.3);  background:rgba(52,211,153,.04); }
+.compare-col-tag { font-family:var(--mono); font-size:14px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px; }
+.compare-col-name{ font-family:var(--mono); font-size:26px; font-weight:500; margin-bottom:6px; }
+.compare-col-desc{ font-family:var(--kr); font-size:23px; color:var(--paper); margin-bottom:18px; }
+.compare-li { display:flex; gap:10px; font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); padding:6px 0; border-bottom:1px solid var(--hair); }
+.compare-li:last-child { border-bottom:none; }
+.compare-li-dot { color:var(--accent); flex-shrink:0; }
+
+/* ── WHY ME (S17) ── */
+.why-list { display:flex; flex-direction:column; gap:0; margin-top:36px; }
+.why-item { display:flex; align-items:flex-start; gap:24px; padding:22px 0; border-bottom:1px solid var(--hair); }
+.why-item:first-child { border-top:1px solid var(--hair); }
+.why-marker{ width:4px; flex-shrink:0; align-self:stretch; background:var(--accent); opacity:.4; border-radius:2px; margin:2px 0; }
+.why-title{ font-family:var(--kr); font-weight:700; font-size:27px; color:var(--paper); margin-bottom:5px; }
+.why-desc { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.5; }
+
+/* ── Q&A (S18) ── */
+.qa-list { display:flex; flex-direction:column; gap:14px; margin-top:28px; }
+.qa-item { padding:18px 22px; border-bottom:1px solid var(--hair); }
+.qa-q { font-family:var(--kr); font-weight:700; font-size:23px; color:var(--accent); margin-bottom:5px; }
+.qa-a { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.55; }
+.qa-a strong { color:var(--paper); font-weight:500; }
+
+/* ── CLOSING (S19) ── */
+#s19 .close-wrap { position:absolute; left:80px; top:50%; transform:translateY(-50%); max-width:1100px; }
+#s19 .close-hero { font-family:var(--serif); font-size:128px; font-weight:400; color:var(--paper); line-height:1.08; }
+#s19 .close-hero em { color:var(--accent); font-style:normal; text-shadow:0 0 100px rgba(59,130,246,.3); }
+#s19 .close-sub  { font-family:var(--kr); font-weight:300; font-size:30px; color:var(--muted); margin-top:28px; line-height:1.7; }
+#s19 .close-links{ display:flex; gap:18px; margin-top:44px; flex-wrap:wrap; }
+.cta { display:inline-flex; align-items:center; gap:10px; padding:18px 34px; font-family:var(--kr); font-weight:500; font-size:24px; text-decoration:none; }
+.cta-blue  { background:var(--accent); color:var(--ink); }
+.cta-green { background:#10B981;       color:var(--ink); }
+
+/* ── CONTROLS ── */
+#controls {
+  position:fixed; bottom:14px; left:50%; transform:translateX(-50%); z-index:2000;
+  display:flex; align-items:center; gap:14px;
+  background:rgba(6,8,16,.92); backdrop-filter:blur(14px);
+  padding:8px 18px; border:1px solid var(--line-ac);
+}
+.ctrl-btn {
+  background:none; border:none; cursor:pointer;
+  font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); padding:4px 12px; transition:color .15s;
+}
+.ctrl-btn:hover:not(:disabled) { color:var(--accent); }
+.ctrl-btn:disabled { opacity:.22; cursor:not-allowed; }
+#pg { font-family:var(--mono); font-size:13px; letter-spacing:.1em; color:var(--muted); min-width:56px; text-align:center; }
+.dots { display:flex; gap:5px; align-items:center; }
+.dot { width:6px; height:6px; border-radius:50%; background:var(--hair); cursor:pointer; transition:all .22s; }
+.dot.on { background:var(--accent); width:16px; border-radius:3px; }
+
+/* common layout shortcut */
+.content { position:absolute; top:140px; left:80px; right:80px; bottom:130px; }
+.slide-h2 { font-family:var(--kr); font-weight:700; font-size:80px; color:var(--paper); line-height:1.15; margin-bottom:0; }
+.slide-h2 em { color:var(--accent); font-style:normal; }
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="stage">
+
+<!-- ================================================================
+  S01  표지
+================================================================ -->
+<section class="slide active" id="s01">
+  <div class="runner">
+    <span class="runner-brand">Jimmy Lee</span>
+    <span class="runner-tag">AJOU BUILD 2026</span>
+  </div>
+
+  <!-- Cover: thesis first, name second — per frontend-design skill -->
+  <div style="position:absolute;left:80px;top:130px;right:80px;">
+    <div class="kicker reveal r1">AJOU BUILD 2026 · WORKSHOP</div>
+
+    <!-- Hero thesis — the most characteristic thing -->
+    <div class="reveal r2" style="margin-top:10px;">
+      <div style="font-family:var(--kr);font-weight:300;font-size:60px;color:var(--muted);line-height:1.1;letter-spacing:-.01em;">만들고 싶은 게 있고,</div>
+      <div style="font-family:var(--serif);font-style:italic;font-size:148px;color:var(--accent);text-shadow:0 0 140px rgba(59,130,246,.28);line-height:.96;letter-spacing:-.02em;">만들 수 있는</div>
+      <div style="font-family:var(--kr);font-weight:900;font-size:98px;color:var(--paper);line-height:1.05;letter-spacing:-.02em;">사람입니다.</div>
+    </div>
+
+    <div class="rule-ac reveal r3" style="margin:28px 0;width:64px;"></div>
+
+    <!-- Name & identity — secondary -->
+    <div class="reveal r4" style="display:flex;align-items:baseline;gap:18px;">
+      <span style="font-family:var(--kr);font-weight:700;font-size:44px;color:var(--paper);">이기정</span>
+      <span style="font-family:var(--serif);font-style:italic;font-size:36px;color:var(--accent);">Jimmy</span>
+      <span style="font-family:var(--mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">융합시스템공학과 1학년 · 202620426</span>
+    </div>
+
+    <div class="reveal r5" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+      <span class="pill pill-solid">Senior Android · 7yr</span>
+      <span class="pill">● instruction-ai-with.me LIVE</span>
+      <span class="pill pill-dim">🔨 dongne.me</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>leekijung@ajou.ac.kr · github.com/SODA1127</span>
+    <span><em>01</em> / 19</span>
+  </div>
+</section>
+
+<!-- ================================================================
+  S02  WHO AM I
+================================================================ -->
+<section class="slide" id="s02">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">자기소개</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">WHO AM I</div>
+    <div class="slide-h2 reveal r2">현업 7년차가<br><em>다시 학교로 온 이유</em></div>
+    <div class="who-grid" style="margin-top:40px;">
+      <div class="who-card reveal r3">
+        <div class="who-big">7<sup>yr</sup></div>
+        <div class="who-title">현업 Android 개발자</div>
+        <div class="who-desc">쿠팡플레이 Senior Engineer<br>뱅크샐러드 · 왓챠 · 메디블록 · 바비톡</div>
+      </div>
+      <div class="who-card reveal r4">
+        <div class="who-big">85<sup>+</sup></div>
+        <div class="who-title">A/B 테스트 경험</div>
+        <div class="who-desc">쿠팡플레이 45건 + 뱅크샐러드 40건<br>데이터로 제품 개선을 체득</div>
+      </div>
+      <div class="who-card reveal r5">
+        <div class="who-big">5<sup>yr+</sup></div>
+        <div class="who-title">강의 · 멘토링</div>
+        <div class="who-desc">패스트캠퍼스 · K-digital 강사<br>부스트캠프 코드리뷰어 · SeSac 특강</div>
+      </div>
+      <div class="who-card reveal r6" style="border-bottom-color:rgba(59,130,246,.35);">
+        <div class="who-big" style="color:var(--paper);text-shadow:none;font-size:72px;">NOW</div>
+        <div class="who-title">아주대 1학년 재학</div>
+        <div class="who-desc">현업 경험 위에 기초를 더 쌓고<br>내 AI 서비스를 직접 런칭하기 위해</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>02</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S03  경력 타임라인
+================================================================ -->
+<section class="slide" id="s03">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">경력</span></div>
+  <div class="tl-wrap">
+    <div class="kicker reveal r1">CAREER TIMELINE</div>
+    <div class="slide-h2 reveal r2">7년간 쌓아온<br><em>실전의 기록</em></div>
+    <div class="tl-track">
+      <div class="tl-item reveal r3">
+        <div class="tl-dot"></div>
+        <div class="tl-period">2022.08 — 현재 · 약 4년</div>
+        <div class="tl-company">Coupang Play · Senior Android Engineer</div>
+        <div class="tl-desc">전체 UI/UX 개편 · BFF 아키텍처 · Compose 전환 · PDS 디자인 시스템<br>A/B 45건 · Couple Club <strong style="color:var(--paper);">기획→개발→특허 등록</strong> · Sports Pass 재생 지표 3배</div>
+      </div>
+      <div class="tl-item reveal r4">
+        <div class="tl-dot"></div>
+        <div class="tl-period">2020.09 — 2022.08 · 1년 11개월</div>
+        <div class="tl-company">Banksalad · Android Developer</div>
+        <div class="tl-desc">MVP→MVVM 리팩토링 · MyData API 이전 · A/B 40건 · RxJava→Coroutines · DroidKnights 발표</div>
+      </div>
+      <div class="tl-item reveal r5">
+        <div class="tl-dot"></div>
+        <div class="tl-period">2019.06 — 2020.09 · 왓챠 → 메디블록</div>
+        <div class="tl-company">Watcha · Medibloc · Android Developer</div>
+        <div class="tl-desc">왓챠피디아 · 왓챠 개발 · TDD 도입 · Fastlane CD 구축 · MvRx 아키텍처</div>
+      </div>
+      <div class="tl-item reveal r6">
+        <div class="tl-dot" style="background:var(--paper);box-shadow:none;"></div>
+        <div class="tl-period">2018.08 — 2019.06 · 11개월</div>
+        <div class="tl-company">Babitalk · Android Developer</div>
+        <div class="tl-desc">성형박사성대리 초기 개발 → 런칭 전담 · CI/CD (TravisCI + Fastlane) 직접 구현</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>03</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S04  AI 성과 수치
+================================================================ -->
+<section class="slide" id="s04">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">AI 역량</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">AI ENGINEERING IMPACT</div>
+    <div class="slide-h2 reveal r2">이론이 아닌<br><em>프로덕트에서 낸 성과</em></div>
+    <div class="impact-grid">
+      <div class="impact-item reveal r3">
+        <div class="impact-big"><span class="count-up" data-target="8" data-suffix="×">8×</span></div>
+        <div class="impact-name">테스트 작성 속도</div>
+        <div class="impact-desc">AI Agent로 ViewModel 테스트<br>1개/4h → 4개/1h 달성</div>
+      </div>
+      <div class="impact-item reveal r4">
+        <div class="impact-big"><span class="count-up" data-target="95" data-suffix="%">95%</span></div>
+        <div class="impact-name">테스트 커버리지</div>
+        <div class="impact-desc">프롬프트 엔지니어링으로<br>40% → 95% (Jacoco 기준)</div>
+      </div>
+      <div class="impact-item reveal r5">
+        <div class="impact-big"><span class="count-up" data-target="4" data-suffix="×">4×</span></div>
+        <div class="impact-name">코드 정리 속도</div>
+        <div class="impact-desc">Python 자동화로 A/B 코드<br>~3,000줄 4배 빠르게 처리</div>
+      </div>
+    </div>
+    <div class="reveal r6" style="margin-top:40px;padding:20px 24px;border-left:1px solid var(--accent);background:rgba(59,130,246,.05);">
+      <span style="font-family:var(--kr);font-weight:300;font-size:24px;color:var(--muted);">추가: Couple Club <strong style="color:var(--paper);font-weight:500;">기획→특허 등록</strong> · Sports Pass <strong style="color:var(--paper);font-weight:500;">재생 지표 3배</strong> · 바비톡 <strong style="color:var(--paper);font-weight:500;">0→1 런칭</strong></span>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>04</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S05  instruction-ai-with.me 섹션 인트로
+================================================================ -->
+<section class="slide" id="s05">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">SERVICE 01</span></div>
+  <div class="sec-intro-wrap">
+    <div class="sec-intro-left">
+      <div class="pill pill-solid reveal r1" style="margin-bottom:22px;">● LIVE · 현재 운영 중</div>
+      <div class="sec-service reveal r2">instruction-ai-with.me</div>
+      <div class="sec-headline reveal r3">AI 통합<br>교육 플랫폼</div>
+      <div class="sec-desc reveal r4">
+        교육자와 학생을 위한 멀티 AI 학습 서비스.<br>
+        Gemini · OpenAI · Claude 통합, 1인 풀스택 개발 · 운영 중.
+      </div>
+      <div class="reveal r5" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+        <span class="pill" style="font-size:16px;">FastAPI</span>
+        <span class="pill" style="font-size:16px;">React</span>
+        <span class="pill" style="font-size:16px;">Supabase</span>
+        <span class="pill" style="font-size:16px;">Docker · DigitalOcean</span>
+      </div>
+    </div>
+    <div class="sec-intro-right reveal r2">01</div>
+  </div>
+  <div class="footer"><span></span><span><em>05</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S06  교육 현장의 문제
+================================================================ -->
+<section class="slide" id="s06">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">문제 정의</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">PROBLEM</div>
+    <div class="slide-h2 reveal r2">교육 현장에서<br><em>아직도 수동으로 하는 것들</em></div>
+    <div class="prob-grid">
+      <div class="prob-card reveal r3">
+        <span class="prob-emoji">😩</span>
+        <div class="prob-title">교안 작성</div>
+        <div class="prob-body">강의 교안 하나 만드는 데 수 시간. 여러 AI를 탭 전환하며 복사 &amp; 붙여넣기.</div>
+      </div>
+      <div class="prob-card reveal r4">
+        <span class="prob-emoji">📸</span>
+        <div class="prob-title">문제 풀이</div>
+        <div class="prob-body">모르는 문제를 사진 찍어도 통합된 AI 풀이 서비스가 없음. 각자 ChatGPT로.</div>
+      </div>
+      <div class="prob-card reveal r5">
+        <span class="prob-emoji">📄</span>
+        <div class="prob-title">PDF 강의자료</div>
+        <div class="prob-body">수십 쪽 PDF를 처음부터 끝까지 읽어야 함. 핵심 요약 · 예상 문제 생성 도구 없음.</div>
+      </div>
+      <div class="prob-card reveal r6">
+        <span class="prob-emoji">🤖</span>
+        <div class="prob-title">AI 분산화</div>
+        <div class="prob-body">ChatGPT · Gemini · Claude 각각 탭 3개. 결과를 한 곳에서 비교할 방법 없음.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>06</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S07  핵심 기능
+================================================================ -->
+<section class="slide" id="s07">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">핵심 기능</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">CORE FEATURES</div>
+    <div class="slide-h2 reveal r2">하나의 플랫폼에서<br><em>멀티 AI를 통합</em></div>
+    <div class="feat-grid">
+      <div class="feat-card reveal r3">
+        <span class="feat-icon">🖼</span>
+        <div class="feat-title">이미지 분석</div>
+        <div class="feat-desc">문제 사진 → AI 단계별 풀이 + 해설 자동 생성</div>
+      </div>
+      <div class="feat-card reveal r4">
+        <span class="feat-icon">📄</span>
+        <div class="feat-title">PDF 분석</div>
+        <div class="feat-desc">강의자료 업로드 → 핵심 요약 + 예상 문제 출제</div>
+      </div>
+      <div class="feat-card reveal r5">
+        <span class="feat-icon">📝</span>
+        <div class="feat-title">교안 생성</div>
+        <div class="feat-desc">주제 입력 → 완성형 강의 교안 자동 작성</div>
+      </div>
+      <div class="feat-card reveal r6">
+        <span class="feat-icon">📒</span>
+        <div class="feat-title">오답노트</div>
+        <div class="feat-desc">틀린 문제 자동 저장 · Supabase DB 연동</div>
+      </div>
+      <div class="feat-card reveal r7">
+        <span class="feat-icon">🔐</span>
+        <div class="feat-title">Google 로그인</div>
+        <div class="feat-desc">OAuth 2.0 · 회원가입 없이 바로 사용</div>
+      </div>
+      <div class="feat-card reveal r8">
+        <span class="feat-icon">🤖</span>
+        <div class="feat-title">멀티 AI</div>
+        <div class="feat-desc">Gemini · GPT-4o · Claude 통합 · 모델 선택</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>07</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S08  현황 & 아주대 확장
+================================================================ -->
+<section class="slide" id="s08">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">현황 & 계획</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">STATUS & NEXT STEP</div>
+    <div class="slide-h2 reveal r2">이미 운영 중,<br><em>아주대로 특화합니다</em></div>
+    <div class="status-cols">
+      <div class="reveal r3">
+        <div class="status-col-label">현재 (Live)</div>
+        <div class="status-item"><span class="status-icon">✅</span>풀스택 1인 개발 · 배포 완료</div>
+        <div class="status-item"><span class="status-icon">✅</span>Gemini · GPT · Claude 통합</div>
+        <div class="status-item"><span class="status-icon">✅</span>Google OAuth + 오답노트 운영</div>
+        <div class="status-item"><span class="status-icon">✅</span>Docker · DigitalOcean 서버 운영</div>
+      </div>
+      <div class="reveal r4">
+        <div class="status-col-label">AJOU BUILD 목표</div>
+        <div class="status-item"><span class="status-icon">🎯</span>아주대 강의자료 PDF 특화 요약</div>
+        <div class="status-item"><span class="status-icon">🎯</span>시험 대비 문제 자동 생성</div>
+        <div class="status-item"><span class="status-icon">🎯</span>아주대 학생 커뮤니티 연동</div>
+        <div class="status-item"><span class="status-icon">🎯</span>프리미엄 구독 수익 모델 출시</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>08</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S09  dongne.me 섹션 인트로
+================================================================ -->
+<section class="slide" id="s09">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">SERVICE 02</span></div>
+  <div class="sec-intro-wrap">
+    <div class="sec-intro-left">
+      <div class="pill pill-dim reveal r1" style="margin-bottom:22px;border-color:rgba(52,211,153,.4);color:#34D399;">🔨 BUILDING · 구현 예정</div>
+      <div class="sec-service reveal r2" style="color:#34D399;">dongne.me</div>
+      <div class="sec-headline reveal r3">동네 AI<br>브리핑 서비스</div>
+      <div class="sec-desc reveal r4">
+        공공 OpenAPI와 지역 뉴스를 자동 수집하고<br>
+        AI가 동네별로 요약해 매일 아침 배달합니다.
+      </div>
+      <div class="sec-quote reveal r5">
+        "왜 날씨 앱처럼 동네 브리핑을 자동으로 받을 수 없는가?"
+      </div>
+    </div>
+    <div class="sec-intro-right green-pulse reveal r2" style="color:#34D399;text-shadow:0 0 160px rgba(52,211,153,.22);">02</div>
+  </div>
+  <div class="footer"><span></span><span><em>09</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S10  동네 정보 파편화 문제
+================================================================ -->
+<section class="slide" id="s10">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">문제 정의</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">PROBLEM</div>
+    <div class="slide-h2 reveal r2">동네 소식이<br><em style="color:#34D399;">어디 있는지 모릅니다</em></div>
+    <div class="prob-grid">
+      <div class="prob-card reveal r3" style="border-color:rgba(52,211,153,.2);">
+        <span class="prob-emoji">🏗</span>
+        <div class="prob-title">공사 · 교통 통제</div>
+        <div class="prob-body">언제 시작하는지 모름. 구청 홈페이지를 직접 들어가 확인해야 함.</div>
+      </div>
+      <div class="prob-card reveal r4" style="border-color:rgba(52,211,153,.2);">
+        <span class="prob-emoji">🚨</span>
+        <div class="prob-title">사건 · 사고</div>
+        <div class="prob-body">어젯밤 동네에서 무슨 일이 있었는지 뉴스 + 커뮤니티 이중 확인 필요.</div>
+      </div>
+      <div class="prob-card reveal r5" style="border-color:rgba(52,211,153,.2);">
+        <span class="prob-emoji">🎉</span>
+        <div class="prob-title">행사 · 이벤트</div>
+        <div class="prob-body">이번 주말 동네 행사 정보는 기관 SNS를 각각 팔로우해야만 알 수 있음.</div>
+      </div>
+      <div class="prob-card reveal r6" style="border-color:rgba(52,211,153,.2);">
+        <span class="prob-emoji">📰</span>
+        <div class="prob-title">지역 뉴스</div>
+        <div class="prob-body">당근 · 네이버카페는 주민이 직접 써야 생기는 구조. 공공 정보 공백이 크다.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>10</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S11  솔루션 & 경쟁 포지셔닝
+================================================================ -->
+<section class="slide" id="s11">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">솔루션</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">SOLUTION & POSITIONING</div>
+    <div class="slide-h2 reveal r2">공공데이터 + AI로<br><em style="color:#34D399;">매일 아침 자동 브리핑</em></div>
+    <div class="flow reveal r3">
+      <div class="flow-node" style="border-color:rgba(52,211,153,.35);">🌤 기상청 API</div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node" style="border-color:rgba(52,211,153,.35);">📰 네이버 뉴스</div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node" style="border-color:rgba(52,211,153,.35);">🏪 공공인허가</div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">🤖 Gemini 요약</div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node" style="border-color:rgba(52,211,153,.35);">💛 오전 8시 발송</div>
+    </div>
+    <!-- Competitive map -->
+    <div class="comp-map reveal r4">
+      <div class="comp-axis-h"></div>
+      <div class="comp-axis-v"></div>
+      <div class="comp-label" style="top:6px;left:50%;transform:translateX(-50%);">높은 자동화 (AI)</div>
+      <div class="comp-label" style="bottom:6px;left:50%;transform:translateX(-50%);">낮은 자동화 (수동)</div>
+      <div class="comp-label" style="left:8px;top:50%;transform:translateY(-50%) rotate(-90deg);">공공데이터</div>
+      <div class="comp-label" style="right:8px;top:50%;transform:translateY(-50%) rotate(90deg);">UGC</div>
+      <!-- Dots -->
+      <div class="comp-dot" style="left:70%;top:65%;width:10px;height:10px;background:rgba(251,191,36,.8);"></div>
+      <div class="comp-name" style="left:70%;top:71%;color:#FBBF24;font-size:16px;">당근마켓</div>
+      <div class="comp-dot" style="left:73%;top:26%;width:10px;height:10px;background:rgba(244,114,182,.8);"></div>
+      <div class="comp-name" style="left:73%;top:32%;color:#F472B6;font-size:16px;">Nextdoor</div>
+      <div class="comp-dot" style="left:34%;top:18%;width:10px;height:10px;background:rgba(99,102,241,.8);"></div>
+      <div class="comp-name" style="left:34%;top:24%;color:#818CF8;font-size:16px;">Patch.com</div>
+      <div class="comp-dot" style="left:29%;top:68%;width:10px;height:10px;background:rgba(34,211,238,.8);"></div>
+      <div class="comp-name" style="left:29%;top:74%;color:#22D3EE;font-size:16px;">빅카인즈</div>
+      <!-- dongne.me -->
+      <div class="comp-dot" style="left:20%;top:13%;width:16px;height:16px;background:#34D399;box-shadow:0 0 14px rgba(52,211,153,.6);"></div>
+      <div class="comp-name" style="left:20%;top:3%;color:#34D399;font-size:17px;font-weight:700;">🎯 dongne.me</div>
+    </div>
+    <div class="reveal r5" style="font-family:var(--kr);font-weight:300;font-size:22px;color:var(--muted);margin-top:12px;text-align:center;">
+      <strong style="color:#34D399;">좌상단(공공데이터 + 높은 자동화)</strong>은 국내에 아직 아무도 없습니다.
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>11</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S12  핵심 기능 (dongne)
+================================================================ -->
+<section class="slide" id="s12">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">핵심 기능</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">CORE FEATURES</div>
+    <div class="slide-h2 reveal r2">6가지 카테고리로<br><em style="color:#34D399;">동네 소식을 자동 정리</em></div>
+    <div class="feat-grid">
+      <div class="feat-card feat-card-g reveal r3">
+        <span class="feat-icon">🌤</span>
+        <div class="feat-title">날씨 브리핑</div>
+        <div class="feat-desc">기상청 동네예보 · 기온 · 강수 · 미세먼지</div>
+      </div>
+      <div class="feat-card feat-card-g reveal r4">
+        <span class="feat-icon">🚨</span>
+        <div class="feat-title">안전 · 치안</div>
+        <div class="feat-desc">경찰청 신고 통계 · 화재 출동 내역 수집</div>
+      </div>
+      <div class="feat-card feat-card-g reveal r5">
+        <span class="feat-icon">🚧</span>
+        <div class="feat-title">교통 · 도로</div>
+        <div class="feat-desc">구청 공사 예고 · 교통 통제 AI 요약</div>
+      </div>
+      <div class="feat-card feat-card-g reveal r6">
+        <span class="feat-icon">📢</span>
+        <div class="feat-title">행정 · 공지</div>
+        <div class="feat-desc">구청 · 동사무소 주요 공지 자동 수집</div>
+      </div>
+      <div class="feat-card feat-card-g reveal r7">
+        <span class="feat-icon">🎉</span>
+        <div class="feat-title">행사 · 이벤트</div>
+        <div class="feat-desc">지역 문화행사 · 주민센터 프로그램 집계</div>
+      </div>
+      <div class="feat-card feat-card-g reveal r8">
+        <span class="feat-icon">💛</span>
+        <div class="feat-title">카카오 친구톡</div>
+        <div class="feat-desc">이메일 + KakaoTalk 동시 발송 · 앱 불필요</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>12</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S13  데이터 파이프라인 & 기술 스택
+================================================================ -->
+<section class="slide" id="s13">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">기술 구조</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">PIPELINE & STACK</div>
+    <div class="slide-h2 reveal r2">수집에서 발송까지<br><em style="color:#34D399;">완전 자동화</em></div>
+    <div style="margin-top:28px;padding:24px 28px;border:1px solid rgba(52,211,153,.25);background:rgba(52,211,153,.04);" class="reveal r3">
+      <div style="font-family:var(--mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Daily Pipeline</div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="border:1px solid rgba(52,211,153,.25);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">🌤 기상청 API<br><span style="font-size:16px;color:var(--muted);">06:00 수집</span></div>
+        <span style="color:var(--accent);">+</span>
+        <div style="border:1px solid rgba(52,211,153,.25);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">📰 네이버 뉴스<br><span style="font-size:16px;color:var(--muted);">06:00 수집</span></div>
+        <span style="color:var(--accent);">+</span>
+        <div style="border:1px solid rgba(52,211,153,.25);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">🏪 공공인허가<br><span style="font-size:16px;color:var(--muted);">06:00 수집</span></div>
+        <span style="color:var(--accent);font-size:24px;">→</span>
+        <div style="border:1px solid rgba(59,130,246,.3);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">🤖 Gemini 요약<br><span style="font-size:16px;color:var(--muted);">07:00 생성</span></div>
+        <span style="color:var(--accent);font-size:24px;">→</span>
+        <div style="border:1px solid rgba(52,211,153,.25);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">📧 이메일<br><span style="font-size:16px;color:var(--muted);">08:00 발송</span></div>
+        <span style="color:var(--accent);">+</span>
+        <div style="border:1px solid rgba(251,191,36,.3);padding:12px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">💛 카카오<br><span style="font-size:16px;color:var(--muted);">08:00 발송</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;" class="reveal r4">
+      <div>
+        <div style="font-family:var(--mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">백엔드</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span class="pill pill-green" style="font-size:16px;">FastAPI + Python</span>
+          <span class="pill pill-green" style="font-size:16px;">APScheduler</span>
+          <span class="pill pill-green" style="font-size:16px;">Supabase</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">프론트 & 채널</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span class="pill" style="font-size:16px;">Next.js</span>
+          <span class="pill" style="font-size:16px;">Kakao i 오픈빌더</span>
+          <span class="pill" style="font-size:16px;">Resend</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>13</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S14  MVP & 로드맵
+================================================================ -->
+<section class="slide" id="s14">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">로드맵</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">MVP & ROADMAP</div>
+    <div class="slide-h2 reveal r2">영통구에서 시작해<br><em style="color:#34D399;">경기도로 확장</em></div>
+    <div class="roadmap">
+      <div class="road-phase reveal r3">
+        <div class="road-badge">Phase 1 · 1~6주</div>
+        <div class="road-title">MVP · 영통구</div>
+        <ul class="road-items">
+          <li>공공 API 파이프라인 구축</li>
+          <li>AI 요약 프롬프트 최적화</li>
+          <li>이메일 + 카카오 발송</li>
+          <li>아주대 학생 100명 구독</li>
+        </ul>
+        <div class="road-goal">목표: 주간 오픈율 30%+</div>
+      </div>
+      <div class="road-phase reveal r4">
+        <div class="road-badge">Phase 2 · 7~12주</div>
+        <div class="road-title" style="color:#22D3EE;">검증 · 수원시 전체</div>
+        <ul class="road-items">
+          <li>안전 · 교통 카테고리 추가</li>
+          <li>지도 기반 UI 출시</li>
+          <li>수원 8개 구로 확장</li>
+          <li>개인화 알림 설정</li>
+        </ul>
+        <div class="road-goal" style="color:#22D3EE;">목표: 구독자 1,000명</div>
+      </div>
+      <div class="road-phase reveal r5">
+        <div class="road-badge">Phase 3 · 13~24주</div>
+        <div class="road-title" style="color:#A78BFA;">성장 · 경기도</div>
+        <ul class="road-items">
+          <li>성남 · 용인 · 안양 확장</li>
+          <li>트렌드 분석 대시보드</li>
+          <li>소상공인 광고 베타</li>
+          <li>지자체 B2B 영업 시작</li>
+        </ul>
+        <div class="road-goal" style="color:#A78BFA;">목표: 구독자 10,000명</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>14</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S15  수익화 전략
+================================================================ -->
+<section class="slide" id="s15">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">수익화</span></div>
+  <div class="content">
+    <div class="kicker reveal r1" style="color:#34D399;">MONETIZATION</div>
+    <div class="slide-h2 reveal r2">세 가지 수익 모델로<br><em style="color:#34D399;">지속 가능한 서비스</em></div>
+    <div class="rev-list" style="margin-top:44px;">
+      <div class="rev-item reveal r3">
+        <span class="rev-emoji">💰</span>
+        <div class="rev-timing">단기 · MVP 이후</div>
+        <div class="rev-title">프리미엄 구독</div>
+        <div class="rev-desc">긴급 알림 · 더 많은 카테고리<br>주간 트렌드 리포트</div>
+        <div class="rev-price">월 990원</div>
+      </div>
+      <div class="rev-item reveal r4">
+        <span class="rev-emoji">🏪</span>
+        <div class="rev-timing">중기</div>
+        <div class="rev-title">지역 소상공인 광고</div>
+        <div class="rev-desc">브리핑 하단 동네 가게 소개<br>CPM 방식 · 구독자 확보 즉시 판매 가능</div>
+        <div class="rev-price">CPM</div>
+      </div>
+      <div class="rev-item reveal r5">
+        <span class="rev-emoji">🏛</span>
+        <div class="rev-timing">중장기</div>
+        <div class="rev-title">지자체 B2B</div>
+        <div class="rev-desc">구청 · 동사무소의 주민 공지 채널로 판매<br>동네 이슈 데이터 B2B 제공</div>
+        <div class="rev-price">B2B 계약</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>15</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S16  두 서비스 비교
+================================================================ -->
+<section class="slide" id="s16">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">서비스 요약</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">TWO PRODUCTS · ONE BUILDER</div>
+    <div class="slide-h2 reveal r2">두 서비스,<br><em>하나의 원칙</em></div>
+    <div class="compare-cols">
+      <div class="compare-col compare-col-1 reveal r3">
+        <div class="compare-col-tag" style="color:var(--accent);">● LIVE</div>
+        <div class="compare-col-name" style="color:var(--accent);">instruction-ai-with.me</div>
+        <div class="compare-col-desc">AI 통합 교육 플랫폼</div>
+        <div class="compare-li"><span class="compare-li-dot">✦</span>멀티 AI 통합 (Gemini · GPT · Claude)</div>
+        <div class="compare-li"><span class="compare-li-dot">✦</span>이미지 · PDF 분석 + 교안 생성</div>
+        <div class="compare-li"><span class="compare-li-dot">✦</span>현재 운영 중 · 아주대 특화 확장</div>
+      </div>
+      <div class="compare-col compare-col-2 reveal r4">
+        <div class="compare-col-tag" style="color:#34D399;">🔨 BUILDING</div>
+        <div class="compare-col-name" style="color:#34D399;">dongne.me</div>
+        <div class="compare-col-desc">동네 AI 브리핑 서비스</div>
+        <div class="compare-li"><span class="compare-li-dot" style="color:#34D399;">✦</span>공공 OpenAPI 자동 수집 파이프라인</div>
+        <div class="compare-li"><span class="compare-li-dot" style="color:#34D399;">✦</span>매일 오전 8시 AI 요약 브리핑</div>
+        <div class="compare-li"><span class="compare-li-dot" style="color:#34D399;">✦</span>이메일 + 카카오 구독 · MVP 6주</div>
+      </div>
+    </div>
+    <div class="reveal r5" style="margin-top:24px;padding:18px 24px;border-left:1px solid var(--accent);background:rgba(59,130,246,.04);">
+      <span style="font-family:var(--kr);font-weight:300;font-size:26px;color:var(--paper);">공통 원칙: <strong style="color:var(--accent);">만들어지길 기다리지 않고</strong> AI로 자동화해서 <strong style="color:#34D399;">가치를 직접 배달합니다.</strong></span>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>16</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S17  WHY ME
+================================================================ -->
+<section class="slide" id="s17">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">선발 이유</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">WHY ME</div>
+    <div class="slide-h2 reveal r2">이기정이어야<br><em>하는 이유</em></div>
+    <div class="why-list">
+      <div class="why-item reveal r3">
+        <div class="why-marker"></div>
+        <div><div class="why-title">이미 만들고 배포했습니다</div>
+        <div class="why-desc">instruction-ai-with.me 지금 운영 중. 개발 · 인프라 · 배포까지 1인 전담 — "만들겠다"가 아닌 "이미 만들었다."</div></div>
+      </div>
+      <div class="why-item reveal r4">
+        <div class="why-marker"></div>
+        <div><div class="why-title">현업 프로덕트에서 검증된 AI 활용</div>
+        <div class="why-desc">쿠팡 프로덕트에서 AI로 테스트 8배 · 커버리지 95%. 이론이 아닌 실제 서비스에서 AI를 써온 경험.</div></div>
+      </div>
+      <div class="why-item reveal r5">
+        <div class="why-marker"></div>
+        <div><div class="why-title">기획 → 개발 → 특허 → 런칭 전 사이클</div>
+        <div class="why-desc">A/B 85건+, 특허 등록, 0→1 런칭. 서비스 처음부터 끝까지 책임져본 사람.</div></div>
+      </div>
+      <div class="why-item reveal r6">
+        <div class="why-marker"></div>
+        <div><div class="why-title">팀 전체를 끌어올리는 동료</div>
+        <div class="why-desc">5년+ 강의 · 멘토링 · 컨퍼런스 발표. 내 성과뿐 아니라 함께하는 동료도 성장시킵니다.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>17</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S18  Q&A 준비
+================================================================ -->
+<section class="slide" id="s18">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">예상 질문</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">Q &amp; A PREP</div>
+    <div class="slide-h2 reveal r2">예상 질문 &amp;<br><em>핵심 답변</em></div>
+    <div class="qa-list">
+      <div class="qa-item reveal r3">
+        <div class="qa-q">Q. 현업이 있는데 왜 학교를 다시 다니나요?</div>
+        <div class="qa-a">7년 경험 위에 기초를 더 단단히 쌓고, <strong>회사 제품이 아닌 내 서비스를 직접 런칭</strong>하고 싶어서입니다.</div>
+      </div>
+      <div class="qa-item reveal r4">
+        <div class="qa-q">Q. instruction-ai-with.me가 있는데 dongne.me도 하려는 이유는?</div>
+        <div class="qa-a">두 서비스는 대상이 다릅니다. 교육 수요 vs 하이퍼로컬 정보 수요. 스택이 같아서 <strong>병행 개발이 가능</strong>합니다.</div>
+      </div>
+      <div class="qa-item reveal r5">
+        <div class="qa-q">Q. dongne.me MVP는 언제까지 나오나요?</div>
+        <div class="qa-a">영통구 단일 지역으로 <strong>6주 내 베타 오픈</strong> 목표. 기상청 · 네이버 API는 무료, 스택은 이미 검증됨.</div>
+      </div>
+      <div class="qa-item reveal r6">
+        <div class="qa-q">Q. 팀에서 어떤 역할을 맡나요?</div>
+        <div class="qa-a">개발 · 설계는 혼자 가능. <strong>사용자 확보에 강한 성장형 멤버</strong>와 짝을 이루면 시너지가 극대화됩니다.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span></span><span><em>18</em> / 19</span></div>
+</section>
+
+<!-- ================================================================
+  S19  마무리
+================================================================ -->
+<section class="slide" id="s19">
+  <div class="runner"><span class="runner-brand">Jimmy Lee</span><span class="runner-tag">READY TO LAUNCH</span></div>
+
+  <div class="close-wrap">
+    <div class="kicker reveal r1">CLOSING</div>
+    <div class="close-hero reveal r2">
+      만들고 싶은 게 있고,<br><em>만들 수 있는</em> 사람입니다.
+    </div>
+    <div class="close-sub reveal r3">
+      두 서비스를 AJOU BUILD와 함께 직접 런칭하겠습니다.
+    </div>
+    <div class="close-links reveal r4">
+      <a href="https://www.instruction-ai-with.me" target="_blank" class="cta cta-blue">🚀 instruction-ai-with.me</a>
+      <a href="https://dongne.me" target="_blank" class="cta cta-green">🌿 dongne.me</a>
+    </div>
+    <div class="reveal r5" style="margin-top:36px;font-family:var(--mono);font-size:18px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">
+      leekijung@ajou.ac.kr · github.com/SODA1127
+    </div>
+  </div>
+
+  <div class="footer"><span></span><span><em>19</em> / 19</span></div>
+</section>
+
+</main>
+</div><!-- .deck-viewport -->
+
+<!-- ── Controls ── -->
+<div id="controls">
+  <button class="ctrl-btn" id="btnPrev" disabled>← Prev</button>
+  <div class="dots" id="dots"></div>
+  <span id="pg">1 / 19</span>
+  <button class="ctrl-btn" id="btnNext">Next →</button>
+</div>
+
+<script>
+/* ============================================================
+   Slide Presentation Controller
+   ============================================================ */
+const stage  = document.getElementById('stage');
+const slides = Array.from(document.querySelectorAll('.slide'));
+const btnPrev= document.getElementById('btnPrev');
+const btnNext= document.getElementById('btnNext');
+const pgEl   = document.getElementById('pg');
+const dotsEl = document.getElementById('dots');
+const total  = slides.length;
+let cur = 0;
+let busy = false;
+
+/* Scale stage to viewport */
+function scaleStage() {
+  const s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  const x = (window.innerWidth  - 1920*s) / 2;
+  const y = (window.innerHeight - 1080*s) / 2;
+  stage.style.transform = `translate(${x}px,${y}px) scale(${s})`;
+}
+scaleStage();
+window.addEventListener('resize', scaleStage);
+
+/* Build dots */
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  d.addEventListener('click', () => go(i));
+  dotsEl.appendChild(d);
+});
+const dots = Array.from(dotsEl.querySelectorAll('.dot'));
+
+/* Count-up animation for impact stats (S04) */
+function countUp(el, target, suffix, duration) {
+  const start = performance.now();
+  const isFloat = String(target).includes('.');
+  function frame(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = isFloat
+      ? (target * ease).toFixed(1)
+      : Math.round(target * ease);
+    el.textContent = val + suffix;
+    if (t < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* Crossfade transition */
+function go(idx) {
+  if (idx < 0 || idx >= total || idx === cur || busy) return;
+  busy = true;
+
+  const prev = cur;
+  slides[prev].classList.add('leaving');
+  slides[prev].classList.remove('active');
+  dots[prev].classList.remove('on');
+
+  cur = idx;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('on');
+
+  // Reset reveal animations by toggling active
+  setTimeout(() => {
+    slides[prev].classList.remove('leaving');
+    busy = false;
+  }, 400);
+
+  pgEl.textContent = `${cur + 1} / ${total}`;
+  btnPrev.disabled = cur === 0;
+  btnNext.disabled = cur === total - 1;
+  btnNext.textContent = cur === total - 1 ? '완료 ✓' : 'Next →';
+
+  // S04: trigger count-up when entering the impact slide
+  if (slides[cur].id === 's04') {
+    setTimeout(() => {
+      const nums = slides[cur].querySelectorAll('.count-up');
+      nums.forEach(n => {
+        const target  = parseFloat(n.dataset.target);
+        const suffix  = n.dataset.suffix || '';
+        countUp(n, target, suffix, 1100);
+      });
+    }, 300);
+  }
+}
+
+btnPrev.addEventListener('click', () => go(cur - 1));
+btnNext.addEventListener('click', () => go(cur + 1));
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))         { e.preventDefault(); go(cur - 1); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 48) dx < 0 ? go(cur + 1) : go(cur - 1);
+}, {passive:true});
+</script>
+</body>
+</html>
