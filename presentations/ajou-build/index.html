@@ -475,18 +475,28 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">SERVICE 01</span></div>
   <div class="sec-intro-wrap">
     <div class="sec-intro-left">
-      <div class="pill pill-solid reveal r1" style="margin-bottom:22px;">● LIVE · 현재 운영 중</div>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:22px;" class="reveal r1">
+        <div class="pill pill-solid">● LIVE · 현재 운영 중</div>
+        <div class="pill pill-dim" style="font-size:14px;">⏱ 개발 기간 약 1주</div>
+      </div>
       <div class="sec-service reveal r2">instruction-ai-with.me</div>
       <div class="sec-headline reveal r3">AI 통합<br>교육 플랫폼</div>
       <div class="sec-desc reveal r4">
         교육자와 학생을 위한 멀티 AI 학습 서비스.<br>
-        Gemini · OpenAI · Claude 통합, 1인 풀스택 개발 · 운영 중.
+        1인 풀스택 · 약 1주 만에 개발 · 배포 · 운영 중.
       </div>
-      <div class="reveal r5" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-        <span class="pill" style="font-size:16px;">FastAPI</span>
-        <span class="pill" style="font-size:16px;">React</span>
-        <span class="pill" style="font-size:16px;">Supabase</span>
-        <span class="pill" style="font-size:16px;">Docker · DigitalOcean</span>
+      <div class="reveal r5" style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <span style="font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Web</span>
+          <span class="pill" style="font-size:15px;">FastAPI</span>
+          <span class="pill" style="font-size:15px;">React</span>
+          <span class="pill" style="font-size:15px;">Supabase</span>
+          <span class="pill" style="font-size:15px;">Docker · DigitalOcean</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <span style="font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">App</span>
+          <span class="pill pill-dim" style="font-size:15px;border-color:rgba(167,139,250,.4);color:#A78BFA;">🔨 Flutter · 멀티 플랫폼 앱 구축 준비 중</span>
+        </div>
       </div>
     </div>
     <div class="sec-intro-right reveal r2">01</div>
