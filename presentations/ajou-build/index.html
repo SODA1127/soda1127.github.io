@@ -564,51 +564,45 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">핵심 기능</span></div>
   <div class="content" style="top:120px;">
     <div class="kicker reveal r1">CORE FEATURES · 10 FUNCTIONS</div>
-    <div class="slide-h2 reveal r2" style="font-size:68px;">수강생 · 교육자 모드로<br><em>나뉜 AI 기능들</em></div>
+    <div class="slide-h2 reveal r2" style="font-size:68px;">수강생 · 교육자<br><em>두 모드 모두 전 기능 사용</em></div>
 
-    <!-- 두 모드 컬럼 -->
-    <div class="reveal r3" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px;">
-
-      <!-- 수강생 모드 -->
-      <div style="border:1px solid var(--line-ac);background:rgba(59,130,246,.04);padding:20px 22px;">
-        <div style="font-family:var(--mono);font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span>수강생 모드
-        </div>
-        <div style="display:flex;flex-direction:column;gap:0;">
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">🖼 이미지 문제 분석기<span style="margin-left:auto;font-size:18px;color:var(--muted);">문제 사진 → AI 풀이</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">📄 PDF 문서 분석기<span style="margin-left:auto;font-size:18px;color:var(--muted);">강의자료 요약 + 문제 출제</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">🧠 단계별 풀이 생성기<span style="margin-left:auto;font-size:18px;color:var(--muted);">개념 → 과정 → 정답</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">💻 프로그래밍 코드 분석기<span style="margin-left:auto;font-size:18px;color:var(--muted);">코드 오류 · 개선 제안</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">💬 교육 상담 챗봇<span style="margin-left:auto;font-size:18px;color:var(--muted);">학습 궁금증 즉시 해결</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">📒 나의 오답노트<span style="margin-left:auto;font-size:18px;color:var(--muted);">틀린 문제 자동 저장</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-family:var(--kr);font-size:22px;color:var(--paper);">📊 퀴즈 갤러리<span style="margin-left:auto;font-size:18px;color:var(--muted);">퀴즈 공유 &amp; 탐색 갤러리</span></div>
-        </div>
+    <!-- 모드 안내 -->
+    <div class="reveal r3" style="display:flex;align-items:center;gap:12px;margin-top:18px;">
+      <div style="display:flex;gap:8px;">
+        <span style="padding:5px 16px;border:1px solid var(--line-ac);background:rgba(59,130,246,.1);font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:var(--accent);">수강생 모드</span>
+        <span style="padding:5px 16px;border:1px solid rgba(167,139,250,.4);background:rgba(167,139,250,.1);font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:#A78BFA;">교육자 모드</span>
       </div>
+      <span style="font-family:var(--kr);font-weight:300;font-size:20px;color:var(--muted);">— 모드 전환 시 동일한 10개 메뉴 모두 접근 가능</span>
+    </div>
 
-      <!-- 교육자 모드 -->
+    <!-- 전체 기능 2컬럼 리스트 -->
+    <div class="reveal r4" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px;border:1px solid var(--hair);">
+      <div style="border-right:1px solid var(--hair);">
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">🖼 이미지 문제 분석기<span style="margin-left:auto;font-size:17px;color:var(--muted);">문제 사진 → AI 풀이</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">📄 PDF 문서 분석기<span style="margin-left:auto;font-size:17px;color:var(--muted);">강의자료 요약 + 문제 출제</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">🧠 단계별 풀이 생성기<span style="margin-left:auto;font-size:17px;color:var(--muted);">개념 → 과정 → 정답</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">📝 교안 생성기<span style="margin-left:auto;font-size:17px;color:var(--muted);">주제 → 완성형 교안</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">📋 평가문항 생성기<span style="margin-left:auto;font-size:17px;color:var(--muted);">시험 문제 자동 출제</span></div>
+      </div>
       <div>
-        <div style="border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.04);padding:20px 22px;margin-bottom:16px;">
-          <div style="font-family:var(--mono);font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#A78BFA;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:#A78BFA;display:inline-block;"></span>교육자 모드
-          </div>
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">📝 교안 생성기<span style="margin-left:auto;font-size:18px;color:var(--muted);">주제 → 완성형 교안</span></div>
-            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:22px;color:var(--paper);">📋 평가문항 생성기<span style="margin-left:auto;font-size:18px;color:var(--muted);">시험 문제 자동 출제</span></div>
-            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-family:var(--kr);font-size:22px;color:var(--paper);">📤 피드백 보내기<span style="margin-left:auto;font-size:18px;color:var(--muted);">수강생 과제 AI 첨삭</span></div>
-          </div>
-        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">💻 프로그래밍 코드 분석기<span style="margin-left:auto;font-size:17px;color:var(--muted);">코드 오류 · 개선 제안</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">💬 교육 상담 챗봇<span style="margin-left:auto;font-size:17px;color:var(--muted);">학습 궁금증 즉시 해결</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">📤 피드백 보내기<span style="margin-left:auto;font-size:17px;color:var(--muted);">과제 AI 첨삭</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-family:var(--kr);font-size:21px;color:var(--paper);">📒 나의 오답노트<span style="margin-left:auto;font-size:17px;color:var(--muted);">틀린 문제 자동 저장</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 18px;font-family:var(--kr);font-size:21px;color:var(--paper);">📊 퀴즈 갤러리<span style="margin-left:auto;font-size:17px;color:var(--muted);">퀴즈 공유 &amp; 탐색</span></div>
+      </div>
+    </div>
 
-        <!-- 향후 개발 예정 -->
-        <div style="border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.04);padding:18px 20px;">
-          <div style="font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#FBBF24;margin-bottom:12px;">Roadmap · 추가 개발 예정</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            <span style="font-family:var(--kr);font-size:19px;color:var(--muted);padding:5px 12px;border:1px solid rgba(251,191,36,.2);">📈 학습 분석 리포트</span>
-            <span style="font-family:var(--kr);font-size:19px;color:var(--muted);padding:5px 12px;border:1px solid rgba(251,191,36,.2);">🗺 AI 학습 경로 추천</span>
-            <span style="font-family:var(--kr);font-size:19px;color:var(--muted);padding:5px 12px;border:1px solid rgba(251,191,36,.2);">👥 실시간 그룹 학습</span>
-            <span style="font-family:var(--kr);font-size:19px;color:var(--muted);padding:5px 12px;border:1px solid rgba(251,191,36,.2);">📱 모바일 앱</span>
-            <span style="font-family:var(--kr);font-size:19px;color:var(--muted);padding:5px 12px;border:1px solid rgba(251,191,36,.2);">🏫 LMS 연동</span>
-          </div>
-        </div>
+    <!-- 향후 개발 예정 -->
+    <div class="reveal r5" style="border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.04);padding:14px 18px;margin-top:14px;display:flex;align-items:center;gap:16px;">
+      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#FBBF24;flex-shrink:0;">Roadmap</div>
+      <div style="width:1px;height:28px;background:rgba(251,191,36,.2);flex-shrink:0;"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-family:var(--kr);font-size:18px;color:var(--muted);padding:4px 12px;border:1px solid rgba(251,191,36,.2);">📈 학습 분석 리포트</span>
+        <span style="font-family:var(--kr);font-size:18px;color:var(--muted);padding:4px 12px;border:1px solid rgba(251,191,36,.2);">🗺 AI 학습 경로 추천</span>
+        <span style="font-family:var(--kr);font-size:18px;color:var(--muted);padding:4px 12px;border:1px solid rgba(251,191,36,.2);">👥 실시간 그룹 학습</span>
+        <span style="font-family:var(--kr);font-size:18px;color:var(--muted);padding:4px 12px;border:1px solid rgba(251,191,36,.2);">📱 모바일 앱</span>
+        <span style="font-family:var(--kr);font-size:18px;color:var(--muted);padding:4px 12px;border:1px solid rgba(251,191,36,.2);">🏫 LMS 연동</span>
       </div>
     </div>
   </div>
