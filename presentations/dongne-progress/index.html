@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dongne.me 중간 발표 | AJOU BUILD 2026</title>
+<title>dongne.me 진행 발표 | AJOU BUILD 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -46,9 +46,10 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
 .r5{transition-delay:.48s}.r6{transition-delay:.58s}.r7{transition-delay:.68s}.r8{transition-delay:.78s}
 .count-up { font-variant-numeric:tabular-nums; }
 
-.content { position:absolute; top:140px; left:80px; right:80px; bottom:130px; }
-.kicker { font-family:var(--mono); font-size:18px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
-.slide-h2 { font-family:var(--kr); font-weight:700; font-size:76px; color:var(--paper); line-height:1.14; }
+.content { position:absolute; top:132px; left:80px; right:80px; bottom:118px; }
+.kicker { font-family:var(--mono); font-size:18px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+.slide-h2 { font-family:var(--kr); font-weight:700; font-size:70px; color:var(--paper); line-height:1.14; }
+.slide-h2.sm { font-size:56px; }
 .slide-h2 em { color:var(--accent); font-style:normal; }
 .rule-ac { height:1px; background:var(--accent); opacity:.4; }
 .pill { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--accent); color:var(--accent);
@@ -56,47 +57,86 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
 .pill-solid { background:var(--accent); color:var(--ink); }
 .pill-dim { border-color:var(--hair); color:var(--muted); }
 .pill-amber { border-color:rgba(251,191,36,.45); color:#FBBF24; }
+.pill-blue { border-color:rgba(59,130,246,.45); color:#60A5FA; }
 
 /* impact */
-.impact-grid { display:flex; gap:0; margin-top:40px; }
-.impact-item { flex:1; padding-right:40px; border-right:1px solid var(--hair); margin-right:40px; }
+.impact-grid { display:flex; gap:0; margin-top:44px; }
+.impact-item { flex:1; padding-right:34px; border-right:1px solid var(--hair); margin-right:34px; }
 .impact-item:last-child { border-right:none; margin-right:0; padding-right:0; }
-.impact-big { font-family:var(--serif); font-weight:400; font-size:120px; line-height:.85; color:var(--accent); text-shadow:0 0 80px var(--ac-glow); margin-bottom:14px; }
-.impact-name { font-family:var(--kr); font-weight:700; font-size:28px; color:var(--paper); margin-bottom:6px; }
-.impact-desc { font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.5; }
+.impact-big { font-family:var(--serif); font-weight:400; font-size:104px; line-height:.85; color:var(--accent); text-shadow:0 0 80px var(--ac-glow); margin-bottom:14px; }
+.impact-name { font-family:var(--kr); font-weight:700; font-size:25px; color:var(--paper); margin-bottom:6px; }
+.impact-desc { font-family:var(--kr); font-weight:300; font-size:20px; color:var(--muted); line-height:1.5; }
 
 /* feature grid */
-.feat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:34px; }
-.feat-card { padding:26px 26px; border:1px solid var(--line-ac); background:rgba(52,211,153,.04); }
+.feat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:32px; }
+.feat-grid.g3 { grid-template-columns:repeat(3,1fr); }
+.feat-card { padding:26px 28px; border:1px solid var(--line-ac); background:rgba(52,211,153,.04); }
 .feat-card.blue { border-color:rgba(59,130,246,.28); background:rgba(59,130,246,.04); }
 .feat-card.amber { border-color:rgba(251,191,36,.3); background:rgba(251,191,36,.05); }
-.feat-icon { font-size:30px; margin-bottom:12px; display:block; }
-.feat-title { font-family:var(--kr); font-weight:700; font-size:27px; color:var(--paper); margin-bottom:8px; }
+.feat-icon { font-size:28px; margin-bottom:10px; display:block; }
+.feat-title { font-family:var(--kr); font-weight:700; font-size:25px; color:var(--paper); margin-bottom:8px; }
 .feat-title .tag { font-family:var(--mono); font-size:13px; letter-spacing:.08em; margin-left:10px; color:var(--accent); text-transform:uppercase; vertical-align:middle; }
-.feat-title .tag.wip { color:#FBBF24; }
 .feat-list { list-style:none; }
-.feat-list li { display:flex; gap:10px; font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.5; padding:4px 0; }
-.feat-list li::before { content:'›'; color:var(--accent); font-weight:700; flex-shrink:0; }
+/* 마커를 flex 아이템이 아니라 절대배치로 둔다 — flex로 하면 항목 안의
+   <b>·<code> 같은 인라인 요소가 저마다 flex 아이템이 되어 줄이 깨진다 */
+.feat-list li { position:relative; padding:5px 0 5px 21px; font-family:var(--kr); font-weight:300; font-size:20px; color:var(--muted); line-height:1.5; }
+.feat-list li::before { content:'›'; position:absolute; left:0; top:3px; color:var(--accent); font-weight:700; }
+.feat-list li b { color:var(--paper); font-weight:500; }
 
 /* flow */
-.flow { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:30px; }
-.flow-node { padding:16px 22px; border:1px solid var(--line-ac); font-family:var(--kr); font-weight:500; font-size:22px; color:var(--paper); background:rgba(52,211,153,.05); text-align:center; }
-.flow-node small { display:block; font-size:15px; color:var(--muted); margin-top:4px; }
+.flow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:28px; }
+.flow-node { padding:14px 18px; border:1px solid var(--line-ac); font-family:var(--kr); font-weight:500; font-size:20px; color:var(--paper); background:rgba(52,211,153,.05); text-align:center; }
+.flow-node small { display:block; font-size:14px; color:var(--muted); margin-top:4px; }
 .flow-node.ai { border-color:rgba(59,130,246,.35); background:rgba(59,130,246,.06); }
-.flow-arr { color:var(--accent); font-size:24px; }
+.flow-arr { color:var(--accent); font-size:22px; }
 
 /* section intro */
 .sec-intro-wrap { position:absolute; inset:0; display:flex; align-items:center; }
 .sec-intro-left { padding:0 0 0 80px; flex:1; }
-.sec-intro-right { font-family:var(--serif); font-weight:800; font-size:420px; line-height:.82; color:var(--accent); text-shadow:0 0 160px var(--ac-glow); letter-spacing:-.04em; padding-right:60px; flex-shrink:0; opacity:.7; }
-.sec-service { font-family:var(--mono); font-size:26px; letter-spacing:.06em; color:var(--accent); margin-bottom:16px; }
-.sec-headline { font-family:var(--kr); font-weight:700; font-size:64px; color:var(--paper); line-height:1.15; margin-bottom:20px; }
-.sec-desc { font-family:var(--kr); font-weight:300; font-size:26px; color:var(--muted); line-height:1.6; max-width:720px; }
+.sec-intro-right { font-family:var(--serif); font-weight:800; font-size:400px; line-height:.82; color:var(--accent); text-shadow:0 0 160px var(--ac-glow); letter-spacing:-.04em; padding-right:60px; flex-shrink:0; opacity:.7; }
+.sec-service { font-family:var(--mono); font-size:24px; letter-spacing:.06em; color:var(--accent); margin-bottom:16px; }
+.sec-headline { font-family:var(--kr); font-weight:700; font-size:60px; color:var(--paper); line-height:1.15; margin-bottom:20px; }
+.sec-desc { font-family:var(--kr); font-weight:300; font-size:24px; color:var(--muted); line-height:1.6; max-width:720px; }
 
 /* stack */
-.stack-row { display:flex; gap:16px; margin-top:22px; align-items:flex-start; }
+.stack-row { display:flex; gap:16px; margin-top:20px; align-items:flex-start; }
 .stack-label { width:150px; flex-shrink:0; font-family:var(--mono); font-size:15px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding-top:8px; }
 .stack-pills { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ── 화면 캡처 ─────────────────────────────────────────────────────── */
+/* 실제 서비스 화면임이 드러나도록 브라우저 창 테두리를 씌운다 */
+.shot { border:1px solid var(--hair); background:#0C1512; box-shadow:0 30px 90px rgba(0,0,0,.55); }
+.shot-bar { display:flex; align-items:center; gap:7px; padding:9px 14px; background:rgba(237,241,245,.06); border-bottom:1px solid var(--hair); }
+.shot-dot { width:9px; height:9px; border-radius:50%; background:rgba(237,241,245,.2); }
+.shot-url { margin-left:12px; font-family:var(--mono); font-size:13px; letter-spacing:.05em; color:var(--muted); }
+.shot img { display:block; width:100%; height:auto; }
+/* 세로로 넘치는 캡처는 위에서부터 잘라 보여준다 */
+.shot-clip { overflow:hidden; }
+.shot-clip img { max-height:none; }
+
+.split { display:flex; gap:44px; align-items:flex-start; margin-top:26px; }
+.split-text { width:560px; flex-shrink:0; }
+.split-shot { flex:1; min-width:0; }
+.split.rev { flex-direction:row-reverse; }
+.note { margin-top:22px; padding:18px 24px; border-left:1px solid var(--accent); background:rgba(52,211,153,.05);
+  font-family:var(--kr); font-weight:300; font-size:21px; color:var(--muted); line-height:1.6; }
+.note b { color:var(--paper); font-weight:500; }
+.note.amber { border-left-color:#FBBF24; background:rgba(251,191,36,.05); }
+
+/* 표 */
+.tbl { width:100%; border-collapse:collapse; margin-top:26px; font-family:var(--kr); }
+.tbl th { text-align:left; font-family:var(--mono); font-size:14px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--accent); font-weight:400; padding:0 16px 12px 0; border-bottom:1px solid var(--line-ac); }
+.tbl td { padding:17px 16px 17px 0; border-bottom:1px solid var(--hair); font-size:22px; font-weight:300; color:var(--muted); vertical-align:top; }
+.tbl td b { color:var(--paper); font-weight:500; }
+.tbl td.num { font-family:var(--mono); color:var(--accent); font-size:20px; white-space:nowrap; }
+
+/* 문제/해결 */
+.pz { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:26px; }
+.pz-item { padding:24px 28px; border:1px solid var(--hair); background:rgba(237,241,245,.02); }
+.pz-p { font-family:var(--kr); font-weight:700; font-size:23px; color:#F87171; margin-bottom:8px; }
+.pz-s { font-family:var(--kr); font-weight:300; font-size:20px; color:var(--muted); line-height:1.55; }
+.pz-s b { color:var(--accent); font-weight:500; }
 
 /* controls */
 #controls { position:fixed; bottom:14px; left:50%; transform:translateX(-50%); z-index:2000; display:flex; align-items:center; gap:14px;
@@ -113,294 +153,849 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
 <div class="deck-viewport">
 <main class="deck-stage" id="stage">
 
-<!-- S01 COVER -->
+<!-- ═══ S01 COVER ═══ -->
 <section class="slide active" id="s01">
-  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">AJOU BUILD 2026 · 중간 발표</span></div>
-  <div style="position:absolute;left:80px;top:150px;right:80px;">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">AJOU BUILD 2026 · 진행 발표</span></div>
+  <div style="position:absolute;left:80px;top:196px;right:80px;">
     <div class="kicker reveal r1">DONGNE.ME · PROGRESS REPORT</div>
     <div class="reveal r2" style="margin-top:6px;">
-      <div style="font-family:var(--kr);font-weight:300;font-size:52px;color:var(--muted);line-height:1.15;">기획서의 <span style="color:#FBBF24;">‘구현 예정’</span>을,</div>
-      <div style="font-family:var(--serif);font-weight:800;font-size:132px;color:var(--accent);text-shadow:0 0 140px var(--ac-glow);line-height:.98;letter-spacing:-.03em;">동작하는 서비스로.</div>
+      <div style="font-family:var(--kr);font-weight:300;font-size:46px;color:var(--muted);line-height:1.2;">기획서에 <span style="color:#FBBF24;">‘구현 예정’</span>으로 남겨둔 기능들이,</div>
+      <!-- Syne는 한글 글리프가 없어 대체 폰트로 떨어진다. 한글 큰 제목은 Noto 900으로 -->
+      <div style="font-family:var(--kr);font-weight:900;font-size:124px;color:var(--accent);text-shadow:0 0 140px var(--ac-glow);line-height:1.06;letter-spacing:-.04em;">이제 동작합니다</div>
     </div>
     <div class="rule-ac reveal r3" style="margin:26px 0;width:64px;"></div>
-    <div class="reveal r4" style="font-family:var(--kr);font-weight:300;font-size:30px;color:var(--paper);line-height:1.5;">
-      공공데이터 · 지역 뉴스 · 가게 리뷰를 <strong style="color:var(--accent);font-weight:700;">AI가 매일 요약</strong>하는<br>동네 하이퍼로컬 브리핑 — <strong style="color:var(--paper);">이번 스프린트 구현 현황</strong>
+    <div class="reveal r4" style="font-family:var(--kr);font-weight:300;font-size:28px;color:var(--paper);line-height:1.55;">
+      공공데이터 · 지역 뉴스 · 가게 리뷰 · 커뮤니티 글을 매일 모아 <strong style="color:var(--accent);font-weight:700;">AI가 정리하는</strong> 수원 하이퍼로컬 서비스<br>
+      <strong style="color:var(--paper);">피드 · 지도 · 주간 추천 · 모임</strong>까지 이번 스프린트에 열렸습니다
     </div>
-    <div class="reveal r5" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:34px;">
-      <span class="pill pill-solid">FastAPI</span>
-      <span class="pill">Next.js 15</span>
-      <span class="pill">Supabase</span>
-      <span class="pill">Gemini</span>
-      <span class="pill">Playwright</span>
-      <span class="pill">네이버 지도</span>
+    <div class="reveal r5" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:32px;">
+      <span class="pill pill-solid">가게 587</span>
+      <span class="pill">피드 377</span>
+      <span class="pill">수집기 9종</span>
+      <span class="pill">API 69</span>
+      <span class="pill">화면 20</span>
+      <span class="pill">마이그레이션 30</span>
     </div>
   </div>
-  <div class="footer"><span>이기정 · 융합시스템공학과 · github.com/SODA1127</span><span><em>01</em> / 10</span></div>
+  <div class="footer"><span>이기정 · 융합시스템공학과 · github.com/SODA1127</span><span><em>01</em> / 25</span></div>
 </section>
 
-<!-- S02 IMPACT -->
+<!-- ═══ S02 문제 ═══ -->
 <section class="slide" id="s02">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">왜 만드는가</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">THE PROBLEM</div>
+    <div class="slide-h2 reveal r2">동네 정보는 있는데,<br><em>한 군데에 모여 있지 않습니다</em></div>
+    <div class="feat-grid g3 reveal r3" style="margin-top:44px;">
+      <div class="feat-card">
+        <span class="feat-icon">🧩</span>
+        <div class="feat-title">흩어져 있다</div>
+        <ul class="feat-list">
+          <li>시청 공지·지역 신문·맘카페·블로그·유튜브·당근</li>
+          <li>매일 <b>6~7군데</b>를 따로 들어가야 안다</li>
+        </ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🕒</span>
+        <div class="feat-title">지나가 버린다</div>
+        <ul class="feat-list">
+          <li>행사·축제는 <b>끝나고 나서</b> 알게 된다</li>
+          <li>새로 생긴 가게도 한참 뒤에 안다</li>
+        </ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📍</span>
+        <div class="feat-title">‘어디’가 빠져 있다</div>
+        <ul class="feat-list">
+          <li>글에 가게 이름은 있는데 <b>위치가 없다</b></li>
+          <li>결국 지도 앱을 다시 켜서 검색</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note reveal r4" style="margin-top:34px;">
+      그래서 <b>“수집 → AI 정리 → 지도 위 한 화면”</b>을 하나의 서비스로 붙였습니다.
+      읽는 곳과 쓰는 곳(피드·모임)을 같은 자리에 두어, 정보 소비가 곧 동네 커뮤니티가 되게 했습니다.
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>02</em> / 25</span></div>
+</section>
+
+<!-- ═══ S03 숫자 ═══ -->
+<section class="slide" id="s03">
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">한눈에</span></div>
   <div class="content">
-    <div class="kicker reveal r1">THIS SPRINT — 숫자로 보는 진행</div>
-    <div class="slide-h2 reveal r2">계획을 넘어<br><em>실제 데이터가 흐르기 시작했습니다</em></div>
+    <div class="kicker reveal r1">BY THE NUMBERS — 실제 DB 기준</div>
+    <div class="slide-h2 reveal r2 sm">계획이 아니라<br><em>이미 쌓여 있는 데이터입니다</em></div>
     <div class="impact-grid">
       <div class="impact-item reveal r3">
-        <div class="impact-big"><span class="count-up" data-target="5" data-suffix="">5</span></div>
-        <div class="impact-name">자동 수집 카테고리</div>
-        <div class="impact-desc">날씨·뉴스·인허가·<br>가게·블로그 매일 수집</div>
+        <div class="impact-big"><span class="count-up" data-target="587">587</span></div>
+        <div class="impact-name">수원 전역 가게</div>
+        <div class="impact-desc">44개 동 × 6개 업종 스윕<br>좌표 100% · 사진 392곳</div>
       </div>
       <div class="impact-item reveal r4">
-        <div class="impact-big"><span class="count-up" data-target="50" data-suffix="">50</span></div>
-        <div class="impact-name">등록된 동네 가게</div>
-        <div class="impact-desc">stores 테이블 +<br>AI 리뷰 요약 캐시</div>
+        <div class="impact-big"><span class="count-up" data-target="359">359</span></div>
+        <div class="impact-name">AI 리뷰 요약</div>
+        <div class="impact-desc">네이버 리뷰 크롤 →<br>2~3문장 요약 캐시</div>
       </div>
       <div class="impact-item reveal r5">
-        <div class="impact-big"><span class="count-up" data-target="10" data-suffix="">10</span></div>
-        <div class="impact-name">가게당 크롤 리뷰</div>
-        <div class="impact-desc">네이버 리뷰 최근 10개<br>→ Gemini 한 줄 요약</div>
+        <div class="impact-big"><span class="count-up" data-target="377">377</span></div>
+        <div class="impact-name">수집된 피드 글</div>
+        <div class="impact-desc">뉴스·시신문·블로그·커뮤니티<br>유튜브·행사·시정소식</div>
+      </div>
+      <div class="impact-item reveal r6">
+        <div class="impact-big"><span class="count-up" data-target="9">9</span></div>
+        <div class="impact-name">자동 수집기</div>
+        <div class="impact-desc">매일 04:30~06:05<br>6개 스케줄 잡</div>
       </div>
     </div>
-    <div class="reveal r6" style="margin-top:26px;padding:18px 24px;border-left:1px solid var(--accent);background:rgba(52,211,153,.05);">
-      <span style="font-family:var(--kr);font-weight:300;font-size:22px;color:var(--muted);line-height:1.7;">
-        데이터 출처 <strong style="color:var(--accent);font-weight:700;">source: supabase</strong> · 오늘자 신선 데이터 확인 &nbsp;·&nbsp;
-        <strong style="color:var(--paper);">로컬 fallback(3주 전 데이터) 문제 해결 완료</strong>
-      </span>
+    <div class="impact-grid" style="margin-top:40px;">
+      <div class="impact-item reveal r7">
+        <div class="impact-big" style="font-size:82px;"><span class="count-up" data-target="69">69</span></div>
+        <div class="impact-name">REST 엔드포인트</div>
+        <div class="impact-desc">OpenAPI 자동 문서화<br>Bearer 인증 스키마 포함</div>
+      </div>
+      <div class="impact-item reveal r7">
+        <div class="impact-big" style="font-size:82px;"><span class="count-up" data-target="20">20</span></div>
+        <div class="impact-name">화면</div>
+        <div class="impact-desc">공용 컴포넌트 35개<br>가로 폭 통일 완료</div>
+      </div>
+      <div class="impact-item reveal r8">
+        <div class="impact-big" style="font-size:82px;"><span class="count-up" data-target="30">30</span></div>
+        <div class="impact-name">DB 마이그레이션</div>
+        <div class="impact-desc">Postgres · RLS<br>전부 적용 완료</div>
+      </div>
+      <div class="impact-item reveal r8">
+        <div class="impact-big" style="font-size:82px;"><span class="count-up" data-target="27" data-suffix="K">27K</span></div>
+        <div class="impact-name">코드 줄 수</div>
+        <div class="impact-desc">백엔드 11.3K · 프론트 15.5K<br>전부 origin/main 반영</div>
+      </div>
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>02</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>03</em> / 25</span></div>
 </section>
 
-<!-- S03 FLOW -->
-<section class="slide" id="s03">
+<!-- ═══ S04 아키텍처 ═══ -->
+<section class="slide" id="s04">
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">전체 흐름</span></div>
   <div class="content">
     <div class="kicker reveal r1">END-TO-END PIPELINE</div>
-    <div class="slide-h2 reveal r2">수집부터 화면까지<br><em>완전 자동화 · 개인화</em></div>
+    <div class="slide-h2 reveal r2 sm">수집부터 화면까지<br><em>사람 손이 들어가지 않습니다</em></div>
     <div class="flow reveal r3">
       <div class="flow-node">🌤 공공 API<small>기상청·인허가</small></div>
       <div class="flow-arr">+</div>
-      <div class="flow-node">📰 네이버 뉴스<small>지역·블로그</small></div>
+      <div class="flow-node">📰 뉴스·시신문<small>네이버·수원시</small></div>
       <div class="flow-arr">+</div>
-      <div class="flow-node">🏪 가게 리뷰<small>Playwright 크롤</small></div>
-      <div class="flow-arr">→</div>
-      <div class="flow-node ai">🤖 Gemini<small>요약·분류·추천</small></div>
-      <div class="flow-arr">→</div>
-      <div class="flow-node">🗄 Supabase<small>Postgres·Auth</small></div>
-      <div class="flow-arr">→</div>
-      <div class="flow-node">💻 React 대시보드<small>로그인·날짜별</small></div>
+      <div class="flow-node">✍️ 블로그·커뮤니티<small>제목·링크만</small></div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node">🎥 유튜브<small>지역 맛집 영상</small></div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node">🏪 가게 리뷰<small>Playwright</small></div>
     </div>
-    <div class="reveal r4" style="margin-top:40px;display:flex;gap:16px;">
-      <span class="pill pill-dim">⏰ 매일 06:00 브리핑 파이프라인</span>
-      <span class="pill pill-dim">⏰ 매일 05:30 리뷰 갱신(10개 순환)</span>
-      <span class="pill pill-dim">🔒 Google OAuth 로그인 유저 전용</span>
+    <div class="flow reveal r4" style="margin-top:18px;">
+      <div class="flow-arr" style="font-size:28px;">↳</div>
+      <div class="flow-node ai">🤖 LLM<small>요약·분류·주간 추천</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node ai">📍 장소 해석<small>글 → 가게 → 좌표</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">🗄 Supabase<small>Postgres · Auth · Storage · RLS</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">💻 Next.js 15<small>피드·지도·추천·모임</small></div>
+    </div>
+    <div class="feat-grid reveal r5" style="margin-top:32px;">
+      <div class="feat-card">
+        <div class="feat-title">읽는 쪽 (자동)</div>
+        <ul class="feat-list"><li>스케줄러가 매일 새벽에 채운다</li><li>사용자는 아침에 결과만 본다</li></ul>
+      </div>
+      <div class="feat-card blue">
+        <div class="feat-title">쓰는 쪽 (사용자)</div>
+        <ul class="feat-list"><li>피드 글 · 댓글 · 모임 · 정모</li><li>같은 지도·장소 데이터를 공유</li></ul>
+      </div>
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>03</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>04</em> / 25</span></div>
 </section>
 
-<!-- S04 DATA AUTOMATION -->
-<section class="slide" id="s04">
+<!-- ═══ S05 수집기 ═══ -->
+<section class="slide" id="s05">
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">① 데이터 자동화</span></div>
   <div class="content">
-    <div class="kicker reveal r1">DONE · 데이터 파이프라인</div>
-    <div class="slide-h2 reveal r2" style="font-size:64px;">매일 아침, 동네 데이터가<br><em>스스로 채워집니다</em></div>
-    <div class="feat-grid reveal r3">
-      <div class="feat-card">
-        <span class="feat-icon">📡</span>
-        <div class="feat-title">5개 수집기</div>
-        <ul class="feat-list"><li>기상청 · 공공 인허가 · 네이버 뉴스/지역/블로그</li><li>실패 시 재시도 · 로컬 fallback</li></ul>
-      </div>
-      <div class="feat-card blue">
-        <span class="feat-icon">🤖</span>
-        <div class="feat-title">Gemini 요약</div>
-        <ul class="feat-list"><li>카테고리별 요약 + 뉴스 구(區)별 자동 분류</li><li>기사·블로그 항목별 한 줄 요약</li></ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">⏰</span>
-        <div class="feat-title">스케줄러</div>
-        <ul class="feat-list"><li>매일 06:00 브리핑 · 05:30 리뷰(APScheduler)</li><li>독립 서비스로 분리</li></ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🗄</span>
-        <div class="feat-title">Supabase 저장</div>
-        <ul class="feat-list"><li>briefings · stores · user_preferences</li><li>source: supabase 검증 완료</li></ul>
-      </div>
+    <div class="kicker reveal r1">DONE · 9개 수집기 · 6개 스케줄 잡</div>
+    <div class="slide-h2 reveal r2 sm">매일 새벽, 동네 데이터가<br><em>스스로 채워집니다</em></div>
+    <table class="tbl reveal r3">
+      <thead><tr><th style="width:130px;">시각</th><th style="width:230px;">잡</th><th>하는 일</th><th style="width:180px;">쌓이는 곳</th></tr></thead>
+      <tbody>
+        <tr><td class="num">월 04:30</td><td><b>주간 추천 배치</b></td><td>지역 공용 ‘이번 주 뭐 하지?’ 7일치를 미리 생성 (LLM 수 분 소요)</td><td>weekly_recommendations</td></tr>
+        <tr><td class="num">매일 05:30</td><td><b>가게 리뷰</b></td><td>Playwright로 네이버 리뷰·별점·사진·메뉴 크롤 → AI 요약, 오래된 순 순환</td><td>stores</td></tr>
+        <tr><td class="num">매일 05:50</td><td><b>수원시 소식</b></td><td>시정 소식·행사/축제 목록·상세 (장소 라인까지 파싱)</td><td>feed_items</td></tr>
+        <tr><td class="num">매일 05:55</td><td><b>유튜브</b></td><td>지역 맛집/나들이 영상 — 할당량 아끼려 검색 호출 최소화</td><td>feed_items</td></tr>
+        <tr><td class="num">매일 06:00</td><td><b>브리핑 파이프라인</b></td><td>날씨 예보 · 지역 뉴스 · 인허가 · 블로그/커뮤니티 수집 후 카테고리별 AI 요약</td><td>briefings</td></tr>
+        <tr><td class="num">매일 06:05</td><td><b>동네 모임</b></td><td>외부 모임 정보 수집 (46건)</td><td>groups</td></tr>
+      </tbody>
+    </table>
+    <div class="note reveal r4">
+      실행 시각을 놓치고 재기동해도 <b>misfire_grace_time</b>으로 하루 1회는 보장하고, <b>coalesce</b>로 밀린 잡이 몰아서 도는 것을 막습니다.
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>04</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>05</em> / 25</span></div>
 </section>
 
-<!-- S05 REACT BRIEFING -->
-<section class="slide" id="s05">
-  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">② React 브리핑</span></div>
-  <div class="content">
-    <div class="kicker reveal r1">DONE · 개인화 대시보드</div>
-    <div class="slide-h2 reveal r2" style="font-size:64px;">서버 HTML에서<br><em>로그인 기반 React로</em></div>
-    <div class="feat-grid reveal r3">
-      <div class="feat-card">
-        <span class="feat-icon">🔒</span>
-        <div class="feat-title">로그인 전용</div>
-        <ul class="feat-list"><li>Google OAuth + 클라이언트 라우트 가드</li><li>미로그인 시 홈으로</li></ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">📅</span>
-        <div class="feat-title">날짜별 조회</div>
-        <ul class="feat-list"><li>이번 주 · 과거 날짜 선택 (전날/다음날)</li><li>한눈에 보기 통계 타일</li></ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">📝</span>
-        <div class="feat-title">마크다운 렌더</div>
-        <ul class="feat-list"><li>AI 요약을 서식으로 (react-markdown)</li><li>카테고리별 카드 UI</li></ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">👤</span>
-        <div class="feat-title">개인화</div>
-        <ul class="feat-list"><li>user_preferences (지역·구·동)로 필터</li><li>설정 페이지에서 편집</li></ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>05</em> / 10</span></div>
-</section>
-
-<!-- S06 NEWS -->
+<!-- ═══ S06 수집 소스 ═══ -->
 <section class="slide" id="s06">
-  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">③ 뉴스·블로그</span></div>
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">① 데이터 자동화</span></div>
   <div class="content">
-    <div class="kicker reveal r1">DONE · 요약 ↔ 원문 연결</div>
-    <div class="slide-h2 reveal r2">AI 요약 각 항목이<br><em>실제 기사로 연결됩니다</em></div>
-    <div class="reveal r3" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px;">
-      <div class="feat-card">
-        <span class="feat-icon">📰</span>
-        <div class="feat-title">지역 뉴스</div>
-        <ul class="feat-list">
-          <li>각 기사 AI 한 줄 요약 → “원문 →” 링크</li>
-          <li>구별 분류 chip (권선 6 · 장안 5 · 영통 2 …)</li>
-          <li>썸네일 이미지 프록시로 안전 로드</li>
-        </ul>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">✍️</span>
-        <div class="feat-title">블로그 · 카페</div>
-        <ul class="feat-list">
-          <li>동일하게 글별 AI 요약 + 원문 연결</li>
-          <li>한글 지역명 검색으로 결과 풀 확대</li>
-        </ul>
-      </div>
+    <div class="kicker reveal r1">SOURCES · 지금 실제로 들어오는 것</div>
+    <div class="slide-h2 reveal r2 sm">7가지 종류의 글이<br><em>하나의 피드로 합쳐집니다</em></div>
+    <div class="feat-grid g3 reveal r3">
+      <div class="feat-card"><span class="feat-icon">📰</span><div class="feat-title">지역 뉴스 <span class="tag">105</span></div>
+        <ul class="feat-list"><li>네이버 뉴스 API · 구(區)별 자동 분류</li></ul></div>
+      <div class="feat-card"><span class="feat-icon">✍️</span><div class="feat-title">블로그 <span class="tag">95</span></div>
+        <ul class="feat-list"><li>네이버 블로그 — 제목·링크만 저장</li></ul></div>
+      <div class="feat-card"><span class="feat-icon">💬</span><div class="feat-title">커뮤니티 <span class="tag">50</span></div>
+        <ul class="feat-list"><li>카페 글 — 본문 미저장, 원문 링크로</li></ul></div>
+      <div class="feat-card blue"><span class="feat-icon">🎥</span><div class="feat-title">유튜브 <span class="tag">44</span></div>
+        <ul class="feat-list"><li>지역 맛집 영상 · 영상 속 가게를 추출</li></ul></div>
+      <div class="feat-card"><span class="feat-icon">🏛</span><div class="feat-title">시정 소식 <span class="tag">43</span></div>
+        <ul class="feat-list"><li>수원시 공식 소식 · 장소 라인 파싱</li></ul></div>
+      <div class="feat-card"><span class="feat-icon">🎪</span><div class="feat-title">행사·축제 <span class="tag">20</span></div>
+        <ul class="feat-list"><li>진행 중 문화행사 목록 + 상세 장소</li></ul></div>
     </div>
-    <div class="reveal r4" style="margin-top:24px;padding:16px 22px;border:1px solid rgba(251,191,36,.28);background:rgba(251,191,36,.05);font-family:var(--kr);font-weight:300;font-size:20px;color:var(--muted);">
-      💡 예: <strong style="color:var(--paper);">“수원 서호천에서 물놀이하던 10대 아동 사고”</strong> → 원문 기사로 바로 이동
+    <div class="note amber reveal r4" style="margin-top:26px;">
+      ⚖️ <b>저작권·robots.txt를 먼저 확인했습니다.</b> 커뮤니티/블로그는 <b>본문을 저장하지 않고</b> 제목·링크·출처 배지만 남겨 원문으로 보냅니다.
+      크롤러를 명시적으로 막아 둔 사이트(펨코 등)는 <b>수집 대상에서 제외</b>했습니다.
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>06</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>06</em> / 25</span></div>
 </section>
 
-<!-- S07 STORES -->
+<!-- ═══ S07 가게 커버리지 ═══ -->
 <section class="slide" id="s07">
-  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">④ 동네 가게</span></div>
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">① 데이터 자동화</span></div>
   <div class="content">
-    <div class="kicker reveal r1">DONE · 리뷰 크롤 + 지도</div>
-    <div class="slide-h2 reveal r2" style="font-size:64px;">가게마다 <em>AI가 요약한 리뷰</em>와<br>네이버 지도 프리뷰</div>
-    <div class="feat-grid reveal r3">
+    <div class="kicker reveal r1">COVERAGE · 55곳에서 587곳으로</div>
+    <div class="slide-h2 reveal r2 sm">‘우리 동네’가 아니라<br><em>수원시 전체</em>를 담았습니다</div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>처음엔 시 단위로 한 번만 검색해 <b>55곳</b>에 머물렀다 — 사용자 동네에 가게가 없는 일이 잦았다</li>
+          <li><b>44개 동 × 6개 업종</b>을 돌며 훑는 스윕으로 바꿨다</li>
+          <li>업종: 음식점 🍽 · 카페 ☕ · 베이커리 🥐 · 문화 🎭 · 공원 🌳 · 술집 🍻</li>
+          <li>동 이름의 숫자 접미사를 떼어 검색 (<b>세류1동 → 세류동</b>) — 그대로 넣으면 결과가 안 나온다</li>
+          <li>행정구역 데이터는 프론트의 <b>region-data.ts를 백엔드가 읽어</b> 쓴다 (같은 표를 두 벌 두지 않으려고)</li>
+        </ul>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="pz" style="grid-template-columns:repeat(2,1fr);margin-top:0;">
+          <div class="pz-item" style="border-color:var(--line-ac);">
+            <div class="pz-p" style="color:var(--muted);">이전</div>
+            <div class="pz-s" style="font-size:56px;font-family:var(--serif);color:var(--muted);line-height:1;">55</div>
+            <div class="pz-s" style="margin-top:10px;">시 단위 단일 검색<br>구·동 편중이 심했다</div>
+          </div>
+          <div class="pz-item" style="border-color:var(--accent);background:rgba(52,211,153,.06);">
+            <div class="pz-p" style="color:var(--accent);">지금</div>
+            <div class="pz-s" style="font-size:56px;font-family:var(--serif);color:var(--accent);line-height:1;">587</div>
+            <div class="pz-s" style="margin-top:10px;">44개 동 스윕<br>좌표 587 · 사진 392 · 메뉴 303</div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:18px;">
+          가게가 늘어도 <b>추천 프롬프트는 커지지 않습니다.</b> 같은 동 &gt; 같은 구 &gt; 그 외로 점수를 매기고
+          업종을 번갈아 뽑아 <b>30곳</b>만 넣습니다 — LLM 응답 시간을 일정하게 유지하려고요.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>07</em> / 25</span></div>
+</section>
+
+<!-- ═══ S08 리뷰 크롤 ═══ -->
+<section class="slide" id="s08">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">① 데이터 자동화</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">CRAWLING · 한 번 열어서 다 가져온다</div>
+    <div class="slide-h2 reveal r2 sm">네이버 지역검색이 안 주는 것들을<br><em>직접 읽어 옵니다</em></div>
+    <div class="flow reveal r3" style="margin-top:34px;">
+      <div class="flow-node">🎭 Playwright<small>가게 페이지 1회 오픈</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">⭐ 별점<small>API엔 없는 값</small></div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node">📷 사진<small>대표 이미지</small></div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node">🍽 메뉴·가격<small>가격대 필터의 근거</small></div>
+      <div class="flow-arr">+</div>
+      <div class="flow-node">💬 리뷰<small>최근 N개</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node ai">🤖 2~3문장 요약<small>DB 캐시</small></div>
+    </div>
+    <div class="feat-grid g3 reveal r4" style="margin-top:34px;">
       <div class="feat-card">
-        <span class="feat-icon">⭐</span>
-        <div class="feat-title">AI 리뷰 요약</div>
-        <ul class="feat-list"><li>Playwright로 네이버 리뷰 최근 10개 크롤</li><li>Gemini가 2~3문장 요약 → DB 캐시</li></ul>
+        <span class="feat-icon">♻️</span><div class="feat-title">오래된 순 순환</div>
+        <ul class="feat-list"><li>매일 05:30, <b>30곳씩</b> 갱신</li><li>한 번에 다 돌지 않아 차단 위험이 낮다</li></ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🚫</span><div class="feat-title">추천에 안 맞는 업종 제외</div>
+        <ul class="feat-list"><li>주차장·주유소·은행·병원·편의점 등</li><li>리뷰가 많아도 나들이 대상이 아니다</li></ul>
       </div>
       <div class="feat-card blue">
-        <span class="feat-icon">🗺</span>
-        <div class="feat-title">네이버 지도 임베드</div>
-        <ul class="feat-list"><li>업종별 이모지 마커 · 정보창(이름·시간·주소)</li><li>마커 ↔ 리스트 연동 포커스</li></ul>
+        <span class="feat-icon">💸</span><div class="feat-title">추가 요청 없음</div>
+        <ul class="feat-list"><li>별점은 <b>이미 열려 있는 페이지</b>에서 읽는다</li><li>호출을 늘리지 않고 필드만 늘렸다</li></ul>
       </div>
-      <div class="feat-card">
-        <span class="feat-icon">🔎</span>
-        <div class="feat-title">업종 필터</div>
-        <ul class="feat-list"><li>음식점·카페·약국 등 10종 탭 필터</li></ul>
+    </div>
+    <div class="note reveal r5">
+      현재 <b>359곳</b>에 AI 리뷰 요약이 붙어 있고, 별점은 <b>35곳</b>까지 채웠습니다. 백필은 지금도 돌고 있습니다.
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>08</em> / 25</span></div>
+</section>
+
+<!-- ═══ S09 피드 ═══ -->
+<section class="slide" id="s09">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">② 동네 피드</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 하나의 타임라인</div>
+    <div class="slide-h2 reveal r2 sm">수집된 글과 이웃 글이<br><em>같은 피드에 섞입니다</em></div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>출처 배지(<b>뉴스·커뮤니티·유튜브·행사</b>)로 어디서 온 글인지 한눈에</li>
+          <li>탭 필터 · <b>무한 스크롤</b> · 내 동네 기준 정렬</li>
+          <li>모든 글에 <b>좋아요 · 댓글 · 북마크</b> — 수집 글에도 동네 대화가 붙는다</li>
+          <li>댓글이 <b>5개 이상</b>이면 좋아요 1등 댓글을 카드에 미리 보여준다</li>
+          <li>이웃 글은 사진 · 방문 시각 · 메뉴 가격까지 남길 수 있다</li>
+        </ul>
+        <div class="note" style="margin-top:22px;">
+          읽기만 하는 브리핑에서 <b>대화가 붙는 피드</b>로 바꾼 것이 이번 스프린트의 가장 큰 방향 전환입니다.
+        </div>
       </div>
-      <div class="feat-card">
-        <span class="feat-icon">♻️</span>
-        <div class="feat-title">주기적 갱신</div>
-        <ul class="feat-list"><li>매일 05:30, 오래된 순 10개씩 순환</li></ul>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/feed</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/feed-top.png" alt="동네 피드"></div></div>
       </div>
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>07</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>09</em> / 25</span></div>
 </section>
 
-<!-- S08 TIMELINE (WIP) -->
-<section class="slide" id="s08">
-  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑤ 주간 추천</span></div>
+<!-- ═══ S10 장소 추출 ═══ -->
+<section class="slide" id="s10">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">② 동네 피드</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 글에서 가게를 뽑아 지도로</div>
+    <div class="slide-h2 reveal r2 sm">“그래서 <em>어디예요?</em>”를<br>글마다 붙였습니다</div>
+    <div class="split rev">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>제목·설명에서 가게 이름 후보를 뽑아 <b>네이버 지역검색으로 실존 확인</b></li>
+          <li>📍 마커가 붙은 이름을 우선 — 없을 때만 본문에서 추측</li>
+          <li><b>지점명까지 대조</b>(인계점 ≠ 호매실점) · 업종이 맞지 않으면 버림</li>
+          <li>영상 한 편에 여러 곳이 나오면 <b>지도를 세로로 쌓아</b> 보여준다</li>
+          <li>주소 아래 <b>100px 높이 지도</b> + 네이버 평점(⭐) + 상세 링크</li>
+        </ul>
+        <div class="note amber" style="margin-top:20px;">
+          오탐을 줄이는 데 시간을 가장 많이 썼습니다. 2글자 이름·행사장 이름·“오늘” 같은 흔한 낱말이
+          가게로 잡히는 문제를 <b>글자 수 · 경계 · 불용어 · 업종</b> 네 가지 조건으로 걸렀습니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/feed — 장소가 붙은 카드</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/feed-scroll.png" alt="장소가 붙은 피드 카드"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>10</em> / 25</span></div>
+</section>
+
+<!-- ═══ S11 지도 ═══ -->
+<section class="slide" id="s11">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">③ 동네 지도</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">NEW · 지도로 보는 동네</div>
+    <div class="slide-h2 reveal r2 sm">글을 <em>지도 위에</em> 올려두면<br>동네가 한눈에 보입니다</div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>피드에 매핑된 장소를 전부 <b>마커</b>로 — 피드와 같은 탭 필터</li>
+          <li>마커를 누르면 <b>바텀시트</b>에 그 장소의 글·가게 정보</li>
+          <li>바텀시트는 기본 40% — <b>손잡이를 끌어</b> 펼치고 접는다</li>
+          <li>헤더의 <b>◀ 3/17 ▶</b>로 필터된 마커를 순서대로 탐색</li>
+          <li>펼치면 가려지지 않게 지도를 밀고, 접으면 다시 가운데로</li>
+          <li>바텀시트에서 바로 <b>그 장소에 글쓰기</b></li>
+        </ul>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/places</span></div>
+          <div class="shot-clip" style="height:600px;"><img src="shots/places.png" alt="동네 지도"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>11</em> / 25</span></div>
+</section>
+
+<!-- ═══ S12 온보딩 개인화 ═══ -->
+<section class="slide" id="s12">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">④ 주간 추천</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">PERSONALIZATION · 추천의 입력값</div>
+    <div class="slide-h2 reveal r2 sm">추천이 좋으려면<br><em>먼저 나를 알아야 합니다</em></div>
+    <div class="split rev">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>Google 로그인 → <b>온보딩</b>에서 시·구·동, 연령대, 생활패턴을 받는다</li>
+          <li>생활패턴은 <b>자유 입력</b> — “퇴근 후 러닝”, “주말엔 카페에서 작업” 같은 문장</li>
+          <li>브리핑 받을 시간을 <b>평일/주말 따로</b> 정한다</li>
+          <li>관심사로 피드를 걸러 볼 수 있다</li>
+          <li>닉네임 · 프로필 사진 · 공개 범위 · <b>계정 삭제</b>까지</li>
+        </ul>
+        <div class="note" style="margin-top:20px;">
+          이 값들이 그대로 추천 프롬프트로 들어갑니다. <b>동</b>은 가게를 고르는 점수에,
+          <b>생활패턴</b>은 무엇을 제안할지에, <b>추천 조건</b>(예산·날씨·범위)은 후보를 좁히는 데 쓰입니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/settings</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/settings.png" alt="설정"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>12</em> / 25</span></div>
+</section>
+
+<!-- ═══ S13 추천 섹션 인트로 ═══ -->
+<section class="slide" id="s13">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">④ 주간 추천</span></div>
   <div class="sec-intro-wrap">
     <div class="sec-intro-left">
-      <div class="pill pill-amber reveal r1" style="margin-bottom:22px;">🔨 IN PROGRESS · 진행 중</div>
-      <div class="sec-service reveal r2" style="color:#FBBF24;">AI Weekly Timeline</div>
-      <div class="sec-headline reveal r3">“이번 주 뭐 하지?”<br>동네 맞춤 추천</div>
+      <div class="pill pill-solid reveal r1" style="margin-bottom:22px;">✅ DONE · 지난 발표의 ‘진행 중’</div>
+      <div class="sec-service reveal r2">AI Weekly Timeline</div>
+      <div class="sec-headline reveal r3">“이번 주 뭐 하지?”<br>가 완성됐습니다</div>
       <div class="sec-desc reveal r4">
-        생활패턴(최대 100개) + 가게 리뷰 + 지역 사건사고를<br>
-        Gemini가 <strong style="color:#FBBF24;">JSON으로 분석</strong> → 날짜별 타임라인으로 제안.
+        내 생활패턴 · 동네 가게 리뷰 · 이번 주 소식 · 날씨 예보를<br>
+        LLM이 <strong style="color:var(--accent);">7일치 타임라인 JSON</strong>으로 만들고,
+        지도 · 사진 · 메뉴 · 관련 뉴스를 붙여서 보여줍니다.
       </div>
-      <div class="reveal r5" style="margin-top:22px;display:flex;flex-direction:column;gap:8px;font-family:var(--kr);font-size:20px;color:var(--muted);">
-        <div>✅ 백엔드 <code style="color:var(--accent);">/recommend</code> (JSON 추천) · 생활패턴 마이그레이션 — 완료</div>
-        <div>⏳ 온보딩·설정 입력 · 대시보드 입력창 · 타임라인 UI — 다음 스프린트</div>
+      <div class="reveal r5" style="margin-top:24px;display:flex;flex-direction:column;gap:8px;font-family:var(--kr);font-size:20px;color:var(--muted);">
+        <div>✅ 백엔드 추천 생성 · 프론트 타임라인 UI · <b style="color:var(--paper);">오늘 날짜 자동 포커스</b></div>
+        <div>✅ 하루 단위 <b style="color:var(--paper);">재추천</b> · 👍👎 피드백 · 추천 조건 저장</div>
+        <div>✅ <b style="color:var(--paper);">비동기 작업</b>으로 전환 — 페이지를 떠났다 와도 이어진다</div>
       </div>
     </div>
-    <div class="sec-intro-right reveal r2" style="color:#FBBF24;text-shadow:0 0 160px rgba(251,191,36,.22);">05</div>
+    <div class="sec-intro-right reveal r2">04</div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>08</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>13</em> / 25</span></div>
 </section>
 
-<!-- S09 STACK -->
-<section class="slide" id="s09">
+<!-- ═══ S14 추천 화면 ═══ -->
+<section class="slide" id="s14">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">④ 주간 추천</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 하루씩 넘겨 보는 타임라인</div>
+    <div class="slide-h2 reveal r2 sm">추천 하나하나가<br><em>근거를 가지고 있습니다</em></div>
+    <div class="split rev">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>오전 · 점심 · 오후 · 저녁 · 밤 <b>시간대별 카드</b></li>
+          <li>카드마다 <b>가게 사진 · 지도 · 대표 메뉴와 가격 · 영업시간</b></li>
+          <li>“왜 여기?”를 <b>AI 리뷰 요약</b>으로 그 자리에서 보여준다</li>
+          <li>관련 <b>지역 뉴스</b>가 있으면 카드 아래에 붙인다</li>
+          <li>시간대별 <b>날씨 예보 뱃지</b> — 비 오는 오전이면 실내로</li>
+        </ul>
+        <div class="note" style="margin-top:20px;">
+          예보는 3시간 간격으로 오는 걸 <b>5개 시간대로 접어서</b> 카드 시각 옆에 붙였습니다.
+          강수확률은 <b>30% 이상</b>일 때만 💧로 표시해 화면이 시끄러워지지 않게 했습니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/timeline</span></div>
+          <div class="shot-clip" style="height:600px;"><img src="shots/timeline-day.png" alt="주간 추천 타임라인"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>14</em> / 25</span></div>
+</section>
+
+<!-- ═══ S15 피드백 루프 ═══ -->
+<section class="slide" id="s15">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">④ 주간 추천</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 추천이 학습되는 구조</div>
+    <div class="slide-h2 reveal r2 sm">마음에 안 들면<br><em>이유를 말하고 다시 받습니다</em></div>
+    <div class="flow reveal r3" style="margin-top:34px;">
+      <div class="flow-node">👎 비추천<small>그 날짜에</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">💬 이유 입력<small>팝업으로 수집</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">🔁 재추천 제안<small>“다시 짜 드릴까요?”</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node ai">🤖 프롬프트에 반영<small>최근 비추천 사유 포함</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-node">📅 그 하루만 교체<small>나머지 날은 유지</small></div>
+    </div>
+    <div class="feat-grid g3 reveal r4" style="margin-top:36px;">
+      <div class="feat-card">
+        <span class="feat-icon">💰</span><div class="feat-title">일주일 예산</div>
+        <ul class="feat-list"><li>슬라이더로 0~100만원</li><li>0이면 예산은 신경 쓰지 않음</li></ul>
+      </div>
+      <div class="feat-card blue">
+        <span class="feat-icon">🌦</span><div class="feat-title">날씨에 맞추기</div>
+        <ul class="feat-list"><li>비·더위 예보일엔 실내 위주로</li></ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📍</span><div class="feat-title">범위 설정</div>
+        <ul class="feat-list"><li>우리 동 / 우리 구 / 수원시 전체</li></ul>
+      </div>
+    </div>
+    <div class="note reveal r5">
+      조건은 화면 상태가 아니라 <b>user_preferences에 저장</b>됩니다 — 새로고침해도 남고, 다음 추천부터 반영됩니다.
+      조건을 바꾸면 그 자리에서 <b>“이번 주 일정도 다시 짤까요?”</b>를 제안합니다.
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>15</em> / 25</span></div>
+</section>
+
+<!-- ═══ S16 비동기 ═══ -->
+<section class="slide" id="s16">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">엔지니어링</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">ENGINEERING · 1~2분 걸리는 LLM을 어떻게 다룰까</div>
+    <div class="slide-h2 reveal r2 sm">“1분만 기다려 주세요”는<br><em>답이 아니었습니다</em></div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>추천 요청 → <b>즉시 202 + job_id</b> 반환, 화면은 계속 쓸 수 있다</li>
+          <li>작업은 <b>메모리 + DB 양쪽</b>에 — 서버가 재시작해도 살아남는다</li>
+          <li>돌아오면 <code style="color:var(--accent);">/recommend-day/active</code>로 <b>내 작업을 되찾는다</b></li>
+          <li>자리를 비운 사이 끝났으면 결과를 바로 받아 화면에 꽂는다</li>
+          <li>블로킹 HTTP 호출은 <b>asyncio.to_thread</b>로 — 서버 전체가 멈추던 문제 해결</li>
+        </ul>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="pz" style="grid-template-columns:1fr;margin-top:0;">
+          <div class="pz-item">
+            <div class="pz-p">문제 · 동기 호출로 서버가 멈춤</div>
+            <div class="pz-s">async 함수 안에서 동기 <code>httpx.post</code>를 부르니 이벤트 루프가 통째로 막혔다.
+              추천 한 건이 도는 동안 <b>다른 모든 요청이 대기</b>했다. → <b>asyncio.to_thread</b>로 분리.</div>
+          </div>
+          <div class="pz-item">
+            <div class="pz-p">문제 · “작업을 찾을 수 없어요”</div>
+            <div class="pz-s">작업을 프로세스 메모리에만 두어 <code>--reload</code>가 걸릴 때마다 사라졌다.
+              → <b>recommend_jobs 테이블</b>에 영속화하고 메모리는 캐시로만 사용.</div>
+          </div>
+          <div class="pz-item">
+            <div class="pz-p">문제 · “생성이 중단됐어요”</div>
+            <div class="pz-s">멈춤 판정이 너무 빨라 정상 작업을 죽였다. LLM이 실제로 <b>80~130초</b> 걸린다는 걸 측정한 뒤
+              <b>7분 유예 + 프론트 자동 재시도</b>로 고쳤다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>16</em> / 25</span></div>
+</section>
+
+<!-- ═══ S17 브리핑 ═══ -->
+<section class="slide" id="s17">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑤ 오늘의 브리핑</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 날짜별 아침 요약</div>
+    <div class="slide-h2 reveal r2 sm">날씨 · 뉴스 · 인허가 · 가게를<br><em>하루 단위로</em></div>
+    <div class="split rev">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>전날/다음날로 넘기며 <b>과거 브리핑</b>도 조회</li>
+          <li>AI 요약의 각 항목이 <b>원문 기사</b>로 연결</li>
+          <li>가게 목록: <b>사진 · 전체 메뉴 칩 · 평점 · AI 리뷰 요약</b></li>
+          <li><b>메뉴 가격대 양방향 슬라이더</b>로 예산에 맞는 곳만 추리기</li>
+          <li>가게마다 <b>⭐ 찜</b> — 피드의 가게 카드와 같은 동작</li>
+          <li>평점순 정렬 · 업종 필터</li>
+        </ul>
+        <div class="note" style="margin-top:20px;">
+          네이버 지역검색 API는 <b>평점을 주지 않습니다.</b> 리뷰를 크롤할 때 이미 열려 있는 페이지에서
+          별점을 <b>함께 읽어</b> 추가 요청 없이 채웠습니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/briefing</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/briefing-top.png" alt="오늘의 브리핑"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>17</em> / 25</span></div>
+</section>
+
+<!-- ═══ S18 모임 ═══ -->
+<section class="slide" id="s18">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑥ 동네 모임</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">NEW · 읽는 서비스에서 모이는 서비스로</div>
+    <div class="slide-h2 reveal r2 sm">모임을 만들고, 받고,<br><em>실제로 만납니다</em></div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>모임 개설 — 사진 · 소개 · 정원(최대 100) · 나중에 수정 가능</li>
+          <li><b>모임 전용 피드</b> — 글은 기본 모임 안에만, 체크하면 동네 피드에도 공유</li>
+          <li><b>가입 신청 폼을 모임장이 직접 설계</b> → 승인/거절 + 알림</li>
+          <li>이미 만든 모임도 <b>승인제로 전환</b> 가능</li>
+          <li>정모 만들기 — 장소(POI) + 세부 위치 + 참석 관리, <b>멤버만</b> 참석 가능</li>
+          <li>멤버 관리 · 내보내기 · <b>초대 링크 복사</b> · 프로필 이미지</li>
+        </ul>
+        <div class="note amber" style="margin-top:18px;">
+          되돌릴 수 없는 <b>모임 삭제</b>는 이중 장치를 걸었습니다 — 전용 팝업에서
+          <b>“모임 삭제를 허용합니다”</b>를 직접 입력해야 버튼이 열립니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/groups</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/groups.png" alt="동네 모임"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>18</em> / 25</span></div>
+</section>
+
+<!-- ═══ S19 글쓰기 ═══ -->
+<section class="slide" id="s19">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑦ 글쓰기 · 소셜</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 쓰는 경험</div>
+    <div class="slide-h2 reveal r2 sm">글에 <em>장소와 맥락</em>을<br>같이 담습니다</div>
+    <div class="split rev">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>장소(POI)를 고르면 <b>바로 아래 지도 미리보기</b>에 마커가 찍힌다</li>
+          <li>사진 · 방문 시각 · <b>메뉴와 가격</b>을 남길 수 있다</li>
+          <li>모임 글은 <b>모임 링크</b>와 <b>정모 참조</b>를 함께 첨부</li>
+          <li>좋아요 · 댓글 · 대댓글 · 북마크 · 알림</li>
+          <li>댓글에도 <b>좋아요/싫어요</b> — 누를 때 아이콘이 <b>불꽃처럼 튄다</b></li>
+          <li>내 글·댓글은 대시보드에서 <b>수정·삭제</b>, 원문 피드로 <b>포커스 이동</b></li>
+        </ul>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/feed/new</span></div>
+          <div class="shot-clip" style="height:580px;"><img src="shots/compose.png" alt="글쓰기"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>19</em> / 25</span></div>
+</section>
+
+<!-- ═══ S20 검색 알림 ═══ -->
+<section class="slide" id="s20">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑧ 검색 · 알림</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 찾기와 놓치지 않기</div>
+    <div class="slide-h2 reveal r2 sm">수집한 글과 이웃 글을<br><em>한 번에 찾습니다</em></div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>헤더 어디서나 <b>동네 글 검색</b> — 뉴스·블로그·커뮤니티·영상·이웃 글을 함께</li>
+          <li>출처 배지를 그대로 달아, 결과에서도 어디서 온 글인지 보인다</li>
+          <li>가게가 매핑된 글은 검색 결과에서도 <b>지도와 평점</b>이 함께</li>
+        </ul>
+        <div class="feat-grid" style="grid-template-columns:1fr;margin-top:22px;">
+          <div class="feat-card blue">
+            <span class="feat-icon">🔔</span><div class="feat-title">알림</div>
+            <ul class="feat-list">
+              <li>내 글에 댓글 · 내 댓글에 답글 · 좋아요</li>
+              <li>모임 <b>가입 신청 / 승인 · 거절</b> · 새 정모</li>
+              <li>읽음 처리 · 알림에서 원문으로 바로 이동</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/search?q=맛집</span></div>
+          <div class="shot-clip" style="height:580px;"><img src="shots/search.png" alt="검색"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>20</em> / 25</span></div>
+</section>
+
+<!-- ═══ S21 대시보드 ═══ -->
+<section class="slide" id="s21">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">⑨ 내 대시보드</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">DONE · 내 활동을 한자리에</div>
+    <div class="slide-h2 reveal r2 sm">내가 쓴 것과 담아둔 것을<br><em>다시 찾을 수 있게</em></div>
+    <div class="split">
+      <div class="split-text reveal r3">
+        <ul class="feat-list" style="font-size:21px;">
+          <li>내 글 · 내 댓글 · 북마크 · 참여 모임 · 알림</li>
+          <li>최근 <b>5개만</b> 보여주고 나머지는 <b>더보기</b> 페이지로</li>
+          <li>내 댓글에서 <b>원문 피드 글로 바로 이동 + 포커스</b></li>
+          <li>동네 검색 — 수집 글과 이웃 글을 함께 검색</li>
+          <li>모든 화면의 <b>가로 폭을 대시보드 기준으로 통일</b></li>
+        </ul>
+        <div class="note" style="margin-top:20px;">
+          페이지마다 폭이 제각각이라 화면을 옮길 때 레이아웃이 튀었습니다.
+          <b>20개 화면 전부</b> 같은 컨테이너 폭으로 맞췄습니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">dongne.me/dashboard</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/dashboard.png" alt="내 대시보드"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>21</em> / 25</span></div>
+</section>
+
+<!-- ═══ S22 보안 비용 ═══ -->
+<section class="slide" id="s22">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">엔지니어링</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">SAFETY · 남의 데이터와 남의 돈</div>
+    <div class="slide-h2 reveal r2 sm">모으는 것보다<br><em>지키는 쪽이 어려웠습니다</em></div>
+    <div class="feat-grid g3 reveal r3">
+      <div class="feat-card">
+        <span class="feat-icon">🔐</span><div class="feat-title">권한</div>
+        <ul class="feat-list">
+          <li>22개 테이블에 <b>RLS 정책 62개</b></li>
+          <li>내 글·내 작업·내 알림만 읽고 쓴다</li>
+          <li><b>service_role 키는 서버에만</b> — 브라우저엔 anon 키</li>
+        </ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🙈</span><div class="feat-title">개인정보</div>
+        <ul class="feat-list">
+          <li>수집한 모임 소개에 <b>계좌번호·연락처</b>가 그대로 있는 경우가 있다</li>
+          <li>저장 전에 <b>[계좌번호 비공개]</b>로 치환</li>
+          <li>휴대폰·이메일도 같은 방식으로 가린다</li>
+        </ul>
+      </div>
+      <div class="feat-card amber">
+        <span class="feat-icon">💰</span><div class="feat-title">비용</div>
+        <ul class="feat-list">
+          <li>유튜브 <b>검색 호출 최소화</b> (할당량이 비싸다)</li>
+          <li>정적 지도는 <b>호출당 과금</b> — 결과를 캐시</li>
+          <li>네이버 지역검색은 지연·재시도로 429 회피</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note amber reveal r4" style="margin-top:26px;">
+      ⚖️ <b>안 한 것도 정해 뒀습니다.</b> 크롤러를 막아 둔 커뮤니티는 수집하지 않고, 블로그·커뮤니티 <b>본문은 저장하지 않으며</b>,
+      지도 워터마크는 <b>잘라내지 않습니다.</b> 데이터가 아쉬워도 약관을 먼저 봤습니다.
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>22</em> / 25</span></div>
+</section>
+
+<!-- ═══ S23 스택 + API 문서 ═══ -->
+<section class="slide" id="s23">
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">기술 스택</span></div>
   <div class="content">
-    <div class="kicker reveal r1">TECH STACK</div>
-    <div class="slide-h2 reveal r2">1인 풀스택 ·<br><em>모던 디커플드 아키텍처</em></div>
-    <div class="stack-row reveal r3"><div class="stack-label">Backend</div><div class="stack-pills">
-      <span class="pill">FastAPI · Python</span><span class="pill">APScheduler</span><span class="pill">Playwright</span><span class="pill">Gemini API</span>
-    </div></div>
-    <div class="stack-row reveal r4"><div class="stack-label">Frontend</div><div class="stack-pills">
-      <span class="pill">Next.js 15 · React</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span><span class="pill">react-markdown</span><span class="pill">네이버 지도 API</span>
-    </div></div>
-    <div class="stack-row reveal r5"><div class="stack-label">Data · Infra</div><div class="stack-pills">
-      <span class="pill">Supabase (Postgres)</span><span class="pill">Supabase Auth</span><span class="pill">Google OAuth</span>
-    </div></div>
-    <div class="reveal r6" style="margin-top:30px;padding:18px 24px;border-left:1px solid var(--accent);background:rgba(52,211,153,.05);font-family:var(--kr);font-weight:300;font-size:21px;color:var(--muted);line-height:1.6;">
-      이번 스프린트 <strong style="color:var(--paper);">6개 커밋</strong> — DB 마이그레이션 3종, 리뷰·추천 백엔드, React 브리핑·설정 페이지. <strong style="color:var(--accent);">전부 origin/main 반영.</strong>
+    <div class="kicker reveal r1">TECH STACK & API DOCS</div>
+    <div class="slide-h2 reveal r2 sm">1인 풀스택 ·<br><em>문서까지 자동 생성</em></div>
+    <div class="split rev">
+      <div class="split-text reveal r3" style="width:620px;">
+        <div class="stack-row"><div class="stack-label">Backend</div><div class="stack-pills">
+          <span class="pill">FastAPI</span><span class="pill">APScheduler</span><span class="pill">Playwright</span><span class="pill">httpx</span>
+        </div></div>
+        <div class="stack-row"><div class="stack-label">AI</div><div class="stack-pills">
+          <span class="pill pill-blue">LLM 요약·추천</span><span class="pill pill-blue">JSON 스키마 강제</span>
+        </div></div>
+        <div class="stack-row"><div class="stack-label">Frontend</div><div class="stack-pills">
+          <span class="pill">Next.js 15</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span><span class="pill">네이버 지도</span>
+        </div></div>
+        <div class="stack-row"><div class="stack-label">Data · Infra</div><div class="stack-pills">
+          <span class="pill">Supabase Postgres</span><span class="pill">Auth · RLS</span><span class="pill">Storage</span><span class="pill">Google OAuth</span>
+        </div></div>
+        <div class="note" style="margin-top:26px;">
+          <b>69개 엔드포인트</b>가 OpenAPI로 자동 문서화됩니다. 태그별로 묶고
+          <b>Bearer 인증 스키마</b>를 넣어, 문서 화면에서 토큰을 넣고 바로 호출해 볼 수 있습니다.
+        </div>
+      </div>
+      <div class="split-shot reveal r4">
+        <div class="shot"><div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">api.dongne.me/docs</span></div>
+          <div class="shot-clip" style="height:560px;"><img src="shots/apidocs.png" alt="API 문서"></div></div>
+      </div>
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>09</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>23</em> / 25</span></div>
 </section>
 
-<!-- S10 NEXT / CLOSE -->
-<section class="slide" id="s10">
+<!-- ═══ S24 부딪힌 것들 ═══ -->
+<section class="slide" id="s24">
+  <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">배운 것</span></div>
+  <div class="content">
+    <div class="kicker reveal r1">WHAT BROKE · 재보고 나서야 알았습니다</div>
+    <div class="slide-h2 reveal r2 sm">외부 API는 문서보다<br><em>실제로 재 봐야 압니다</em></div>
+    <div class="pz reveal r3">
+      <div class="pz-item">
+        <div class="pz-p">네이버 지역검색 · 조용히 잘려 있었다</div>
+        <div class="pz-s">한 질의에 <b>최대 5건</b>. 3건만 받아 오게 해 뒀더니 실제 가게가 5번째라 계속 “없다”고 판정.
+          연속 호출도 <b>19번째부터 429</b>. → 지연 + 재시도를 넣기 전까지 대부분의 장소가 말없이 버려지고 있었다.</div>
+      </div>
+      <div class="pz-item">
+        <div class="pz-p">지점이 다른 가게를 붙이고 있었다</div>
+        <div class="pz-s">“짚불태백 <b>인계점</b>” 글에 <b>호매실점</b> 지도가 붙었다.
+          → 이름뿐 아니라 <b>지점명까지 대조</b>하도록 수정.</div>
+      </div>
+      <div class="pz-item">
+        <div class="pz-p">행사 링크가 전부 404</div>
+        <div class="pz-s">상세 URL 패턴을 추측해서 만들었는데 실제 경로가 달랐다.
+          → 목록 페이지의 스크립트에서 <b>진짜 경로</b>를 찾아 고치고, <b>이미 저장된 20건</b>도 함께 갱신.</div>
+      </div>
+      <div class="pz-item">
+        <div class="pz-p">추천 날짜가 대부분 과거였다</div>
+        <div class="pz-s">배치가 ‘이번 주 월요일부터’ 7일을 만들어, 주 후반엔 지난 날짜만 보였다.
+          예보는 미래만 오니 <b>날씨가 붙을 자리도 없었다</b>. → <b>오늘부터</b> 7일로 변경.</div>
+      </div>
+      <div class="pz-item">
+        <div class="pz-p">지도 워터마크</div>
+        <div class="pz-s">정적 지도의 로고가 내용을 가렸다. 잘라내는 건 <b>이용약관 위반</b>이라
+          잘라내지 않고 <b>레이아웃으로</b> 피했다.</div>
+      </div>
+      <div class="pz-item">
+        <div class="pz-p">로그인은 됐는데 튕겼다</div>
+        <div class="pz-s">주소로 바로 들어가면 피드로 되돌아갔다. 설정을 다 읽기 전에 로딩을 끝냈던 것.
+          <b>캡처 스크립트가 URL을 검증</b>하다가 발견했다.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>24</em> / 25</span></div>
+</section>
+
+<!-- ═══ S25 다음 단계 ═══ -->
+<section class="slide" id="s25">
   <div class="runner"><span class="runner-brand">Ajou Univ.</span><span class="runner-tag">다음 단계</span></div>
   <div class="content">
     <div class="kicker reveal r1">NEXT STEPS & CLOSING</div>
-    <div class="slide-h2 reveal r2">다음은 <em>추천 타임라인 완성</em>과<br>발송·배포</div>
-    <div class="reveal r3" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div class="slide-h2 reveal r2 sm">이제 <em>사람을 붙일</em> 차례입니다</div>
+    <div class="feat-grid g3 reveal r3" style="margin-top:38px;">
       <div class="feat-card amber">
         <div class="feat-title" style="color:#FBBF24;">다음 스프린트</div>
-        <ul class="feat-list" style="--x:1;">
-          <li>주간 AI 추천 타임라인 프론트 완성</li>
-          <li>이메일 · 카카오 친구톡 발송</li>
-          <li>프로덕션 배포 · Gemini 유료 전환</li>
+        <ul class="feat-list">
+          <li>프로덕션 배포 · 도메인 연결</li>
+          <li>이메일 · 카카오 발송</li>
+          <li>수원 외 <b>다른 지역</b> 수집 확장</li>
+        </ul>
+      </div>
+      <div class="feat-card">
+        <div class="feat-title">데이터 넓히기</div>
+        <ul class="feat-list">
+          <li>평점 백필 (현재 587곳 중 35곳)</li>
+          <li>커뮤니티 소스 추가 <b>(약관 확인된 곳만)</b></li>
+          <li>가게 메뉴·사진 갱신 주기 단축</li>
         </ul>
       </div>
       <div class="feat-card">
         <div class="feat-title">검증 목표</div>
         <ul class="feat-list">
-          <li>영통·권선 실사용자 베타</li>
-          <li>이메일 오픈율 · 리뷰 요약 정확도</li>
-          <li>정시 발송 안정성 99%</li>
+          <li>수원시 전체 실사용자 베타</li>
+          <li>추천 👍 비율 · 재추천 요청률</li>
+          <li>장소 추출 정확도 측정</li>
         </ul>
       </div>
     </div>
-    <div class="reveal r4" style="margin-top:40px;display:flex;gap:16px;align-items:center;">
-      <a href="https://dongne.me" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:18px 34px;background:var(--accent);color:var(--ink);font-family:var(--kr);font-weight:700;font-size:24px;text-decoration:none;">🌿 dongne.me</a>
-      <span style="font-family:var(--mono);font-size:18px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">github.com/SODA1127/dongne.me · leekijung@ajou.ac.kr</span>
+    <div class="note reveal r4" style="margin-top:32px;">
+      지난 발표에서 <b>‘구현 예정’</b>으로 남겼던 주간 추천 타임라인은 <b>완성</b>됐고,
+      그 위에 <b>지도 · 모임 · 소셜</b>이 새로 올라갔습니다. 이제 동네 데이터가 아니라 <b>동네 사람</b>을 모을 차례입니다.
+    </div>
+    <div class="reveal r5" style="margin-top:38px;display:flex;gap:16px;align-items:center;">
+      <a href="https://dongne.me" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--accent);color:var(--ink);font-family:var(--kr);font-weight:700;font-size:23px;text-decoration:none;">🌿 dongne.me</a>
+      <span style="font-family:var(--mono);font-size:17px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">github.com/SODA1127/dongne.me · leekijung@ajou.ac.kr</span>
     </div>
   </div>
-  <div class="footer"><span>CONFIDENTIAL</span><span><em>10</em> / 10</span></div>
+  <div class="footer"><span>CONFIDENTIAL</span><span><em>25</em> / 25</span></div>
 </section>
 
 </main>
@@ -409,7 +1004,7 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
 <div id="controls">
   <button class="ctrl-btn" id="btnPrev" disabled>← Prev</button>
   <div class="dots" id="dots"></div>
-  <span id="pg">1 / 10</span>
+  <span id="pg">1 / 25</span>
   <button class="ctrl-btn" id="btnNext">Next →</button>
 </div>
 
@@ -442,7 +1037,8 @@ function go(idx){ if(idx<0||idx>=total||idx===cur||busy) return; busy=true;
   setTimeout(()=>{ slides[prev].classList.remove('leaving'); busy=false; },400);
   pgEl.textContent=`${cur+1} / ${total}`; btnPrev.disabled=cur===0; btnNext.disabled=cur===total-1;
   btnNext.textContent=cur===total-1?'완료 ✓':'Next →';
-  if(slides[cur].id==='s02'){ setTimeout(()=>{ slides[cur].querySelectorAll('.count-up').forEach(n=>{
+  // 숫자 슬라이드에 들어올 때만 카운트업을 다시 돌린다
+  if(slides[cur].id==='s03'){ setTimeout(()=>{ slides[cur].querySelectorAll('.count-up').forEach(n=>{
     countUp(n,parseFloat(n.dataset.target),n.dataset.suffix||'',1100); }); },300); }
 }
 btnPrev.addEventListener('click',()=>go(cur-1));
